@@ -19,15 +19,29 @@ body, html {
       padding-top: 15px;
       padding-right: 10px;
       box-sizing: border-box;
-      overflow: hidden;
       position: relative;
 
         &.translate {
           transform: translateX(0);
-          transition: transform .5s ease;
+          transition: transform .5s ease !important;
 
             .open--submenu {
               margin-top: 52px;
+
+                .wrap-link {
+                  opacity: 1 !important;
+                  visibility: visible;
+                  padding-left: 10px !important;
+
+                    &:before {
+                      display: none !important;
+                    }
+
+                    a {
+                      background-color: transparent !important;
+                      padding-top: 3.5%;
+                    }
+                }
             }
 
             .burger {
@@ -50,7 +64,7 @@ body, html {
               height: 3px;
               margin-bottom: 5px;
               background-color: @burgerColor;
-              transition: transform .5s ease, top .5s ease, height .5s ease;
+              transition: transform .5s ease .5s, top .5s ease .5s, height .5s ease .5s;
             }
 
             &.view-menu {
@@ -91,15 +105,6 @@ body, html {
 
         &__submenu {
           margin-top: 22px;
-          opacity: 0;
-          transition: opacity .5s ease;
-          visibility: hidden;
-
-            &.open--submenu {
-              opacity: 1;
-              visibility: visible;
-              transition: opacity 1s ease;
-            }
 
             ul {
               list-style-type: none;
@@ -141,7 +146,7 @@ body, html {
               width: 58px;
 
                 svg {
-                  width: 100%;
+                  width: 80%;
                   height: 35px;
                   fill: @burgerColor;
                 }
@@ -175,11 +180,16 @@ body, html {
             &__wrap-link {
               position: absolute;
               float: left;
-              top: 25%;
-              left: 69px;
+              top: 0;
+              left: 59px;
               min-width: 200px;
               width: 100%;
               height: 100%;
+              opacity: 0;
+              visibility: hidden;
+              box-sizing: border-box;
+              padding-left: 10px;
+              z-index: 10;
 
                 & a {
                   font: 18px @narrow;
@@ -188,17 +198,56 @@ body, html {
                   text-transform: uppercase;
                   display: block;
                   width: 100%;
-                  height: 100%;
+                  height: 75%;
+                  padding-top: 7%;
                 }
             }
         }
 
         &.hover {
           transition: width .5s ease;
+
+            li {
+
+                .wrap-link {
+                  opacity: 1;
+                  visibility: visible;
+                  transition: opacity .5s ease;
+                }
+            }
         }
 
         &.close {
-          transition: width .5s ease;
+          transition: width .5s ease, transform .5s ease;
+
+            li:hover {
+
+              .wrap-link {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transition: opacity .5s ease;
+                background-color: @sloganColor;
+                padding-left: 20px;
+
+                  &:before {
+                    position: absolute;
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    border-top: 5px solid transparent;
+                    border-left: 8px solid @orange;
+                    border-bottom: 5px solid transparent;
+                    left: -1px;
+                    top: calc(~'50% - 5px');
+                  }
+
+                  a {
+                    background-color: @sloganColor;
+                    padding-right: 10px;
+                  }
+              }
+            }
         }
     }
 
@@ -206,12 +255,12 @@ body, html {
       width: calc(~'100% - 69px');
       height: 100%;
       float: left;
-      padding-left: 40px;
-      padding-right: 40px;
-      padding-top: 15px;
       box-sizing: border-box;
 
         header {
+          padding-left: 40px;
+          padding-right: 40px;
+          padding-top: 15px;
 
             &:after {
               display: block;
@@ -365,5 +414,35 @@ body, html {
           width: 100%;
           clear: both;
         }
+      .footer {
+        position: relative;
+
+
+          &__slider {
+            width: 100%;
+            height: 135px;
+            background-color: @footerSlider;
+
+              .swiper-wrapper {
+
+                  .swiper-slide {
+                    background-color: darkred;
+                  }
+              }
+
+              &:after {
+                content: '';
+                display: block;
+                clear: both;
+              }
+          }
+
+          &__subscription {
+            height: 105px;
+            width: 100%;
+            background-color: @footerSubscription;
+            padding: 0 40px;
+          }
+      }
     }
 }

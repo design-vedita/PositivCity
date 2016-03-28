@@ -9,32 +9,7 @@
             searchInput = document.getElementsByClassName('js-search-input')[0],
             leftMenu = document.getElementsByClassName('js-left-menu-hover')[0],
             leftSubmenu = document.getElementsByClassName('js-left-submenu')[0],
-            leftSubmenuUl = leftSubmenu.querySelector('ul'),
             rightBlock = document.getElementsByClassName('js-right-block')[0];
-
-            /**
-             * ѕри клике по бургеру показываем меню
-             * When you click on the burger menu show
-             * */
-            function viewMenu() {
-                var clientWidth = document.documentElement.clientWidth;
-
-                if(clientWidth >= 768) {
-                    burger.onclick = function() {
-                        this.classList.toggle('open--burger');
-                        leftSubmenu.classList.toggle('open--submenu');
-                    }
-                } else if(clientWidth < 767) {
-                    burger.onclick = function() {
-                        leftMenu.classList.toggle('translate');
-                        leftSubmenu.classList.toggle('open--submenu');
-                        this.classList.toggle('open--burger');
-                    }
-                }
-
-            }
-
-            viewMenu();
 
 
             /**
@@ -47,19 +22,6 @@
 
 
             /**
-             * при наведении на левое меню бургер уезжает вправо
-             * when you move to the left menu to the right moves down burger
-             **/
-            leftSubmenu.onmouseenter = function() {
-                burger.classList.add('view-menu');
-            }
-
-            leftSubmenu.onmouseleave = function() {
-                burger.classList.remove('view-menu');
-            }
-
-
-            /**
             * окрашиваем подложку при наведении на пункт меню
             * paint the substrate when you hover over a menu item
             **/
@@ -67,7 +29,6 @@
             $('.js-left-submenu li').mouseenter(function(){
                 $(this).find('div').addClass('color--orange');
                 $(this).addClass('color--blue');
-
             });
 
             $('.js-left-submenu li').mouseleave(function(){
@@ -112,25 +73,38 @@
                     arr[i] = getOffsetRect(submenu_li[i]).left + submenu_li[i].offsetWidth;
                 }
 
-                var max = Math.max.apply(0, arr);
+                var max = Math.max.apply(0, arr) ;
 
                 if(clientWidth >= 768) {
-                    leftSubmenuUl.onmouseover = function() {
-                        leftMenu.style.width = max + 'px';
-                        leftMenu.classList.remove('close');
-                        leftMenu.classList.add('hover');
-                        rightBlock.style.width = 'calc(100% - '+ max +'px)';
-                        rightBlock.style.transition = '';
-                    }
-                    leftSubmenuUl.onmouseout = function() {
-                        leftMenu.style.width = '69px';
-                        rightBlock.style.width = 'calc(100% - 69px)';
-                        rightBlock.style.transition = 'width .5s ease .5s';
-                        leftMenu.classList.remove('hover');
-                        leftMenu.classList.add('close');
+                    burger.onclick = function() {
+                        leftMenu.style.width = (max + 20) + 'px';
+
+                        leftMenu.classList.toggle('hover');
+
+                        if (leftMenu.classList.contains('hover')) {
+                            rightBlock.style.width = 'calc(100% - ' + (max + 20) + 'px)';
+                            rightBlock.style.transition = '';
+                            this.classList.add('view-menu', 'open--burger');
+                            leftMenu.classList.remove('close');
+                        } else {
+                            leftMenu.style.width = '69px';
+                            rightBlock.style.width = 'calc(100% - 69px)';
+                            rightBlock.style.transition = 'width .5s ease .5s';
+                            this.classList.remove('view-menu', 'open--burger');
+                            leftMenu.classList.remove('hover');
+                            leftMenu.classList.add('close');
+                        }
+
                     }
                 } else if(clientWidth < 767) {
                     rightBlock.style.width = '';
+
+                    burger.onclick = function() {
+                        leftMenu.classList.toggle('translate');
+                        leftSubmenu.classList.toggle('open--submenu');
+                        this.classList.toggle('open--burger');
+
+                    }
                 }
 
             }
@@ -139,7 +113,6 @@
 
             window.onresize = function() {
                 openMenu();
-                viewMenu();
                 fixedHeader();
             }
 
@@ -190,6 +163,34 @@
                 fixedHeader();
             }
 
+            /**
+             * Initialize Swiper slider
+             * */
+
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                paginationClickable: true,
+                slidesPerView: 5,
+                spaceBetween: 2,
+                breakpoints: {
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 40
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 30
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10
+                    }
+                }
+            });
 
     });
 }());
