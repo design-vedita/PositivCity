@@ -12,7 +12,10 @@
             leftSubmenuUl = leftSubmenu.querySelector('ul'),
             rightBlock = document.getElementsByClassName('js-right-block')[0];
 
-            /*---------------------��� ����� �� ������� ���������� ����----------------*/
+            /**
+             * ��� ����� �� ������� ���������� ����
+             * When you click on the burger menu show
+             * */
             function viewMenu() {
                 var clientWidth = document.documentElement.clientWidth;
 
@@ -33,16 +36,20 @@
 
             viewMenu();
 
-            /*-----------------------------------------------------------------------*/
 
-            /*----------320-768 ��� ����� �� ������ ������, ���������� �����------------*/
+            /**
+             * 320-768 ��� ����� �� ������ ������, ���������� �����
+             * 320-768 when you click on the search button appears search
+             * */
             searchButton.onclick = function() {
                 searchInput.classList.toggle('visible-search');
             }
 
-            /*-------------------------------------------------------*/
 
-            /*----------��� ��������� �� ����� ���� ������ ������� ������-----*/
+            /**
+             * ��� ��������� �� ����� ���� ������ ������� ������
+             * when you move to the left menu to the right moves down burger
+             **/
             leftSubmenu.onmouseenter = function() {
                 burger.classList.add('view-menu');
             }
@@ -51,10 +58,12 @@
                 burger.classList.remove('view-menu');
             }
 
-            /*------------------------------------------------------------------*/
 
+            /**
+            * ���������� �������� ��� ��������� �� ����� ����
+            * paint the substrate when you hover over a menu item
+            **/
 
-            /*------------------------- ���������� �������� ��� ��������� �� ����� ����------------------*/
             $('.js-left-submenu li').mouseenter(function(){
                 $(this).find('div').addClass('color--orange');
                 $(this).addClass('color--blue');
@@ -68,10 +77,11 @@
 
             /*------------------------------------------------------------------------------*/
 
-            /*
+            /**
             * �������� ���������� ������� ���� ������� �������� ������ � �� ��� �����
             * ��������� ����� ����. ������ ���� �������������� ��� ��� � �������� ���� �������
-            * */
+            * Get coordinate of the right corner of each list item, and on the length of the open left menu. Right block adapts it and gets its size
+            **/
 
             function openMenu() {
 
@@ -133,9 +143,11 @@
                 fixedHeader();
             }
 
-            /*------------------------------------------------------------------------------*/
 
-            /*--------------���� �� ������� � ������� ���� �� 320-460-----------*/
+            /**
+             * ���� �� ������� � ������� ���� �� 320-460
+             * Click on a burger in the top menu on 320-460
+             * */
 
             burgerOrange.onclick = function() {
                 leftMenu.classList.toggle('translate');
@@ -146,7 +158,10 @@
             }
 
 
-            /*---------------fixed � ����� ��� ������� ���� ������ ����� � �� 320-767--------------*/
+            /**
+             * fixed � ����� ��� ������� ���� ������ ����� � �� 320-767
+             * have fixed header when scrolling up cap height and 320-767
+             * */
 
             function fixedHeader() {
                 var scrollTop = window.pageYOffset || document.documentElement.scrollTop,
