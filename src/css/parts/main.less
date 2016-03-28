@@ -1,0 +1,298 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body, html {
+  font: normal 100%;
+  height: 100%;
+}
+.wrapper {
+  height: 100%;
+  width: 100%;
+
+    .left-menu {
+      width: 69px;
+      float: left;
+      height: 100%;
+      background-color: @backLeftMenuColor;
+      padding-left: 10px;
+      padding-top: 15px;
+      padding-right: 10px;
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+
+        &__burger {
+          width: 30px;
+          height: 30px;
+          cursor: pointer;
+          margin: 0 auto;
+
+            span {
+              display: block;
+              width: 100%;
+              height: 3px;
+              margin-bottom: 5px;
+              background-color: @burgerColor;
+              transition: transform .5s ease, top .5s ease, height .5s ease;
+            }
+
+            &.open--burger {
+              width: 40px;
+              height: 30px;
+
+              span {
+                height: 1px;
+              }
+
+              & span:first-of-type {
+                transform: rotate(-45deg);
+                transition: transform .5s ease, top .5s ease, height .5s ease;
+                margin-bottom: 0;
+                position: relative;
+                top: 14px;
+              }
+
+              & span:last-of-type {
+                transform: rotate(45deg);
+                transition: transform .5s ease, top .5s ease, height .5s ease;
+                position: relative;
+                top: 7px;
+              }
+
+              & span:nth-of-type(2) {
+                opacity: 0;
+                transition: opacity .1s ease;
+              }
+            }
+        }
+
+        &__submenu {
+          margin-top: 22px;
+          height: 0;
+          overflow: hidden;
+          transition: height .5s ease;
+
+            &.open--submenu {
+              height: 100%;
+              transition: height 1s ease;
+            }
+
+            ul {
+              list-style-type: none;
+
+                & li {
+                  position: relative;
+
+                  &:after {
+                    display: block;
+                    content: '';
+                    clear: both;
+                  }
+                }
+            }
+
+            &__wrap-svg {
+              width: 58px;
+              height: 50px;
+
+                svg {
+                  width: 100%;
+                  height: 35px;
+                  fill: @burgerColor;
+                }
+
+                &.color--orange {
+                  background-color: @orange;
+
+                    svg {
+                      margin: 8px auto 0;
+                      fill: @white;
+                    }
+                }
+            }
+
+            &__wrap-link {
+              position: absolute;
+              float: left;
+              top: 25%;
+              left: 69px;
+              min-width: 200px;
+              width: 100%;
+
+                & a {
+                  font: 18px @narrow;
+                  color: @grayBorder;
+                  text-decoration: none;
+                  text-transform: uppercase;
+                }
+
+                &.color--blue {
+                  background-color: @sloganColor;
+
+                    a {
+                      color: @socColor;
+                    }
+                }
+            }
+        }
+
+        &.hover {
+          transition: width .5s ease;
+        }
+
+        &.close {
+          transition: width .5s ease;
+        }
+    }
+
+    .right-block {
+      width: calc(~'100% - 69px');
+      height: 100%;
+      float: left;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-top: 15px;
+      box-sizing: border-box;
+
+        &__logo {
+          width: 173px;
+          float: left;
+
+            img {
+              width: 100%;
+              max-width: 100%;
+            }
+        }
+
+        &__slogan {
+          float: left;
+          margin-left: 4.3%; /*83/1920*/
+          margin-top: 34px;
+
+            p {
+              text-transform: uppercase;
+              color: @sloganColor;
+              font: bold 1.5em @narrow;
+            }
+        }
+
+        &__search {
+          float: right;
+          width: 41%; /*787/1920*/
+          margin-top: 9px;
+          position: relative;
+
+            &__top {
+
+                &__city {
+                  width: 11.38888888888889%; /*82/720*/
+                  float: left;
+
+                    .city-link {
+                      text-decoration: none;
+                      color: @cityLink;
+                      font: 1.125em @narrow;
+                      text-transform: uppercase;
+                      position: relative;
+
+                        & .arrow-city {
+                          fill: #ef4601;
+                          height: 12px;
+                          position: absolute;
+                          right: -16px;
+                          top: calc(~'50% - 4.5px');
+                          width: 19px;
+                        }
+                    }
+                }
+
+                &__soc {
+                  float: right;
+                  width: calc(~'100% - 11.38888888888889%');
+
+                    ul {
+                      list-style-type: none;
+                      text-align: right;
+                      font-size: 0;
+                      line-height: normal;
+
+                        li {
+                          display: inline-block;
+                          margin-right: 5.066666666666667%; /*38/750*/
+
+                            .ico {
+                              width: 17px;
+                              height: 17px;
+                              fill: @socColor;
+                            }
+
+                            &:last-of-type {
+                              margin-right: 0;
+                            }
+                        }
+                    }
+                }
+
+                &__search768 {
+                  position: absolute;
+                  display: none;
+                  z-index: 10;
+                  right: 0;
+                  top: 35px;
+                  cursor: pointer;
+
+                    svg {
+                      width: 28px;
+                      height: 28px;
+                      fill: @orange;
+                    }
+                }
+
+                &:after {
+                  display: block;
+                  content: '';
+                  clear: both;
+                }
+            }
+
+            &__input {
+              margin-top: 8px;
+              position: relative;
+
+                input {
+
+                    &[type=text] {
+                      width: 100%;
+                      height: 48px;
+                      border: 1px @grayBorder solid;
+                      box-sizing: border-box;
+                      padding-left: 10px;
+                      font: .875em @narrow;
+                      color: @cityLink;
+                    }
+                    &[type=submit] {
+                      width: 52px;
+                      height: 48px;
+                      position: absolute;
+                      right: 0;
+                      top: 0;
+                      border: none;
+                      cursor: pointer;
+                      background: @orange url(../img/search.svg);
+                      background-size: 26px;
+                      background-repeat: no-repeat;
+                      background-position: center;
+                    }
+                }
+            }
+
+        }
+
+        &:after {
+          display: block;
+          width: 100%;
+          clear: both;
+        }
+    }
+}

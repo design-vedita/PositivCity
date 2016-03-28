@@ -1,0 +1,83 @@
+@media screen and (min-width: 768px) and (max-width: 999px) {
+  .wrapper {
+
+    .right-block {
+      padding-left: 20px;
+      padding-right: 20px;
+
+        &__logo {
+          width: 136px;
+        }
+
+        &__slogan {
+          width: 28%;
+          margin-top: 6px;
+          margin-left: 8%; /*153/768*/
+        }
+
+        &__search {
+
+            &__top {
+
+                &__soc {
+                  float: none;
+                  width: 100%;
+                  position: absolute;
+
+                    ul {
+
+                        &:after {
+                          display: inline-block;
+                          content: '';
+                          width: 100%;
+                        }
+
+                        li {
+                          margin-right: 32px;
+                        }
+                    }
+                }
+
+                &__city {
+                  width: auto;
+                  position: absolute;
+                  top: 39px;
+                  z-index: 10;
+                  right: 107px;
+                }
+
+                &__search768 {
+                  display: block;
+                }
+            }
+
+            &__input {
+              margin-top: 97px;
+              position: relative;
+              width: 133%;
+              left: -33%;
+              display: none;
+
+                &.visible-search {
+                  display: block;
+                }
+            }
+        }
+    }
+
+    .left-menu {
+
+        &__submenu {
+            margin-top: 25px;
+
+            ul {
+
+                li {
+                  margin-bottom: 14px;
+                }
+            }
+
+        }
+    }
+  }
+}
