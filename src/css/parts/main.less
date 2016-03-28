@@ -22,11 +22,27 @@ body, html {
       overflow: hidden;
       position: relative;
 
+        &.translate {
+          transform: translateX(0);
+          transition: transform .5s ease;
+
+            .open--submenu {
+              margin-top: 52px;
+            }
+
+            .burger {
+              position: absolute;
+              right: 10px;
+            }
+        }
+
         &__burger {
           width: 30px;
           height: 30px;
           cursor: pointer;
           margin: 0 auto;
+          transition: right 1s linear;
+          right: 0;
 
             span {
               display: block;
@@ -35,6 +51,12 @@ body, html {
               margin-bottom: 5px;
               background-color: @burgerColor;
               transition: transform .5s ease, top .5s ease, height .5s ease;
+            }
+
+            &.view-menu {
+              right: -108px;
+              position: relative;
+              transition: right .5s linear;
             }
 
             &.open--burger {
@@ -69,13 +91,14 @@ body, html {
 
         &__submenu {
           margin-top: 22px;
-          height: 0;
-          overflow: hidden;
-          transition: height .5s ease;
+          opacity: 0;
+          transition: opacity .5s ease;
+          visibility: hidden;
 
             &.open--submenu {
-              height: 100%;
-              transition: height 1s ease;
+              opacity: 1;
+              visibility: visible;
+              transition: opacity 1s ease;
             }
 
             ul {
@@ -89,12 +112,33 @@ body, html {
                     content: '';
                     clear: both;
                   }
+
+                  &.color--blue {
+                    background-color: @sloganColor;
+
+                    a {
+                      color: @socColor;
+                    }
+
+                    &:before {
+                      display: block;
+                      content: '';
+                      position: absolute;
+                      right: -10px;
+                      height: 100%;
+                      background-color: @sloganColor;
+                      width: 10px;
+                    }
+                  }
+
                 }
             }
 
             &__wrap-svg {
-              width: 58px;
+              box-sizing: border-box;
               height: 50px;
+              padding-top: 8px;
+              width: 58px;
 
                 svg {
                   width: 100%;
@@ -104,10 +148,26 @@ body, html {
 
                 &.color--orange {
                   background-color: @orange;
+                  position: relative;
+
+                    &:before {
+                      display: block;
+                      content: '';
+                      position: absolute;
+                      left: -10px;
+                      top: 0;
+                      width: 68px;
+                      height: 100%;
+                      background-color: @orange;
+                      z-index: 0;
+                    }
 
                     svg {
-                      margin: 8px auto 0;
                       fill: @white;
+                      transition: all .5s ease;
+                      position: relative;
+                      z-index: 1;
+
                     }
                 }
             }
@@ -119,20 +179,16 @@ body, html {
               left: 69px;
               min-width: 200px;
               width: 100%;
+              height: 100%;
 
                 & a {
                   font: 18px @narrow;
                   color: @grayBorder;
                   text-decoration: none;
                   text-transform: uppercase;
-                }
-
-                &.color--blue {
-                  background-color: @sloganColor;
-
-                    a {
-                      color: @socColor;
-                    }
+                  display: block;
+                  width: 100%;
+                  height: 100%;
                 }
             }
         }
@@ -155,8 +211,22 @@ body, html {
       padding-top: 15px;
       box-sizing: border-box;
 
+        header {
+
+            &:after {
+              display: block;
+              width: 100%;
+              clear: both;
+              content: '';
+            }
+
+            &.scroll-fixed {
+              position: fixed;
+            }
+        }
+
         &__logo {
-          width: 173px;
+          width: 13.35714285714286%; /*187/1400*/
           float: left;
 
             img {
@@ -167,19 +237,20 @@ body, html {
 
         &__slogan {
           float: left;
-          margin-left: 4.3%; /*83/1920*/
+          margin-left: 5.928571428571429%; /*83/1400*/
           margin-top: 34px;
+          width: 22.5%; /*315/1400*/
 
             p {
               text-transform: uppercase;
               color: @sloganColor;
-              font: bold 1.5em @narrow;
+              font: bold 1.5em @narrow; /*1.5em*/
             }
         }
 
         &__search {
           float: right;
-          width: 41%; /*787/1920*/
+          width: 56.21428571428571%; /*787/1400*/
           margin-top: 9px;
           position: relative;
 
