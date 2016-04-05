@@ -9,8 +9,9 @@
             searchInput = document.getElementsByClassName('js-search-input')[0],
             leftMenu = document.getElementsByClassName('js-left-menu-hover')[0],
             leftSubmenu = document.getElementsByClassName('js-left-submenu')[0],
-            rightBlock = document.getElementsByClassName('js-right-block')[0];
-
+            footerLinks = document.getElementsByClassName('js-footer-links')[0],
+            rightBlock = document.getElementsByClassName('js-right-block')[0],
+            clientWidth = document.documentElement.clientWidth;
 
         /**
          * 320-768 при клике по кнопке поиска, появляется поиск
@@ -81,6 +82,11 @@
 
                     leftMenu.classList.toggle('hover');
 
+                    /*
+                    * Пересчёт длины левого и правого блоков,
+                    * при открытом меню
+                    * */
+
                     if (leftMenu.classList.contains('hover')) {
                         rightBlock.style.width = 'calc(100% - ' + (max + 20) + 'px)';
                         rightBlock.style.transition = '';
@@ -95,17 +101,89 @@
                         leftMenu.classList.add('close');
                     }
 
+                    /**
+                     * на разных разрешениях добавляем снизу отступ,
+                     * чтобы наши ссылки в футере помещались
+                     * */
+                    if(clientWidth >= 1400 && clientWidth <= 1960) {
+                        var  heightLinks = footerLinks.offsetHeight;
+
+                        if(this.classList.contains('view-menu')) {
+                            footerLinks.style.height = heightLinks + 200 + 'px';
+                        } else {
+                            footerLinks.style.height = '';
+                        }
+                    } else if(clientWidth >= 1000 && clientWidth < 1400) {
+                        var  heightLinks = footerLinks.offsetHeight,
+                             div = footerLinks.querySelectorAll('div:not(.js-contacts)');
+
+                        /**
+                         * добавляем в футер высоты, чтобы блоки поместились и задаём при открытом меню
+                         * длину блоков, чтобы не расползалось
+                         */
+
+                        if(this.classList.contains('view-menu')) {
+
+                            footerLinks.style.height = heightLinks + 300 + 'px';
+
+                            for (var i = 0; i < div.length; i++) {
+                                div[i].style.width = '33%';
+                            }
+
+                        } else {
+
+                            footerLinks.style.height = '';
+
+                            for (var i = 0; i < div.length; i++) {
+                                div[i].style.width = '';
+                            }
+
+                        }
+
+                    } else if(clientWidth >= 768 && clientWidth < 1000) {
+                        var  heightLinks = footerLinks.offsetHeight,
+                             div = footerLinks.querySelectorAll('div:not(.js-contacts)');
+
+                        /**
+                         * добавляем в футер высоты, чтобы блоки поместились и задаём при открытом меню
+                         * длину блоков, чтобы не расползалось
+                         */
+
+                        if(this.classList.contains('view-menu')) {
+
+                            footerLinks.style.height = heightLinks + 500 + 'px';
+
+                            for (var i = 0; i < div.length; i++) {
+                                div[i].style.width = '50%';
+                            }
+
+                        } else {
+
+                            footerLinks.style.height = '';
+
+                            for (var i = 0; i < div.length; i++) {
+                                div[i].style.width = '';
+                            }
+
+                        }
+                    }
+
+
                 }
             } else if(clientWidth < 767) {
                 rightBlock.style.width = '';
 
+                /**
+                 * При маленьком размере экрана левое меню невидимо
+                 * и при открытии наезжает сверху
+                 */
                 burger.onclick = function() {
                     leftMenu.classList.toggle('translate');
                     leftSubmenu.classList.toggle('open--submenu');
                     this.classList.toggle('open--burger');
-
                 }
             }
+
 
         }
 
@@ -142,17 +220,20 @@
                 headerHeight = header.offsetHeight,
                 clientWidth = document.documentElement.clientWidth;
 
-            if (scrollTop >= headerHeight) {
-                header.classList.add('scroll--fixed');
 
-                if(clientWidth >=460 && clientWidth <= 767) {
-                    header.style.width = 'calc(100% - 40px)';
-                } else if(clientWidth >=320 && clientWidth <=459) {
-                    header.style.width = 'calc(100% - 20px)';
+            if(clientWidth <=767) {
+                if (scrollTop >= headerHeight) {
+                    header.classList.add('scroll--fixed');
+
+                    if(clientWidth >=460 && clientWidth <= 767) {
+                        header.style.width = 'calc(100% - 40px)';
+                    } else if(clientWidth >=320 && clientWidth <=459) {
+                        header.style.width = 'calc(100% - 20px)';
+                    }
+
+                } else {
+                    header.classList.remove('scroll--fixed');
                 }
-
-            } else {
-                header.classList.remove('scroll--fixed');
             }
 
         }
@@ -168,29 +249,40 @@
          * */
 
         var swiper = new Swiper('.swiper-container', {
-            pagination: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
             paginationClickable: true,
             slidesPerView: 5,
-            spaceBetween: 2,
+            spaceBetweenSlides: 60,
             breakpoints: {
-                1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 40
+                1800: {
+                    slidesPerView: 4
                 },
-                768: {
-                    slidesPerView: 3,
-                    spaceBetween: 30
+                1399: {
+                    slidesPerView: 2.8
                 },
-                640: {
+                999: {
                     slidesPerView: 2,
-                    spaceBetween: 20
+                    spaceBetweenSlides: 16
                 },
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 10
+                767: {
+                    slidesPerView: 2
+                },
+                650: {
+                    slidesPerView: 1.5
+                },
+                510: {
+                    slidesPerView: 1.2
+                },
+                459: {
+                    slidesPerView: 1
+                },
+                360: {
+                    slidesPerView: .8
                 }
             }
         });
+
 
     });
 }());
