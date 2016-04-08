@@ -283,6 +283,11 @@
             }
         });
 
+        var swiper = new Swiper('.js-top-slider', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true
+        });
+
 
     });
 }());

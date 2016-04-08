@@ -124,8 +124,8 @@ gulp.task('css:build', function () {
     gulp.src(path.src.style)
         .pipe(plumber())
         .pipe(less({
-            paths: ['src/css/'],
-            compress: true
+            paths: ['src/css/']
+          //  compress: true
         }))
        // .pipe(cssmin())
         .pipe(gulp.dest(path.build.css));

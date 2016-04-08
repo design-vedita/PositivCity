@@ -12,6 +12,49 @@
         padding-top: 10px;
       }
 
+      .content {
+        padding-right: 10px;
+        padding-left: 10px;
+
+        &__wrap-slide {
+          height: auto;
+
+          .swiper-pagination {
+            padding-left: 15px;
+          }
+
+          &__block-slider {
+            width: 100%;
+            float: none;
+
+            &__text-slide {
+              max-width: 275px;
+              bottom: 75px;
+              left: 15px;
+              padding: 34px 19px 26px;
+
+              .title-slide {
+                font-size: 1.6875em;
+                line-height: 1.5em;
+              }
+
+              .text-slide {
+                font-size: .9375em;
+                line-height: 1.375em;
+              }
+            }
+          }
+
+          &__block-banner {
+            width: 240px;
+            float: none;
+            margin: 13px auto 0;
+          }
+
+        }
+
+      }
+
       &__logo {
         width: 47px;
         overflow: hidden;
@@ -126,7 +169,7 @@
     }
 
     .left-menu {
-      position: absolute;
+      position: fixed;
       left: 0;
       width: 100%;
       transform: translateX(-100%);

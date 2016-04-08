@@ -2,9 +2,11 @@
   margin: 0;
   padding: 0;
 }
-body, html {
+body,
+html {
   font: normal 100%;
   height: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 body {
   background-color: #282828;
@@ -213,8 +215,8 @@ body {
                   text-transform: uppercase;
                   display: block;
                   width: 100%;
-                  height: 75%;
-                  padding-top: 12px;
+                  height: 69%;
+                  padding-top: 15px;
                 }
             }
         }
@@ -440,19 +442,107 @@ body {
         padding: 30px 40px;
 
           &__wrap-slide {
+              position: relative;
+
+              &__block-slider {
+                width: calc(~'100% - 254px');
+                overflow: hidden;
+                float: left;
+                height: 400px;
+                position: relative;
+
+                  &__text-slide {
+                    width: 100%;
+                    max-width: 515px;
+                    background-color: rgba(255, 255, 255, .71);
+                    padding: 25px 28px 30px;
+                    position: absolute;
+                    right: 34px;
+                    bottom: 36px;
+                    box-sizing: border-box;
+
+                      .title-slide {
+                        font: bold 2.625em/1.625em @narrow;
+                        text-transform: uppercase;
+                        color: @sloganColor;
+                        margin-bottom: 11px;
+                      }
+
+                      .text-slide {
+                        font: 1.125em/1.625em @ptreg;
+                        color: @backLeftMenuColor;
+                      }
+
+                      .link-slide {
+                        text-decoration: none;
+                        background-color: @orange;
+                        color: #fff;
+                        font: 1em/1.625em @narrow;
+                        text-transform: uppercase;
+                        padding: 10px 49px;
+                        margin-top: 10px;
+                        display: block;
+                        max-width: 72px;
+                        width: 100%;
+                      }
+                  }
+              }
+
+              &__block-banner {
+                float: right;
+                width: 240px;
+                overflow: hidden;
+                height: 400px;
+
+                  img {
+                    height: 100%;
+                  }
+              }
 
               &:after {
                 clear: both;
                 display: block;
                 content: '';
               }
+
+              .swiper-slide {
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 400px;
+                position: relative;
+              }
+
+              .swiper-pagination {
+                text-align: left;
+                padding-left: 36px;
+                bottom: 36px;
+                font-size: 0;
+
+                 span {
+                    width: 14px;
+                    height: 14px;
+                    background-color: transparent;
+                    border: 3px #fff solid;
+                    box-sizing: border-box;
+                    opacity: 1;
+                    margin-left: 0;
+                    margin-right: 25px;
+
+                    &.swiper-pagination-bullet-active {
+                      background-color: #f9ef93;
+                      border-color: #f9ef93;
+                    }
+                 }
+              }
+
           }
       }
       .footer {
 
           &__slider {
             background-color: @footerSlider;
-            padding: 20px 40px;
+            padding: 0 40px;
             position: relative;
 
               .swiper-button-next,
@@ -473,6 +563,7 @@ body {
               }
 
               .swiper-wrapper {
+                padding: 20px 0;
 
                   .swiper-slide {
                     font-size: 0;
@@ -482,11 +573,11 @@ body {
                         position: absolute;
                         display: block;
                         content: '';
-                        width: 1px;
+                        width: 2px;
                         background-color: #fff;
-                        min-height: 135px;
-                        height: 100%;
-                        right: 0;
+                        height: 200%;
+                        right: 10px;
+                        top: -20px;
                       }
 
                       .image-slide,
