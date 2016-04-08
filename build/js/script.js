@@ -290,4 +290,24 @@
 
 
     });
+
+    window.onload = function() {
+        /**
+         * initialize masonry
+         * */
+
+       /* $('.js-category-list').masonry({
+            itemSelector: '.item',
+            singleMode: false,
+            isResizable: true,
+            isAnimated: true,
+            isInitLayout: false,
+            animationOptions: {
+                queue: false,
+                duration: 500
+            },
+            gutter: 30
+        });
+        */
+    }
 }());

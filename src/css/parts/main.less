@@ -537,6 +537,37 @@ body {
               }
 
           }
+
+          &__list-category {
+            margin-top: 18px;
+
+              &:after {
+                display: block;
+                width: 100%;
+                clear: both;
+                content: '';
+              }
+
+              .one-square {
+                .one-square();
+
+                  &:nth-of-type(6) {
+                    margin-right: 0;
+                  }
+              }
+
+              .two-square {
+                .one-square(276px*2,276px,276px*2);
+              }
+
+              .four-square {
+                .one-square(276px*2,276px*2);
+              }
+
+              .six-square {
+                .one-square(276px*3,276px*3);
+              }
+          }
       }
       .footer {
 
