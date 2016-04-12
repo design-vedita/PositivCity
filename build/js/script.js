@@ -12,6 +12,30 @@
             footerLinks = document.getElementsByClassName('js-footer-links')[0],
             rightBlock = document.getElementsByClassName('js-right-block')[0];
 
+
+        /**
+         *  Получаем расстояние между 2 первыми блоками и добавляем его к большим блокам,
+         *  чтобы они были ровно друг под другом
+         */
+
+        function getDistanceBlock() {
+            var elOne = document.getElementsByClassName('js-discount-one')[0],
+                elTwo = document.getElementsByClassName('js-discount-two')[0],
+                four = document.getElementsByClassName('js-four'),
+                six = document.getElementsByClassName('js-six');
+
+            var distance = elTwo.offsetLeft - elOne.offsetWidth - elOne.offsetLeft;
+            for (var i = 0; i < four.length; i++) {
+                four[i].style.maxWidth = four[i].offsetWidth + distance + 'px';
+            }
+
+            for (var i = 0; i < six.length; i++) {
+                six[i].style.maxWidth = six[i].offsetWidth + distance + 'px';
+            }
+        }
+
+        getDistanceBlock();
+
         /**
          * Initialize Swiper slider
          * */
@@ -118,8 +142,8 @@
                 arr[i] = getOffsetRect(submenu_li[i]).left + submenu_li[i].offsetWidth;
             }
 
-            var max = Math.max.apply(0, arr) ;
-            console.log(max);
+            var max = Math.max.apply(0, arr);
+
             if(clientWidth >= 768) {
                 burger.onclick = function() {
 

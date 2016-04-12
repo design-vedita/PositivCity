@@ -9,6 +9,47 @@
   width: 80%;
 }
 
+.one-square(@size: 275px) {
+  max-width: @size;
+  min-width: 200px;
+  width: 100%;
+  height: @size;
+  background-color: @socColor;
+  margin-bottom: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+.two-square(@size: 275px) {
+  height: @size*2;
+  max-width: @size;
+  min-width: 200px;
+  width: 100%;
+  background-color: @socColor;
+  margin-bottom: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+.four-square(@size: 275px) {
+  height: @size*2;
+  width: 100%;
+  max-width: @size*2;
+  min-width: 400px;
+  background-color: @socColor;
+  margin-bottom: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+.six-square(@size: 275px) {
+  height: @size*2;
+  max-width: @size*3;
+  width: 100%;
+  min-width: 600px;
+  background-color: @socColor;
+  margin-bottom: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+/*
 .one-square (@max-height: 276px, @width: 15.5%, @height: 100%, @min-width: 200px){
   width: @width;
   min-width: @min-width;
@@ -22,4 +63,13 @@
     &:nth-of-type(6) {
       margin-right: 0;
     }
+}
+*/
+.column-count(@count,@gap: 2.5em) {
+  column-count: @count;
+  -moz-column-count: @count;
+  -webkit-column-count: @count;
+  column-gap: @gap;
+  -moz-column-gap: @gap;
+  -moz-column-gap: @gap;
 }
