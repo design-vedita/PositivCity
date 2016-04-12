@@ -67,7 +67,7 @@ body {
 
         &__burger {
           width: 30px;
-          height: 30px;
+          height: 22px;
           cursor: pointer;
           margin: 0 auto;
           right: 0;
@@ -82,14 +82,14 @@ body {
             }
 
             &.view-menu {
-              right: -108px;
-              position: relative;
               transition: right .5s linear;
             }
 
             &.open--burger {
               width: 40px;
               height: 30px;
+              position: absolute;
+              right: 15px;
 
               span {
                 height: 1px;
@@ -224,6 +224,10 @@ body {
         &.hover {
           transition: width .5s ease;
 
+            & > div:last-of-type {
+              margin-top: 55px;
+            }
+
             li {
 
                 .wrap-link {
@@ -296,7 +300,7 @@ body {
         }
 
         &__logo {
-          width: 13.35714285714286%; /*187/1400*/
+          width: 172px;
           float: left;
 
             img {
@@ -320,7 +324,7 @@ body {
 
         &__search {
           float: right;
-          width: 56.21428571428571%; /*787/1400*/
+          width: 41%; /*787/1400*/
           margin-top: 9px;
           position: relative;
 
@@ -336,14 +340,15 @@ body {
                       font: 1.125em @narrow;
                       text-transform: uppercase;
                       position: relative;
+                      padding-left: 4px;
 
                         & .arrow-city {
                           fill: #ef4601;
-                          height: 12px;
+                          height: 13px;
                           position: absolute;
-                          right: -16px;
+                          right: -19px;
                           top: calc(~'50% - 4.5px');
-                          width: 19px;
+                          width: 20px;
                         }
                     }
                 }
@@ -366,6 +371,12 @@ body {
                               width: 17px;
                               height: 17px;
                               fill: @socColor;
+                              transition: all .5s ease;
+
+                                &:hover {
+                                  fill: @footerInputColor;
+                                  transition: all .5s ease;
+                                }
                             }
 
                             &:last-of-type {
@@ -439,7 +450,7 @@ body {
         }
       .content {
         background-color: #fff;
-        padding: 30px 40px;
+        padding: 19px 40px 30px;
 
           &__wrap-slide {
               position: relative;
@@ -550,6 +561,7 @@ body {
 
               .one-square {
                 .one-square();
+                min-height: 200px;
 
                   &:nth-of-type(6) {
                     margin-right: 0;
@@ -557,15 +569,207 @@ body {
               }
 
               .two-square {
-                .one-square(276px*2,276px,276px*2);
+                .one-square(276px*2,15.5%,276px*2);
               }
 
               .four-square {
-                .one-square(276px*2,276px*2);
+                .one-square(276px*2,15.5%*2,276px*2);
               }
 
               .six-square {
-                .one-square(276px*3,276px*3);
+                .one-square(276px*2,15.5%*3,276px*3);
+              }
+
+
+              &__element {
+                  position: relative;
+                  background-size: cover;
+                  background-position: center;
+                  background-repeat: no-repeat;
+
+                  a {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    text-decoration: none;
+                    color: #fff;
+                  }
+
+                  &.blue-theme {
+
+                    .element-title {
+                      background-color: @blueThemeColor;
+                    }
+                  }
+
+                  &.orange-theme {
+
+                    .element-title {
+                      background-color: @orange;
+                    }
+                  }
+
+                  &.light-blue-theme {
+
+                    .element-title {
+                      background-color: @lightBlueThemeColor;
+                    }
+                  }
+
+                  &.afiche-thema {
+                    background-color: #e6e6e6;
+                    padding: 43px 0 30px 27px;
+                    box-sizing: border-box;
+
+                      .element-title {
+                        font: bold 27px/27px @narrow;
+                        color: @sloganColor;
+                        text-transform: uppercase;
+                        position: static;
+                        padding: 0;
+                      }
+
+                      .list-afiche {
+
+                          ul {
+                            list-style-type: none;
+                            font-size: 0;
+                            margin-top: 47px;
+
+                              li {
+                                display: inline-block;
+                                width: 280px;
+                                margin-right: 57px;
+                                margin-bottom: 48px;
+
+                                  &:nth-of-type(2n) {
+                                    margin-right: 0;
+                                  }
+
+                                  &:after {
+                                    display: block;
+                                    content: '';
+                                    clear: both;
+                                  }
+
+                                  .image-slide {
+                                    width: 100px;
+                                    height: 100px;
+                                    background-color: #a6adb8;
+                                    float: left;
+                                    background-size: cover;
+                                    background-position: center;
+                                    background-repeat: no-repeat;
+
+                                    a {
+                                      display: block;
+                                      width: 100%;
+                                      height: 100%;
+                                    }
+                                  }
+
+                                  .text-slide {
+                                    font-size: 13px;
+                                    line-height: 26px;
+                                    font-family: @ptreg;
+                                    margin-left: 4%;
+                                    width: calc(~'100% - 125px');
+                                    float: left;
+
+                                    p {
+
+                                      &.title-category {
+                                        color: @footerInputColor;
+                                        margin-top: -9px;
+                                      }
+
+                                      &.date {
+                                        color: @orange;
+                                        font-size: 14px;
+                                      }
+
+                                      &.title-event {
+                                        font: @narrow;
+                                        font-weight: bold;
+                                        color: @backLeftMenuColor;
+                                        font-size: 16px;
+                                        line-height: 20px;
+                                        text-transform: uppercase;
+                                      }
+
+                                      &.slide-address {
+                                        color: @footerInputColor;
+                                      }
+                                    }
+                                  }
+                              }
+                          }
+                      }
+                  }
+
+                  &.afiche-thema-2 {
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    position: relative;
+
+
+                  }
+
+                  .element-title {
+                    position: absolute;
+                    right: 0;
+                    bottom: 21px;
+                    font: 16px/26px @narrow;
+                    color: #fff;
+                    text-transform: uppercase;
+                    padding: 8px 22px;
+                    letter-spacing: .5px;
+                    transition: left .5s ease, top .5s ease;
+                  }
+
+                  &__preview {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    padding: 74px 12px 6px;
+                    font: 13px/20px @ptreg;
+                    background-color: rgba(0, 0, 0, .77);
+                    opacity: 0;
+                    box-sizing: border-box;
+                    visibility: hidden;
+                    height: 100%;
+                    transition: opacity .5s ease 0s, visibility 0s linear .5s;
+                  }
+
+                  &:hover .preview {
+                    opacity: 1;
+                    visibility: visible;
+                    transition: opacity .5s ease;
+                  }
+
+                  &:not(.afiche-thema):not(.afiche-thema-2):hover .element-title {
+                    background-color: transparent;
+                    font: 13px/20px @ptreg;
+                    top: 26px;
+                    left: 12px;
+                    right: auto;
+                    z-index: 10;
+                    transition: left .5s ease, top .5s ease;
+                    padding: 0;
+                  }
+              }
+          }
+
+          &__index-description {
+            margin-top: 66px;
+            padding-left: 43px;
+
+              &__text {
+                column-count: 2;
+                column-gap: 2em;
+                font: 18px/30px @ptreg;
+                color: @colorText;
               }
           }
       }
@@ -606,7 +810,7 @@ body {
                         content: '';
                         width: 2px;
                         background-color: #fff;
-                        height: 200%;
+                        height: 250%;
                         right: 10px;
                         top: -20px;
                       }
@@ -631,7 +835,7 @@ body {
 
                       .text-slide {
                         font-size: 13px;
-                        line-height: 26px;
+                        line-height: 15px;
                         font-family: @ptreg;
                         margin-left: 4%;
                         width: calc(~'100% - 125px');
@@ -639,7 +843,7 @@ body {
                           p {
 
                               &.title-category {
-                                color: @socColor;
+                                color: @footerInputColor;
                                 margin-top: -9px;
                               }
 
@@ -658,7 +862,7 @@ body {
                               }
 
                               &.slide-address {
-                                color: @socColor;
+                                color: @footerInputColor;
                               }
                           }
                       }
@@ -751,13 +955,14 @@ body {
             flex-direction: column;
             flex-wrap: wrap;
             height: 630px;
-            justify-content: flex-start;
+            justify-content: space-between;
+            align-content: space-around;
             padding: 30px 40px 40px;
             box-sizing: border-box;
             transition: height .5s ease;
 
               &__block {
-                margin-bottom: 50px;
+
                 word-wrap: break-word;
 
                   &:last-of-type {
@@ -794,6 +999,7 @@ body {
                          span {
                            color: @backLeftMenuColor;
                            font-size: 1.3125em;
+                           font-family: @narrow;
                          }
                       }
                   }

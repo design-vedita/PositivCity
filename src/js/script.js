@@ -10,8 +10,52 @@
             leftMenu = document.getElementsByClassName('js-left-menu-hover')[0],
             leftSubmenu = document.getElementsByClassName('js-left-submenu')[0],
             footerLinks = document.getElementsByClassName('js-footer-links')[0],
-            rightBlock = document.getElementsByClassName('js-right-block')[0],
-            clientWidth = document.documentElement.clientWidth;
+            rightBlock = document.getElementsByClassName('js-right-block')[0];
+
+        /**
+         * Initialize Swiper slider
+         * */
+
+        var swiper = new Swiper('.swiper-container', {
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            paginationClickable: true,
+            slidesPerView: 5,
+            spaceBetweenSlides: 60,
+            breakpoints: {
+                1800: {
+                    slidesPerView: 4
+                },
+                1399: {
+                    slidesPerView: 2.8
+                },
+                999: {
+                    slidesPerView: 2,
+                    spaceBetweenSlides: 16
+                },
+                767: {
+                    slidesPerView: 2
+                },
+                650: {
+                    slidesPerView: 1.5
+                },
+                510: {
+                    slidesPerView: 1.2
+                },
+                459: {
+                    slidesPerView: 1
+                },
+                360: {
+                    slidesPerView: .8
+                }
+            }
+        });
+
+        var swiperTop = new Swiper('.js-top-slider', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true
+        });
+
 
         /**
          * 320-768 при клике по кнопке поиска, появляется поиск
@@ -75,9 +119,19 @@
             }
 
             var max = Math.max.apply(0, arr) ;
-
+            console.log(max);
             if(clientWidth >= 768) {
                 burger.onclick = function() {
+
+                    /**
+                     * Если после маленького экрана ресайз на большой,
+                     * чтобы меню работало правильно при открытии, выставляем своё максимальное значение
+                     */
+                    if ( Math.sign(max) == -1 ) {
+                        max = 283;
+                    }
+                    /*-------------------------------*/
+
                     leftMenu.style.width = (max + 20) + 'px';
 
                     leftMenu.classList.toggle('hover');
@@ -100,6 +154,8 @@
                         leftMenu.classList.remove('hover');
                         leftMenu.classList.add('close');
                     }
+
+
 
                     /**
                      * на разных разрешениях добавляем снизу отступ,
@@ -167,11 +223,10 @@
 
                         }
                     }
-
-
                 }
             } else if(clientWidth < 767) {
                 rightBlock.style.width = '';
+                leftMenu.style.width = '';
 
                 /**
                  * При маленьком размере экрана левое меню невидимо
@@ -183,17 +238,9 @@
                     this.classList.toggle('open--burger');
                 }
             }
-
-
         }
 
         openMenu();
-
-        window.onresize = function() {
-            openMenu();
-            fixedHeader();
-        }
-
 
         /**
          * Клик по бургеру в верхнем меню на 320-460
@@ -207,6 +254,25 @@
             burger.classList.toggle('open--translate');
             leftSubmenu.classList.toggle('open--submenu');
         }
+
+        window.onresize = function() {
+            openMenu();
+            fixedHeader();
+
+            var clientWidth = document.documentElement.clientWidth;
+
+                /**
+                 * очищаем классы при ресайзе, чтобы ничего не ломалось.
+                 * */
+                if(clientWidth >= 767 ) {
+                    burger.classList.remove('view-menu');
+                    burger.classList.remove('open--translate');
+                    leftMenu.classList.remove('translate');
+                } else {
+                    swiperTop.onResize();
+                }
+        }
+
 
 
         /**
@@ -243,50 +309,6 @@
         window.onscroll = function() {
             fixedHeader();
         }
-
-        /**
-         * Initialize Swiper slider
-         * */
-
-        var swiper = new Swiper('.swiper-container', {
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-            paginationClickable: true,
-            slidesPerView: 5,
-            spaceBetweenSlides: 60,
-            breakpoints: {
-                1800: {
-                    slidesPerView: 4
-                },
-                1399: {
-                    slidesPerView: 2.8
-                },
-                999: {
-                    slidesPerView: 2,
-                    spaceBetweenSlides: 16
-                },
-                767: {
-                    slidesPerView: 2
-                },
-                650: {
-                    slidesPerView: 1.5
-                },
-                510: {
-                    slidesPerView: 1.2
-                },
-                459: {
-                    slidesPerView: 1
-                },
-                360: {
-                    slidesPerView: .8
-                }
-            }
-        });
-
-        var swiper = new Swiper('.js-top-slider', {
-            pagination: '.swiper-pagination',
-            paginationClickable: true
-        });
 
 
     });

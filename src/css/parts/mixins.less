@@ -9,12 +9,10 @@
   width: 80%;
 }
 
-.one-square (@max-height: 276px, @max-width: 276px, @height: 100%, @width: 100%){
-  max-width: @max-width;
-  min-width: 200px;
+.one-square (@max-height: 276px, @width: 15.5%, @height: 100%, @min-width: 200px){
   width: @width;
+  min-width: @min-width;
   max-height: @max-height;
-  min-height: 200px;
   height: @height;
   background-color: @socColor;
   margin-bottom: 10px;
