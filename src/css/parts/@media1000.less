@@ -58,6 +58,16 @@
           }
 
           &__list-category {
+            justify-content:  flex-start;
+
+              &__element {
+                &.slider-theme {
+
+                  .swiper-slide {
+                    .height();
+                  }
+                }
+              }
 
               .one-square {
                   width: 100%;
@@ -68,17 +78,20 @@
 
               .two-square {
                 width: 200px;
-                height: 400px;
+                min-height: 400px;
+                height: 100%;
               }
 
               .four-square {
                 width: 400px;
-                height: 400px;
+                min-height: 400px;
+                height: 100%;
               }
 
               .six-square {
                 width: 600px;
-                height: 400px;
+                min-height: 400px;
+                height: 100%;
               }
           }
         }

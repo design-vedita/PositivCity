@@ -9,62 +9,38 @@
   width: 80%;
 }
 
-.one-square(@size: 275px) {
-  max-width: @size;
-  min-width: 200px;
-  width: 100%;
+.one-square(@size: 14.3vw) {
+  width: @size;
   height: @size;
   background-color: @socColor;
   margin-bottom: 10px;
   display: inline-block;
   vertical-align: top;
 }
-.two-square(@size: 275px) {
+.two-square(@size: 14.3vw) {
   height: @size*2;
-  max-width: @size;
-  min-width: 200px;
-  width: 100%;
+  width: @size;
   background-color: @socColor;
   margin-bottom: 10px;
   display: inline-block;
   vertical-align: top;
 }
-.four-square(@size: 275px) {
+.four-square(@size: 14.3vw) {
   height: @size*2;
-  width: 100%;
-  max-width: @size*2;
-  min-width: 400px;
+  width: @size*2;
   background-color: @socColor;
   margin-bottom: 10px;
   display: inline-block;
   vertical-align: top;
 }
-.six-square(@size: 275px) {
+.six-square(@size: 14.3vw) {
   height: @size*2;
-  max-width: @size*3;
-  width: 100%;
-  min-width: 600px;
+  width: @size*3;
   background-color: @socColor;
   margin-bottom: 10px;
   display: inline-block;
   vertical-align: top;
 }
-/*
-.one-square (@max-height: 276px, @width: 15.5%, @height: 100%, @min-width: 200px){
-  width: @width;
-  min-width: @min-width;
-  max-height: @max-height;
-  height: @height;
-  background-color: @socColor;
-  margin-bottom: 10px;
-  float: left;
-  margin-right: 15px;
-
-    &:nth-of-type(6) {
-      margin-right: 0;
-    }
-}
-*/
 .column-count(@count,@gap: 2.5em) {
   column-count: @count;
   -moz-column-count: @count;
@@ -72,4 +48,7 @@
   column-gap: @gap;
   -moz-column-gap: @gap;
   -moz-column-gap: @gap;
+}
+.height(@size: 400px;){
+  height: @size;
 }

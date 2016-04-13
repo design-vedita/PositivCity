@@ -19,20 +19,21 @@
          */
 
         function getDistanceBlock() {
-            var elOne = document.getElementsByClassName('js-discount-one')[0],
-                elTwo = document.getElementsByClassName('js-discount-two')[0],
-                four = document.getElementsByClassName('js-four'),
-                six = document.getElementsByClassName('js-six');
 
-            var distance = elTwo.offsetLeft - elOne.offsetWidth - elOne.offsetLeft;
-            for (var i = 0; i < four.length; i++) {
-                four[i].style.maxWidth = four[i].offsetWidth + distance + 'px';
+            var catalogBlock = document.getElementById('category-list'),
+                catalogWidth = catalogBlock.offsetWidth,
+                child = catalogBlock.children;
+
+            console.log(catalogWidth);
+            console.log(child);
+
+            for (var i = 0; i < child.length; i++) {
+                if(child[i].classList.contains('six-square')) {
+                    
+                }
             }
 
-            for (var i = 0; i < six.length; i++) {
-                six[i].style.maxWidth = six[i].offsetWidth + distance + 'px';
-            }
-        }
+       }
 
         getDistanceBlock();
 
@@ -78,6 +79,12 @@
         var swiperTop = new Swiper('.js-top-slider', {
             pagination: '.swiper-pagination',
             paginationClickable: true
+        });
+
+        var swiperCatalog = new Swiper('.js-slider-theme', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            height: 400
         });
 
 
@@ -283,6 +290,7 @@
             openMenu();
             fixedHeader();
 
+
             var clientWidth = document.documentElement.clientWidth;
 
                 /**
@@ -341,8 +349,8 @@
         /**
          * initialize masonry
          * */
-
-       /* $('.js-category-list').masonry({
+/*
+        $('.js-category-list').masonry({
             itemSelector: '.item',
             singleMode: false,
             isResizable: true,
@@ -355,5 +363,7 @@
             gutter: 30
         });
         */
+
+
     }
 }());
