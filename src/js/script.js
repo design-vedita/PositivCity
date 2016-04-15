@@ -20,22 +20,53 @@
 
         function getDistanceBlock() {
 
-            var catalogBlock = document.getElementById('category-list'),
-                catalogWidth = catalogBlock.offsetWidth,
-                child = catalogBlock.children;
+            var catalogBlock = document.getElementById('category-list');
 
-            console.log(catalogWidth);
-            console.log(child);
+            if(catalogBlock != null) {
 
-            for (var i = 0; i < child.length; i++) {
-                if(child[i].classList.contains('six-square')) {
-                    
+                var catalogWidth = catalogBlock.offsetWidth,
+                    child = catalogBlock.children;
+
+                for (var i = 0; i < child.length; i++) {
+                    if(child[i].classList.contains('six-square')) {
+
+                    }
                 }
             }
+
+
 
        }
 
         getDistanceBlock();
+
+        /**
+         * Делаем равные отступы между блоками в каталоге
+         */
+
+        function changeMargin() {
+            var containerWidth = $('.js-catalog-list').width(),
+                elementWidth = $('.js-element').width(),
+                elementCount = Math.floor(containerWidth / elementWidth),
+                elementsWidth = elementWidth * elementCount,
+                difference = containerWidth - elementsWidth,
+                margin = difference / (elementCount - 1);
+
+                $('.js-element').each(function(index){
+                    if (index > 0 && index % elementCount != 0)
+                        $(this).css('margin-left', margin+'px');
+                    else
+                        $(this).css('margin-left', '0px');
+                });
+        }
+
+        changeMargin();
+
+        /**
+         * Стилизация чекбоксов и селектов
+         */
+
+        $('.js-custom').styler();
 
         /**
          * Initialize Swiper slider
@@ -289,6 +320,7 @@
         window.onresize = function() {
             openMenu();
             fixedHeader();
+            changeMargin();
 
 
             var clientWidth = document.documentElement.clientWidth;

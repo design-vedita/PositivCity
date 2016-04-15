@@ -282,7 +282,7 @@ body {
           padding-left: 40px;
           padding-right: 40px;
           padding-top: 15px;
-          background-color: #fff;
+          background-color: @white;
 
             &:after {
               display: block;
@@ -294,7 +294,7 @@ body {
             &.scroll--fixed {
               position: fixed;
               z-index: 15;
-              background-color: #fff;
+              background-color: @white;
             }
         }
 
@@ -448,7 +448,7 @@ body {
           clear: both;
         }
       .content {
-        background-color: #fff;
+        background-color: @white;
         padding: 19px 40px 30px;
 
           &__wrap-slide {
@@ -486,7 +486,7 @@ body {
                       .link-slide {
                         text-decoration: none;
                         background-color: @orange;
-                        color: #fff;
+                        color: @white;
                         font: 1em/1.625em @narrow;
                         text-transform: uppercase;
                         padding: 10px 49px;
@@ -540,7 +540,7 @@ body {
                     width: 14px;
                     height: 14px;
                     background-color: transparent;
-                    border: 3px #fff solid;
+                    border: 3px @white solid;
                     box-sizing: border-box;
                     opacity: 1;
                     margin-left: 0;
@@ -599,7 +599,7 @@ body {
                     width: 100%;
                     height: 100%;
                     text-decoration: none;
-                    color: #fff;
+                    color: @white;
                   }
 
                   &.blue-theme {
@@ -728,7 +728,7 @@ body {
 
                       .element-title {
                         font: bold 27px/27px @narrow;
-                        color: #fff;
+                        color: @white;
                         text-transform: uppercase;
                         position: static;
                         padding: 0;
@@ -791,7 +791,7 @@ body {
                               p {
 
                                 &.title-category {
-                                  color: #fff;
+                                  color: @white;
                                   margin-top: -9px;
                                 }
 
@@ -803,7 +803,7 @@ body {
                                 &.title-event {
                                   font: @narrow;
                                   font-weight: bold;
-                                  color: #fff;
+                                  color: @white;
                                   font-size: 16px;
                                   line-height: 20px;
                                   text-transform: uppercase;
@@ -847,7 +847,7 @@ body {
 
                               &.date-event {
                                 font: 1.0625em/1.625em @ptreg;
-                                color: #fff;
+                                color: @white;
                               }
 
                               &.title-event {
@@ -858,7 +858,7 @@ body {
 
                               &.category-event {
                                 font: .8125em/1.625em @ptreg;
-                                color: #fff;
+                                color: @white;
                               }
                           }
                       }
@@ -891,7 +891,7 @@ body {
 
                           .swiper-pagination-bullet {
                             background-color: transparent;
-                            border: 3px solid #fff;
+                            border: 3px solid @white;
                             box-sizing: border-box;
                             height: 14px;
                             margin-left: 0;
@@ -918,7 +918,7 @@ body {
 
                       .element-title {
                         font: bold 27px/27px @narrow;
-                        color: #fff;
+                        color: @white;
                         text-transform: uppercase;
                         position: static;
                         padding: 0;
@@ -978,7 +978,7 @@ body {
 
                             .preview-text {
                               font-family: @ptreg;
-                              color: #fff;
+                              color: @white;
                               margin-top: 6px;
 
                               p {
@@ -1101,7 +1101,7 @@ body {
 
                         &.date-event {
                           font: .875em/1.625em @ptreg;
-                          color: #fff;
+                          color: @white;
                         }
 
                         &.category-event {
@@ -1112,7 +1112,7 @@ body {
 
                         &.title-event {
                           font: bold 1.1875em/1.6875em @narrow;
-                          color: #fff;
+                          color: @white;
                           text-transform: uppercase;
                           margin-top: 37px;
                         }
@@ -1191,12 +1191,12 @@ body {
 
                         &.date-event {
                           font: .875em/1.625em @ptreg;
-                          color: #fff;
+                          color: @white;
                         }
 
                         &.category-event {
                           font: .8125em @ptreg;
-                          color: #fff;
+                          color: @white;
                           margin-top: 7px;
                         }
 
@@ -1215,7 +1215,7 @@ body {
                     right: 0;
                     bottom: 21px;
                     font: 16px/26px @narrow;
-                    color: #fff;
+                    color: @white;
                     text-transform: uppercase;
                     padding: 8px 22px;
                     letter-spacing: .5px;
@@ -1321,6 +1321,272 @@ body {
                   }
               }
           }
+
+          &__breadcrumbs {
+            text-align: right;
+            margin-top: -24px;
+            font-size: 0;
+
+              ul {
+
+                  li {
+                    display: inline-block;
+                    vertical-align: middle;
+
+                      a {
+                        text-decoration: none;
+                        font: 1rem/1.625rem @narrow;
+                        color: @socColor;
+                        text-transform: uppercase;
+
+                          .crumb {
+                            fill: @socColor;
+                            width: 15px;
+                            height: 13px;
+                            margin: 0 6px 0 3px;
+                            position: relative;
+                            top: 2px;
+                          }
+                      }
+                  }
+              }
+          }
+
+          .gray-line {
+            height: 4px;
+            background-color: @h1lineColor;
+            width: 100%;
+          }
+
+          &.catalog-content {
+
+              .catalog-title {
+                font: bold 2.4375em/1.05em @narrow;
+                color: @sloganColor;
+                text-transform: uppercase;
+                margin-top: 26px;
+              }
+          }
+
+          .catalog-content {
+
+            &__filter {
+              margin-top: 23px;
+              
+                &__wrapper-input {
+                    font-size: 0;
+
+
+                    & > ul {
+
+                       & > li {
+                          display: inline-block;
+                          vertical-align: middle;
+                          background-color: @backFilterColor;
+
+
+                            &:last-of-type {
+                              background-color: transparent;
+                            }
+
+                            .custom-select {
+                              font: bold 16px/26px @narrow;
+                              text-transform: uppercase;
+                              color: @cityLink;
+                            }
+
+                            .wrap-label {
+                              position: relative;
+                              margin-left: 15px;
+                              padding: 9px 0;
+
+                                &:after {
+                                  display: block;
+                                  content: '';
+                                  position: absolute;
+                                  width: 1px;
+                                  height: 28px;
+                                  background-color: #fff;
+                                  right: 0;
+                                  top: 10px;
+                                }
+
+                                label {
+                                  font: 17px/26px @narrow;
+                                  color: @cityLink;
+                                  margin-right: 10px;
+                                  padding-left: 8px;
+                                }
+
+                                &.no-border {
+
+                                    &:after {
+                                      display: none;
+                                    }
+                                }
+                            }
+
+                            input[type=submit] {
+                              border: none;
+                              font: 16px/26px @narrow;
+                              color: @white;
+                              cursor: pointer;
+                              background-color: @sloganColor;
+                              text-transform: uppercase;
+                              padding: 10px 25px;
+                              margin-left: 20px;
+
+                                &.reset {
+                                  width: 52px;
+                                  height: 46px;
+                                  background-color: @footerInputColor;
+                                  margin-left: 2px;
+                                  background-image: url(../img/reset-button.png);
+                                  background-size: 25px 27px;
+                                  box-sizing: border-box;
+                                  background-position: center;
+                                  background-repeat: no-repeat;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__sort {
+                margin-top: 12px;
+
+                a {
+                  text-decoration: none;
+                  color: @footerInputColor;
+                }
+
+                .sort {
+                  width: 33px;
+                  height: 26px;
+                  fill: @footerInputColor;
+                  display: inline;
+                  vertical-align: middle;
+                }
+
+                p {
+                  vertical-align: middle;
+                  display: inline;
+                  font: 1em/1.625em @narrow;
+                  color: @footerInputColor;
+                  text-transform: uppercase;
+                }
+            }
+
+            &__wrap-catalog {
+
+                &:after {
+                  display: block;
+                  content: '';
+                  clear: both;
+                }
+
+                &__list {
+                  margin-top: 13px;
+                  float: left;
+                  max-width: 1085px;
+                  width: 100%;
+                  font-size: 0;
+
+                  &__element {
+                    width: 203px;
+                    margin-bottom: 42px;
+                    display: inline-block;
+                    vertical-align: top;
+
+                      &__img {
+                        width: 100%;
+                        height: 205px;
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                      }
+
+                      .subcategory-title {
+                        margin-top: 10px;
+
+                         a {
+                           font: .8125rem/1.0625rem @ptreg;
+                           color: @socColor;
+                         }
+                      }
+
+                      .institution-title {
+                        text-transform: uppercase;
+                        margin-top: 8px;
+                        letter-spacing: -.2px;
+
+                          a {
+                            color: @backLeftMenuColor;
+                            font: bold 1rem/1.25rem @narrow;
+                          }
+                      }
+
+                      .institution-address {
+                        background-image: url(../img/point.png);
+                        background-size: 10px 13px;
+                        background-repeat: no-repeat;
+                        background-position: left center;
+                        padding-left: 18px;
+                        font: .8125rem/1.1875rem @ptreg;
+                        color: @footerInputColor;
+                        letter-spacing: .2px;
+                        margin-top: 6px;
+                      }
+
+                      .institution-phone {
+                        background-image: url(../img/phone.png);
+                        background-size: 10px 13px;
+                        background-repeat: no-repeat;
+                        background-position: left center;
+                        padding-left: 18px;
+                        font: .8125rem/1.1875rem @ptreg;
+                        color: @footerInputColor;
+                      }
+
+                      a {
+                        text-decoration: none;
+                        color: @orange;
+                        font: .875rem/1.0625rem @narrow;
+                        text-transform: uppercase;
+                        display: block;
+                        margin-top: 4px;
+                        padding-left: 1px;
+                        letter-spacing: .6px;
+                        position: relative;
+                        padding-right: 20px;
+
+                          .link-arrow {
+                            width: 20px;
+                            height: 16px;
+                            fill: @orange;
+                            top: 4px;
+                            right: -2px;
+                            position: relative;
+                          }
+
+                      }
+                  }
+
+                  &:after {
+                    display: block;
+                    content: '';
+                    clear: both;
+                  }
+                }
+
+                &__banner {
+                  width: 240px;
+                  height: 400px;
+                  float: right;
+                }
+            }
+          }
       }
       .footer {
 
@@ -1358,7 +1624,7 @@ body {
                         display: block;
                         content: '';
                         width: 2px;
-                        background-color: #fff;
+                        background-color: @white;
                         height: 250%;
                         right: 10px;
                         top: -20px;
@@ -1479,7 +1745,7 @@ body {
 
                       &[type=submit] {
                         font: 1rem/1.625rem @narrow;
-                        color: #fff;
+                        color: @white;
                         background-color: @orange;
                         height: 48px;
                         padding: 5px 6%;
