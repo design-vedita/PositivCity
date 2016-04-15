@@ -13,6 +13,35 @@
             rightBlock = document.getElementsByClassName('js-right-block')[0];
 
 
+        /*
+        * Активные табы в карточке
+        * */
+
+        function openTab() {
+
+                $('.js-tabs-link a').click(function(){
+                    var attr = $(this).attr('data-tab');
+
+                    var link = $('.js-tabs-link li');
+                        link.each(function() {
+                            $(this).removeClass('active');
+                        });
+
+                    $(this).parent().addClass('active');
+
+                    var block =  $('.js-tabs-text').find('div[data-link]');
+                        block.each(function(){
+                            if($(this).attr('data-link') == attr) {
+                                $(this).addClass('view-block');
+                            } else {
+                                $(this).removeClass('view-block');
+                            }
+                        });
+                });
+        }
+
+        openTab();
+
         /**
          *  Получаем расстояние между 2 первыми блоками и добавляем его к большим блокам,
          *  чтобы они были ровно друг под другом
@@ -33,8 +62,6 @@
                     }
                 }
             }
-
-
 
        }
 
