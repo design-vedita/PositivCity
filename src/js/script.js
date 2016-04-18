@@ -53,37 +53,102 @@
 
             if(catalogBlock != null) {
 
-                var catalogWidth = catalogBlock.offsetWidth,
-                    child = catalogBlock.children;
+                var containerWidth = $(catalogBlock).width(),
+                    elementWidth = $('.js-item').width(),
+                    elementCount = Math.floor(containerWidth / elementWidth),
+                    elementsWidth = elementWidth * elementCount,
+                    difference = containerWidth - elementsWidth,
+                    margin = difference / (elementCount - 1),
+                    clientWidth = document.documentElement.clientWidth;
 
-                for (var i = 0; i < child.length; i++) {
-                    if(child[i].classList.contains('six-square')) {
+
+
+                $('.js-item').each(function(index){
+
+                    var width = $(this).width(),
+                        fullWidth =  width + margin,
+                        newWidth = '';
+
+                    if (clientWidth > 1400) {
+
+                        var  vw = ((fullWidth/clientWidth)*100).toPrecision(3);
+
+                        if($(this).hasClass('four-square')) {
+                            if(vw > 30) {
+                                vw = 29.7;
+                            } else {
+                                vw = vw;
+                            }
+                            $(this).css({'width': vw + 'vw'});
+                        }
+
+                    } else if(clientWidth <= 1400 && clientWidth > 1000) {
+
+
+                        if($(this).hasClass('four-square')) {
+                            if(fullWidth < 415) {
+                                newWidth = fullWidth;
+                            } else {
+                                newWidth = 450;
+                            }
+
+                            $(this).css({'width': newWidth + 'px'});
+                        }
 
                     }
-                }
+
+                });
+
             }
 
        }
 
         getDistanceBlock();
 
+        /*
+        * Устанавливаем у враппера аттрибут, с его длиной, чтобы по клику
+         * на отрытие меню блоки выстраивались ровно и не ломались
+        */
+
+        function setCatalogAttr() {
+            var $widthCatalog = $('.js-catalog-list').width();
+
+                $('.js-catalog-list').attr('data-width', $widthCatalog);
+        }
+
+        setCatalogAttr();
+
         /**
          * Делаем равные отступы между блоками в каталоге
          */
 
         function changeMargin() {
-            var containerWidth = $('.js-catalog-list').width(),
-                elementWidth = $('.js-element').width(),
-                elementCount = Math.floor(containerWidth / elementWidth),
-                elementsWidth = elementWidth * elementCount,
-                difference = containerWidth - elementsWidth,
-                margin = difference / (elementCount - 1);
+            var container = document.getElementsByClassName('js-catalog-list')[0],
+                $containerWidth = '';
+
+                if(container != null) {
+                    container.classList.toggle('no-resize');
+
+                    if(container.classList.contains('no-resize')) {
+                        var $containerWidth = $(container).attr('data-width');
+                    } else {
+                        $containerWidth = $(container).width();
+                    }
+                }
+
+
+            var $elementWidth = $('.js-element').width(),
+                $elementCount = Math.floor($containerWidth / $elementWidth),
+                $elementsWidth = $elementWidth * $elementCount,
+                $difference = $containerWidth - $elementsWidth,
+                $margin = $difference / ($elementCount - 1);
 
                 $('.js-element').each(function(index){
-                    if (index > 0 && index % elementCount != 0)
-                        $(this).css('margin-left', margin+'px');
+
+                    if (index > 0 && index % $elementCount != 0)
+                        $(this).css({'margin-left': $margin + 'px'});
                     else
-                        $(this).css('margin-left', '0px');
+                        $(this).css({'margin-left': '0'});
                 });
         }
 
@@ -244,8 +309,6 @@
                         leftMenu.classList.add('close');
                     }
 
-
-
                     /**
                      * на разных разрешениях добавляем снизу отступ,
                      * чтобы наши ссылки в футере помещались
@@ -312,6 +375,8 @@
 
                         }
                     }
+
+                    changeMargin();
                 }
             } else if(clientWidth < 767) {
                 rightBlock.style.width = '';
@@ -347,7 +412,9 @@
         window.onresize = function() {
             openMenu();
             fixedHeader();
+            setCatalogAttr();
             changeMargin();
+            getDistanceBlock();
 
 
             var clientWidth = document.documentElement.clientWidth;
@@ -359,8 +426,6 @@
                     burger.classList.remove('view-menu');
                     burger.classList.remove('open--translate');
                     leftMenu.classList.remove('translate');
-                } else {
-                    swiperTop.onResize();
                 }
         }
 
