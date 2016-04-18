@@ -293,7 +293,7 @@ body {
 
             &.scroll--fixed {
               position: fixed;
-              z-index: 15;
+              z-index: 101;
               background-color: @white;
             }
         }
@@ -558,7 +558,6 @@ body {
           &__list-category {
             margin-top: 18px;
             font-size: 0;
-            text-align: justify;
 
               &:after {
                 display: inline-block;
@@ -589,10 +588,14 @@ body {
 
               &__element {
                   position: relative;
-                  background-size: cover;
-                  background-position: center;
-                  background-repeat: no-repeat;
                   display: inline-block;
+                overflow: hidden;
+
+                  img {
+                    width: 100%;
+                    max-width: 100%;
+                    height: auto;
+                  }
 
                   a {
                     display: block;
@@ -1021,6 +1024,7 @@ body {
             }
 
             &__wrap-catalog {
+              margin-top: 16px;
 
                 &:after {
                   display: block;
@@ -1029,25 +1033,31 @@ body {
                 }
 
                 &__list {
-                  margin-top: 13px;
+
                   float: left;
                   width: calc(~'100% - 254px');
                   font-size: 0;
 
                   &__element {
                     min-width: 203px;
-                    width: 24.1%;
+                    width: 18.8475836431227%;
                     margin-bottom: 42px;
-                    margin-right: .9%;
+                    margin-right: 1.4%;
                     display: inline-block;
                     vertical-align: top;
 
+                      &:nth-of-type(5n) {
+                        margin-right: 0;
+                      }
+
                       &__img {
                         width: 100%;
-                        height: 205px;
-                        background-size: cover;
-                        background-position: center;
-                        background-repeat: no-repeat;
+
+                          img {
+                            width: 100%;
+                            max-width: 100%;
+                            height: auto;
+                          }
                       }
 
                       .subcategory-title {
@@ -1114,12 +1124,6 @@ body {
                           }
 
                       }
-                  }
-
-                  &:after {
-                    display: block;
-                    content: '';
-                    clear: both;
                   }
                 }
 
@@ -1606,7 +1610,8 @@ body {
                       }
 
                       &__img {
-                        width: 423px;
+                        max-width: 423px;
+                        width: 100%;
                         height: 282px;
                         background-size: cover;
                         background-position: center;
@@ -1674,15 +1679,24 @@ body {
                     width: 100%;
 
                       &__element {
-                        width: 180px;
+                        width: 23.95%;
+                        min-width: 200px;
+                        margin-right: 1.4%;
                         display: inline-block;
                         margin-bottom: 20px;
 
+                          &:last-of-type {
+                            margin-right: 0;
+                          }
+
                           &__img {
                             width: 100%;
-                            height: 182px;
-                            background-size: cover;
-                            background-position: center;
+
+                              img {
+                                width: 100%;
+                                max-width: 100%;
+                                height: auto;
+                              }
                           }
 
                           .good-title {

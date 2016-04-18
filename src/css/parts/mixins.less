@@ -9,25 +9,25 @@
   width: 80%;
 }
 
-.one-square(@size: 14.3vw) {
+.one-square(@size: 16.6%) {
   width: @size;
-  height: @size;
+  min-width: 200px;
   background-color: @socColor;
   margin-bottom: 10px;
   display: inline-block;
   vertical-align: top;
 }
-.two-square(@size: 14.3vw) {
-  height: @size*2;
+.two-square(@size: 16.6%) {
+  min-width: 200px;
   width: @size;
   background-color: @socColor;
   margin-bottom: 10px;
   display: inline-block;
   vertical-align: top;
 }
-.four-square(@size: 14.3vw) {
-  height: @size*2;
+.four-square(@size: 16.6%) {
   width: @size*2;
+  min-width: 400px;
   background-color: @socColor;
   margin-bottom: 10px;
   display: inline-block;

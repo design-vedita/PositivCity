@@ -141,12 +141,13 @@
                 $elementCount = Math.floor($containerWidth / $elementWidth),
                 $elementsWidth = $elementWidth * $elementCount,
                 $difference = $containerWidth - $elementsWidth,
-                $margin = $difference / ($elementCount - 1);
+                $margin = $difference / ($elementCount - 1),
+                clientWidth = document.documentElement.clientWidth;
 
                 $('.js-element').each(function(index){
 
                     if (index > 0 && index % $elementCount != 0)
-                        $(this).css({'margin-left': $margin + 'px'});
+                        $(this).css({'margin-left': ($margin / clientWidth) * 100 + '%'});
                     else
                         $(this).css({'margin-left': '0'});
                 });
