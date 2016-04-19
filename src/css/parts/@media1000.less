@@ -59,6 +59,12 @@
 
           &__list-category {
 
+              &:after {
+                display: inline-block;
+                content: '';
+                width: 100%;
+              }
+
               &__element {
 
                 &.slider-theme {
@@ -67,31 +73,31 @@
                     .height();
                   }
                 }
+
               }
 
               .one-square {
-                  width: 100%;
-                  min-width: 200px;
-                  max-width: 200px;
-                  height: 200px;
+                .one-square(24%);
               }
 
               .two-square {
-                width: 200px;
-                min-height: 400px;
-                height: 100%;
+                .two-square(24%);
+
+                  .one-square {
+
+                      &:last-of-type {
+                        margin-bottom: 0;
+                      }
+                  }
               }
 
               .four-square {
-                width: 400px;
-                min-height: 400px;
-                height: 100%;
+                .four-square(24.65%);
               }
 
               .six-square {
-                width: 600px;
-                min-height: 400px;
-                height: 100%;
+                width: 48%;
+                min-width: 460px;
               }
           }
         }

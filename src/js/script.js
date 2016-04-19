@@ -4,6 +4,7 @@
     $(function(){
 
         var burger = document.getElementsByClassName('js-burger')[0],
+            header = document.getElementsByTagName('header')[0],
             burgerOrange = document.getElementsByClassName('js-burger460')[0],
             searchButton = document.getElementsByClassName('js-search768')[0],
             searchInput = document.getElementsByClassName('js-search-input')[0],
@@ -12,6 +13,24 @@
             footerLinks = document.getElementsByClassName('js-footer-links')[0],
             rightBlock = document.getElementsByClassName('js-right-block')[0];
 
+
+        function adaptive() {
+            var clientWidth = document.documentElement.clientWidth;
+
+                if (clientWidth >= 1000 && clientWidth <= 1400) {
+                    $('.one-square:nth-of-type(6),.one-square:nth-of-type(5)').wrapAll('<div class="two-square js-wrap"></div>');
+                } else {
+                   var wrapper = document.getElementsByClassName('js-wrap')[0],
+                       block = document.getElementById('category-list');
+
+                        if(wrapper != null) {
+
+                         }
+
+                }
+        }
+
+        adaptive();
 
         /*
         * Активные табы в карточке
@@ -42,78 +61,18 @@
 
         openTab();
 
-        /**
-         *  Получаем расстояние между 2 первыми блоками и добавляем его к большим блокам,
-         *  чтобы они были ровно друг под другом
-         */
-
-        function getDistanceBlock() {
-
-            var catalogBlock = document.getElementById('category-list');
-
-            if(catalogBlock != null) {
-
-                var containerWidth = $(catalogBlock).width(),
-                    elementWidth = $('.js-item').width(),
-                    elementCount = Math.floor(containerWidth / elementWidth),
-                    elementsWidth = elementWidth * elementCount,
-                    difference = containerWidth - elementsWidth,
-                    margin = difference / (elementCount - 1),
-                    clientWidth = document.documentElement.clientWidth;
-
-
-
-                $('.js-item').each(function(index){
-
-                    var width = $(this).width(),
-                        fullWidth =  width + margin,
-                        newWidth = '';
-
-                    if (clientWidth > 1400) {
-
-                        var  vw = ((fullWidth/clientWidth)*100).toPrecision(3);
-
-                        if($(this).hasClass('four-square')) {
-                            if(vw > 30) {
-                                vw = 29.7;
-                            } else {
-                                vw = vw;
-                            }
-                            $(this).css({'width': vw + 'vw'});
-                        }
-
-                    } else if(clientWidth <= 1400 && clientWidth > 1000) {
-
-
-                        if($(this).hasClass('four-square')) {
-                            if(fullWidth < 415) {
-                                newWidth = fullWidth;
-                            } else {
-                                newWidth = 450;
-                            }
-
-                            $(this).css({'width': newWidth + 'px'});
-                        }
-
-                    }
-
-                });
-
-            }
-
-       }
-
-        getDistanceBlock();
-
         /*
         * Устанавливаем у враппера аттрибут, с его длиной, чтобы по клику
          * на отрытие меню блоки выстраивались ровно и не ломались
         */
 
         function setCatalogAttr() {
-            var $widthCatalog = $('.js-catalog-list').width();
+            var $widthCatalog = $('.js-catalog-list').width(),
+                $elem = $('.js-element').width();
 
                 $('.js-catalog-list').attr('data-width', $widthCatalog);
+                $('.js-catalog-list').attr('elem-width', $elem);
+
         }
 
         setCatalogAttr();
@@ -123,22 +82,25 @@
          */
 
         function changeMargin() {
-            var container = document.getElementsByClassName('js-catalog-list')[0],
-                $containerWidth = '';
+            var $container = $('.js-catalog-list'),
+                elem = $('.js-element');
 
-                if(container != null) {
-                    container.classList.toggle('no-resize');
 
-                    if(container.classList.contains('no-resize')) {
-                        var $containerWidth = $(container).attr('data-width');
+                if($container != null) {
+                    $container.toggleClass('no-resize');
+
+                    if($container.hasClass('no-resize')) {
+                        var $containerWidth = $($container).attr('data-width');
+                        var $elementWidth = $($container).attr('elem-width');
                     } else {
-                        $containerWidth = $(container).width();
+                        var $containerWidth = $($container).width();
+                        var $elementWidth = $('.js-element').width();
                     }
+
                 }
 
 
-            var $elementWidth = $('.js-element').width(),
-                $elementCount = Math.floor($containerWidth / $elementWidth),
+            var $elementCount = Math.floor($containerWidth / $elementWidth),
                 $elementsWidth = $elementWidth * $elementCount,
                 $difference = $containerWidth - $elementsWidth,
                 $margin = $difference / ($elementCount - 1),
@@ -146,9 +108,10 @@
 
                 $('.js-element').each(function(index){
 
-                    if (index > 0 && index % $elementCount != 0)
-                        $(this).css({'margin-left': ($margin / clientWidth) * 100 + '%'});
-                    else
+                    if (index > 0 && index % $elementCount != 0) {
+                        var margins = ($margin / clientWidth) * 100;
+                        $(this).css({'margin-left': margins + '%'});
+                    } else
                         $(this).css({'margin-left': '0'});
                 });
         }
@@ -159,7 +122,7 @@
          * Стилизация чекбоксов и селектов
          */
 
-        $('.js-custom').styler();
+     //   $('.js-custom').styler();
 
         /**
          * Initialize Swiper slider
@@ -415,7 +378,7 @@
             fixedHeader();
             setCatalogAttr();
             changeMargin();
-            getDistanceBlock();
+            adaptive();
 
 
             var clientWidth = document.documentElement.clientWidth;
@@ -427,6 +390,8 @@
                     burger.classList.remove('view-menu');
                     burger.classList.remove('open--translate');
                     leftMenu.classList.remove('translate');
+                    header.classList.remove('scroll--fixed');
+                    header.style.width = '';
                 }
         }
 
