@@ -11,6 +11,7 @@
             leftMenu = document.getElementsByClassName('js-left-menu-hover')[0],
             leftSubmenu = document.getElementsByClassName('js-left-submenu')[0],
             footerLinks = document.getElementsByClassName('js-footer-links')[0],
+            banner = document.getElementsByClassName('js-banner')[0],
             rightBlock = document.getElementsByClassName('js-right-block')[0];
 
 
@@ -244,6 +245,7 @@
                     /**
                      * Если после маленького экрана ресайз на большой,
                      * чтобы меню работало правильно при открытии, выставляем своё максимальное значение
+                     * самого длинного слова
                      */
                     if ( Math.sign(max) == -1 ) {
                         max = 283;
@@ -388,10 +390,14 @@
                  * */
                 if(clientWidth >= 767 ) {
                     burger.classList.remove('view-menu');
+                    burger.classList.remove('open--burger');
+                    burger.classList.remove('view-menu');
                     burger.classList.remove('open--translate');
                     leftMenu.classList.remove('translate');
                     header.classList.remove('scroll--fixed');
                     header.style.width = '';
+                    leftMenu.style.width = '';
+                    banner.classList.remove('scroll--banner');
                 }
         }
 
@@ -428,8 +434,85 @@
 
         fixedHeader();
 
+        /**
+         * При прокрутке на высоту до баннера и до карты в карточке
+         * баннер/карта прокручиваются с нами и если футер в зоне видимости
+         * перкращают с нами крутиться
+         */
+
+        function scrollBanner() {
+
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop,
+                banner = document.getElementsByClassName('js-banner')[0],
+                wrapBanner = document.getElementsByClassName('js-wrap-banOrMap')[0],
+                map = document.getElementsByClassName('js-yMap')[0],
+                clientWidth = document.documentElement.clientWidth;
+
+                function getOffsetRect(elem) {
+                    var box = elem.getBoundingClientRect();
+
+                    var body = document.body;
+                    var docElem = document.documentElement;
+
+                    var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
+                    var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
+
+                    var clientTop = docElem.clientTop || body.clientTop || 0;
+                    var clientLeft = docElem.clientLeft || body.clientLeft || 0;
+
+                    var top  = box.top +  scrollTop - clientTop;
+                    var left = box.left + scrollLeft - clientLeft;
+
+                    return { top: Math.round(top), left: Math.round(left) }
+                }
+
+                function isVisible(elem) {
+
+                    var coords = elem.getBoundingClientRect();
+
+                    var windowHeight = document.documentElement.clientHeight;
+
+                    var topVisible = coords.top > 0 && coords.top < windowHeight;
+                    var bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
+
+                    return topVisible || bottomVisible;
+                }
+
+                function showVisible() {
+                    var footer = document.getElementsByTagName('footer')[0];
+
+                    if (isVisible(footer)) {
+                        if(banner != undefined || map != undefined) {
+                            banner.classList.remove('scroll--banner');
+                            map.classList.remove('scroll--banner');
+                        }
+
+                    }
+                }
+            if(clientWidth > 768) {
+                if(scrollTop > getOffsetRect(wrapBanner).top) {
+
+                    if(banner != undefined || map != undefined) {
+                        banner.classList.add('scroll--banner');
+                        map.classList.add('scroll--banner');
+                    }
+
+                } else {
+                    if(banner != undefined || map != undefined) {
+                        banner.classList.remove('scroll--banner');
+                        map.classList.remove('scroll--banner');
+                    }
+                }
+                showVisible();
+            }
+
+        }
+        scrollBanner();
+
+
         window.onscroll = function() {
             fixedHeader();
+            scrollBanner();
         }
 
 
