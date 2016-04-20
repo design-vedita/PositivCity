@@ -29,7 +29,7 @@
   vertical-align: top;
 
     img {
-      width: 100%;
+      width: 100% !important;
       height: auto;
     }
 }
@@ -39,10 +39,26 @@
   margin-bottom: 10px;
   display: inline-block;
   vertical-align: top;
+  position: relative;
+
+    &:after {
+      display: block;
+      position: absolute;
+      background-color: @white;
+      content: '';
+      height: 2.3%;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+    }
 
     img {
       width: 100%;
       height: auto;
+    }
+
+    .element-title {
+      bottom: calc(~'2.2% + 21px');
     }
 }
 .six-square(@size: 49.4%) {
@@ -667,10 +683,18 @@
     letter-spacing: -.4px;
   }
 }
-.one-square-category(@width: 203px,@height: 203px){
+.one-square-category(@width: 19.5%){
   width: @width;
-  height: @height;
+  min-width: 200px;
   background-color: @socColor;
+  overflow: hidden;
+  vertical-align: top;
+  height: 200px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
 }
 .banner() {
   transition: top .5s ease;

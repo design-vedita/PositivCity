@@ -281,8 +281,24 @@ body {
         .scroll--banner {
           position: fixed;
           right: 40px;
+          width: 240px;
           top: 0;
           transition: top .5s ease;
+
+            img {
+              width: 100%;
+            }
+        }
+
+        .scroll--map {
+          position: fixed;
+          right: 40px;
+          top: 0;
+          transition: top .5s ease;
+
+          img {
+            width: 100%;
+          }
         }
 
         header {
@@ -844,6 +860,7 @@ body {
 
           .soc-block {
             margin-bottom: 38px;
+            margin-top: 20px;
 
             li {
               display: inline-block;
@@ -858,7 +875,7 @@ body {
                 font: 1.0625em/1.625em @ptreg;
                 color: @socColor;
                 right: 16px;
-                top: 7px;
+                top: 10px;
               }
 
               &:nth-of-type(1) {
@@ -1074,6 +1091,7 @@ body {
                          a {
                            font: .8125rem/1.0625rem @ptreg;
                            color: @socColor;
+                           text-transform: none;
                          }
                       }
 
@@ -1120,7 +1138,6 @@ body {
                         padding-left: 1px;
                         letter-spacing: .6px;
                         position: relative;
-                        padding-right: 20px;
 
                           .link-arrow {
                             width: 20px;
@@ -1129,6 +1146,7 @@ body {
                             top: 4px;
                             right: -2px;
                             position: relative;
+                            padding-right: 20px;
                           }
 
                       }
@@ -1139,6 +1157,7 @@ body {
                   width: 240px;
                   height: 400px;
                   float: right;
+                  position: relative;
 
                     img {
                       width: 100%;
@@ -1163,6 +1182,7 @@ body {
                     max-width: 415px;
                     width: 100%;
                     float: right;
+                    position: relative;
                   }
 
                   &__tabs {
@@ -1293,14 +1313,14 @@ body {
                                   margin-top: 23px;
                                   text-transform: uppercase;
                                   float: left;
-                                  margin-right: 15px;
+                                  width: 33%;
 
                                   dt,dd {
                                     float: left;
+                                    width: 50%;
                                   }
 
                                   dt {
-                                    margin-right: 10px;
                                   }
 
                                   p {
@@ -1397,14 +1417,7 @@ body {
 
               &__wrapper-list {
                   font-size: 0;
-                  text-align: justify;
                   line-height: normal;
-
-                  &:after {
-                    display: inline-block;
-                    content: '';
-                    width: 100%;
-                  }
 
                   &__element {
                     position: relative;
@@ -1415,7 +1428,6 @@ body {
 
                     &.dop-block {
                       display: none;
-                      width: 408px;
                     }
 
                     &.one-square-category {
@@ -1423,7 +1435,8 @@ body {
                     }
 
                     &.two-square-category {
-                      .one-square-category(204px*2);
+                      .one-square-category(19.75%*2);
+                      min-width: 400px !important;
                     }
 
                     .element-title {
@@ -1466,6 +1479,7 @@ body {
                 width: 240px;
                 height: 400px;
                 float: right;
+                position: relative;
 
                 .banner();
               }
@@ -1512,6 +1526,7 @@ body {
               width: 240px;
               height: 400px;
               float: right;
+              position: relative;
 
               .banner();
             }
@@ -1552,8 +1567,6 @@ body {
                         }
 
                         .article-text {
-                          width: calc(~'100% - 227px');
-                          float: left;
                           margin-top: -4px;
                           margin-left: 9px;
 
@@ -1561,7 +1574,11 @@ body {
 
                                 &.category-title {
                                   font: .8125em/1.625em @ptreg;
-                                  color: @footerInputColor;
+
+                                    a {
+                                      text-decoration: none;
+                                      color: @footerInputColor;
+                                    }
                                 }
 
                                 &.article-date {
@@ -1573,8 +1590,12 @@ body {
                                 &.article-title {
                                   text-transform: uppercase;
                                   font: bold 1.5625em/1.625em @narrow;
-                                  color: @backLeftMenuColor;
                                   margin-top: 9px;
+
+                                    a {
+                                      text-decoration: none;
+                                      color: @backLeftMenuColor;
+                                    }
                                 }
                             }
 
@@ -1611,6 +1632,11 @@ body {
                   width: 240px;
                   height: 400px;
                   float: right;
+                  position: relative;
+
+                    img {
+                      width: 100%;
+                    }
                 }
               }
           }
@@ -1804,6 +1830,7 @@ body {
                 width: 240px;
                 height: 400px;
                 float: right;
+                position: relative;
               }
           }
 
@@ -1892,7 +1919,7 @@ body {
                               }
 
                               &.title-event {
-                                font: @narrow;
+                                font-family: @narrow;
                                 font-weight: bold;
                                 color: @backLeftMenuColor;
                                 font-size: 16px;

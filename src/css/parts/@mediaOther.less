@@ -338,11 +338,72 @@
                     width: 100%;
 
                       & > div {
-                        width: 47.5%;
+                        width: 47%;
                       }
                   }
               }
           }
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px){
+  .wrapper {
+
+    .right-block {
+
+      .content {
+
+         &__wrap-map {
+
+            &__description {
+
+                &__tabs {
+
+                    &__links-content {
+                      padding-left: 10px;
+                    }
+                }
+            }
+         }
+
+        .catalog-content {
+
+          &__wrap-catalog {
+
+            .similar {
+              width: 100%;
+
+              & > div {
+                width: 45%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px){
+  .wrapper {
+
+    .right-block {
+
+      .content {
+
+        .catalog-content {
+
+          &__wrap-catalog {
+
+            .similar {
+              width: 100%;
+
+              & > div {
+                width: 100%;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -509,6 +570,171 @@
             margin: 0 auto;
           }
 
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1420px) and (min-width: 1195px) {
+  .wrapper {
+
+      .right-block {
+
+          .content {
+
+              .category-catalog-content {
+
+                  &__wrapper-list {
+
+                      &__element {
+
+                          &.one-square-category {
+                            .one-square-category(24.5%);
+                          }
+
+                          &.two-square-category {
+                            .one-square-category(24.75%*2);
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+@media screen and (max-width: 1194px) {
+  .wrapper {
+
+    .right-block {
+
+      .content {
+
+        .category-catalog-content {
+
+          &__wrapper-list {
+            text-align: justify;
+
+            &__element {
+
+              &.one-square-category {
+                .one-square-category(49%);
+              }
+
+              &.two-square-category {
+                .one-square-category(100%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .wrapper {
+
+    .right-block {
+
+      .content {
+
+        .category-catalog-content {
+
+          &__inner-text {
+            width: 100%;
+            float: none;
+          }
+
+          &__banner-block {
+            width: 100%;
+            float: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 425px) {
+  .wrapper {
+
+    .right-block {
+
+      .content {
+
+        .category-catalog-content {
+
+          &__wrapper-list {
+            text-align: justify;
+
+            &__element {
+
+              &.one-square-category {
+                .one-square-category(100%);
+              }
+
+              &.two-square-category {
+                .one-square-category(100%);
+                min-width: 200px !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 660px) and (max-width: 1600px){
+  .wrapper {
+
+    .right-block {
+
+      .content {
+
+        &__wrap-map {
+
+            &__description {
+
+                &__tabs {
+
+                    &__links-content {
+
+                        dl {
+
+                            &.params {
+                              width: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+      }
+    }
+  }
+}
+@media screen and  (max-width: 659px){
+  .wrapper {
+
+    .right-block {
+
+      .content {
+
+        &__wrap-map {
+
+          &__description {
+
+            &__tabs {
+
+              &__links-content {
+
+                dl {
+
+                  &.params {
+                    width: 100%;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

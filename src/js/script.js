@@ -1,7 +1,10 @@
-(function () {
+
+(function (App) {
     "use strict";
 
     $(function(){
+
+        var isIos = navigator.userAgent.match(/iPhone|iPad|iPod/i);
 
         var burger = document.getElementsByClassName('js-burger')[0],
             header = document.getElementsByTagName('header')[0],
@@ -12,6 +15,7 @@
             leftSubmenu = document.getElementsByClassName('js-left-submenu')[0],
             footerLinks = document.getElementsByClassName('js-footer-links')[0],
             banner = document.getElementsByClassName('js-banner')[0],
+            map = document.getElementsByClassName('js-yMap')[0],
             rightBlock = document.getElementsByClassName('js-right-block')[0];
 
 
@@ -24,9 +28,9 @@
                    var wrapper = document.getElementsByClassName('js-wrap')[0],
                        block = document.getElementById('category-list');
 
-                        if(wrapper != null) {
-
-                         }
+                        if(!!wrapper) {
+                            $('.one-square:nth-of-type(6),.one-square:nth-of-type(5)').unwrap();
+                        }
 
                 }
         }
@@ -108,13 +112,28 @@
                 clientWidth = document.documentElement.clientWidth;
 
                 $('.js-element').each(function(index){
-
                     if (index > 0 && index % $elementCount != 0) {
                         var margins = ($margin / clientWidth) * 100;
                         $(this).css({'margin-left': margins + '%'});
                     } else
                         $(this).css({'margin-left': '0'});
                 });
+
+                /**
+                 * В разделе каталога в ряд по 3 штуки, поэтому переделал логику
+                 * расстановки отступов. У квадрата обязателен класс .js-element, по его размеру
+                 * будут задаваться отступы
+                 */
+
+                if(clientWidth > 1194) {
+                    $('.js-element-list').each(function(index){
+                        if (index > 0 && (index + 1 ) % ($elementCount - 1) != 0) {
+                            var margins = ($margin / clientWidth) * 100;
+                            $(this).css({'margin-left': margins + '%'});
+                        } else
+                            $(this).css({'margin-left': '0'});
+                    });
+                }
         }
 
         changeMargin();
@@ -122,9 +141,13 @@
         /**
          * Стилизация чекбоксов и селектов
          */
+       /* var selects = document.getElementsByClassName('js-custom');
 
-     //   $('.js-custom').styler();
+            if(!!selects) {
+                $(selects).styler();
+            }
 
+        */
         /**
          * Initialize Swiper slider
          * */
@@ -281,6 +304,7 @@
                      * */
                     if(clientWidth >= 1400 && clientWidth <= 1960) {
                         var  heightLinks = footerLinks.offsetHeight;
+                        var  heightLinks = footerLinks.offsetHeight;
 
                         if(this.classList.contains('view-menu')) {
                             footerLinks.style.height = heightLinks + 200 + 'px';
@@ -375,6 +399,7 @@
             leftSubmenu.classList.toggle('open--submenu');
         }
 
+
         window.onresize = function() {
             openMenu();
             fixedHeader();
@@ -390,14 +415,18 @@
                  * */
                 if(clientWidth >= 767 ) {
                     burger.classList.remove('view-menu');
-                    burger.classList.remove('open--burger');
                     burger.classList.remove('view-menu');
                     burger.classList.remove('open--translate');
                     leftMenu.classList.remove('translate');
                     header.classList.remove('scroll--fixed');
                     header.style.width = '';
-                    leftMenu.style.width = '';
                     banner.classList.remove('scroll--banner');
+
+                    if(!isIos) {
+                        leftMenu.style.width = '';
+                        leftMenu.classList.remove('hover');
+                        burger.classList.remove('open--burger');
+                    }
                 }
         }
 
@@ -482,28 +511,37 @@
                     var footer = document.getElementsByTagName('footer')[0];
 
                     if (isVisible(footer)) {
-                        if(banner != undefined || map != undefined) {
+                        if(!!banner)
                             banner.classList.remove('scroll--banner');
-                            map.classList.remove('scroll--banner');
-                        }
+
+                        if(!!map)
+                            map.classList.remove('scroll--map');
 
                     }
                 }
+
             if(clientWidth > 768) {
-                if(scrollTop > getOffsetRect(wrapBanner).top) {
+               // window.scrollBy(0, 1);
+                if(!!wrapBanner) {
+                    if(scrollTop >= getOffsetRect(wrapBanner).top) {
 
-                    if(banner != undefined || map != undefined) {
-                        banner.classList.add('scroll--banner');
-                        map.classList.add('scroll--banner');
-                    }
+                        if(!!banner)
+                            banner.classList.add('scroll--banner');
 
-                } else {
-                    if(banner != undefined || map != undefined) {
-                        banner.classList.remove('scroll--banner');
-                        map.classList.remove('scroll--banner');
+                        if(!!map)
+                            map.classList.add('scroll--map');
+
+                    } else {
+
+                        if(!!banner)
+                            banner.classList.remove('scroll--banner');
+
+                        if(!!map)
+                            map.classList.remove('scroll--map');
                     }
+                    showVisible();
                 }
-                showVisible();
+
             }
 
         }
