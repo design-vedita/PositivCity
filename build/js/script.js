@@ -22,17 +22,25 @@
         function adaptive() {
             var clientWidth = document.documentElement.clientWidth;
 
+                var $item = $('.item');
+
                 if (clientWidth >= 1000 && clientWidth <= 1400) {
                     $('.one-square:nth-of-type(6),.one-square:nth-of-type(5)').wrapAll('<div class="two-square js-wrap"></div>');
-                } else {
-                   var wrapper = document.getElementsByClassName('js-wrap')[0],
-                       block = document.getElementById('category-list');
+                } else if (clientWidth >= 768 && clientWidth <= 999) {
 
-                        if(!!wrapper) {
-                            $('.one-square:nth-of-type(6),.one-square:nth-of-type(5)').unwrap();
+                } else {
+
+
+                    $item.each(function() {
+                        if($(this).parent().is('.js-wrap')) {
+                            $(this).unwrap();
                         }
+                    })
 
                 }
+
+
+
         }
 
         adaptive();
@@ -91,7 +99,7 @@
                 elem = $('.js-element');
 
 
-                if($container != null) {
+                if(!!$container) {
                     $container.toggleClass('no-resize');
 
                     if($container.hasClass('no-resize')) {
@@ -420,7 +428,9 @@
                     leftMenu.classList.remove('translate');
                     header.classList.remove('scroll--fixed');
                     header.style.width = '';
-                    banner.classList.remove('scroll--banner');
+
+                    if(!!banner)
+                        banner.classList.remove('scroll--banner');
 
                     if(!isIos) {
                         leftMenu.style.width = '';
