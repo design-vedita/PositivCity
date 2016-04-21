@@ -60,6 +60,20 @@
 
                 &__search768 {
                   display: block;
+                  top: 30px;
+
+                    svg {
+                      padding: 5px;
+                    }
+
+                    &:hover {
+
+                        svg {
+                          background-color: @orange;
+                          fill: @white;
+                          transition: all .5s ease;
+                        }
+                    }
                 }
             }
 
@@ -131,6 +145,10 @@
 
                     &.four-square {
                       width: 66.3%;
+
+                        &:after {
+                          height: 1%;
+                        }
                     }
 
                     &:nth-of-type(9) {

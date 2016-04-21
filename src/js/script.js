@@ -1,5 +1,5 @@
 
-(function (App) {
+(function () {
     "use strict";
 
     $(function(){
@@ -18,6 +18,75 @@
             map = document.getElementsByClassName('js-yMap')[0],
             rightBlock = document.getElementsByClassName('js-right-block')[0];
 
+        /**
+         * Всплывающее окно по центру
+         */
+
+        function popupCenter() {
+            var cityLink = document.getElementsByClassName('js-city-link')[0],
+                popup = document.getElementsByClassName('js-popup'),
+                back = document.getElementsByClassName('js-back')[0],
+                cityPopup = document.getElementsByClassName('js-city')[0],
+                closePopup = document.getElementsByClassName('js-close-popup')[0],
+                body = document.body,
+                docElem = document.documentElement,
+                scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop,
+                scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
+
+
+                cityLink.onclick = function() {
+                    cityPopup.classList.add('view--popup');
+                    back.classList.add('view--back');
+                }
+
+                back.onclick = function() {
+                    cityPopup.classList.remove('view--popup');
+                    back.classList.remove('view--back');
+                }
+
+                closePopup.onclick = function() {
+                    cityPopup.classList.remove('view--popup');
+                    back.classList.remove('view--back');
+                }
+
+                for (var i = 0; i < popup.length; i++) {
+                    var width = popup[i].offsetWidth,
+                        height = popup[i].offsetHeight;
+
+                        popup[i].style.left = scrollLeft + (docElem.clientWidth - width) / 2 + 'px';
+                        popup[i].style.top = scrollTop + (docElem.clientHeight - height) / 2 + 'px';
+                }
+        }
+        popupCenter();
+
+        /**
+         * При фокусе на инпуте убираем плейсхолдер,
+         * при уходе возвращаем
+         */
+
+        function attrInput() {
+            var input  = document.getElementsByClassName('js-input');
+
+            for (var i = 0; i < input.length; i++) {
+                input[i].onfocus = function() {
+                    var attr = this.getAttribute('placeholder');
+                    this.removeAttribute('placeholder');
+                    this.setAttribute('data-placeholder', attr);
+                }
+
+                input[i].onblur = function() {
+                    var text = this.getAttribute('data-placeholder');
+                    this.setAttribute('placeholder', text);
+                }
+            }
+        }
+
+        attrInput();
+
+        /**
+         * Блоки на главной странице
+         */
+
 
         function adaptive() {
             var clientWidth = document.documentElement.clientWidth;
@@ -25,22 +94,23 @@
                 var $item = $('.item');
 
                 if (clientWidth >= 1000 && clientWidth <= 1400) {
+
                     $('.one-square:nth-of-type(6),.one-square:nth-of-type(5)').wrapAll('<div class="two-square js-wrap"></div>');
-                } else if (clientWidth >= 768 && clientWidth <= 999) {
 
-                } else {
+                } else if( clientWidth >= 460 && clientWidth <= 767 ) {
 
+                    $("#category-list").find(".one-square").appendTo("#category-list");
+                    $("#category-list").find(".two-square").appendTo("#category-list");
+                    $("#category-list").find(".four-square").appendTo("#category-list");
+                    $("#category-list").find(".six-square").appendTo("#category-list");
 
+                } else if( clientWidth >= 768 && clientWidth <= 999) {
                     $item.each(function() {
                         if($(this).parent().is('.js-wrap')) {
                             $(this).unwrap();
                         }
                     })
-
                 }
-
-
-
         }
 
         adaptive();
@@ -74,43 +144,45 @@
 
         openTab();
 
+
+
+        /**
+         * Делаем равные отступы между блоками в каталоге
+         */
+
         /*
-        * Устанавливаем у враппера аттрибут, с его длиной, чтобы по клику
+         * Устанавливаем у враппера аттрибут, с его длиной, чтобы по клику
          * на отрытие меню блоки выстраивались ровно и не ломались
-        */
+         */
 
         function setCatalogAttr() {
             var $widthCatalog = $('.js-catalog-list').width(),
                 $elem = $('.js-element').width();
 
-                $('.js-catalog-list').attr('data-width', $widthCatalog);
-                $('.js-catalog-list').attr('elem-width', $elem);
+            $('.js-catalog-list').attr('data-width', $widthCatalog);
+            $('.js-catalog-list').attr('elem-width', $elem);
 
         }
 
         setCatalogAttr();
-
-        /**
-         * Делаем равные отступы между блоками в каталоге
-         */
 
         function changeMargin() {
             var $container = $('.js-catalog-list'),
                 elem = $('.js-element');
 
 
-                if(!!$container) {
-                    $container.toggleClass('no-resize');
+            if(!!$container) {
+                $container.toggleClass('no-resize');
 
-                    if($container.hasClass('no-resize')) {
-                        var $containerWidth = $($container).attr('data-width');
-                        var $elementWidth = $($container).attr('elem-width');
-                    } else {
-                        var $containerWidth = $($container).width();
-                        var $elementWidth = $('.js-element').width();
-                    }
-
+                if($container.hasClass('no-resize')) {
+                    var $containerWidth = $($container).attr('data-width');
+                    var $elementWidth = $($container).attr('elem-width');
+                } else {
+                    var $containerWidth = $($container).width();
+                    var $elementWidth = $('.js-element').width();
                 }
+
+            }
 
 
             var $elementCount = Math.floor($containerWidth / $elementWidth),
@@ -119,29 +191,29 @@
                 $margin = $difference / ($elementCount - 1),
                 clientWidth = document.documentElement.clientWidth;
 
-                $('.js-element').each(function(index){
-                    if (index > 0 && index % $elementCount != 0) {
+            $('.js-element').each(function(index){
+                if (index > 0 && index % $elementCount != 0) {
+                    var margins = ($margin / clientWidth) * 100;
+                    $(this).css({'margin-left': margins + '%'});
+                } else
+                    $(this).css({'margin-left': '0'});
+            });
+
+            /**
+             * В разделе каталога в ряд по 3 штуки, поэтому переделал логику
+             * расстановки отступов. У квадрата обязателен класс .js-element, по его размеру
+             * будут задаваться отступы
+             */
+
+            if(clientWidth > 1194) {
+                $('.js-element-list').each(function(index){
+                    if (index > 0 && (index + 1 ) % ($elementCount - 1) != 0) {
                         var margins = ($margin / clientWidth) * 100;
                         $(this).css({'margin-left': margins + '%'});
                     } else
                         $(this).css({'margin-left': '0'});
                 });
-
-                /**
-                 * В разделе каталога в ряд по 3 штуки, поэтому переделал логику
-                 * расстановки отступов. У квадрата обязателен класс .js-element, по его размеру
-                 * будут задаваться отступы
-                 */
-
-                if(clientWidth > 1194) {
-                    $('.js-element-list').each(function(index){
-                        if (index > 0 && (index + 1 ) % ($elementCount - 1) != 0) {
-                            var margins = ($margin / clientWidth) * 100;
-                            $(this).css({'margin-left': margins + '%'});
-                        } else
-                            $(this).css({'margin-left': '0'});
-                    });
-                }
+            }
         }
 
         changeMargin();
@@ -149,13 +221,13 @@
         /**
          * Стилизация чекбоксов и селектов
          */
-       /* var selects = document.getElementsByClassName('js-custom');
+        var selects = document.getElementsByClassName('js-custom');
 
             if(!!selects) {
                 $(selects).styler();
             }
 
-        */
+
         /**
          * Initialize Swiper slider
          * */
@@ -244,7 +316,7 @@
             var clientWidth = document.documentElement.clientWidth;
 
             function getOffsetRect(elem) {
-                var box = elem.getBoundingClientRect()
+                var box = elem.getBoundingClientRect();
 
                 var body = document.body;
                 var docElem = document.documentElement;
@@ -414,6 +486,7 @@
             setCatalogAttr();
             changeMargin();
             adaptive();
+            popupCenter();
 
 
             var clientWidth = document.documentElement.clientWidth;
@@ -561,6 +634,7 @@
         window.onscroll = function() {
             fixedHeader();
             scrollBanner();
+            popupCenter();
         }
 
 

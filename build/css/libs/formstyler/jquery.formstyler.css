@@ -296,7 +296,6 @@
 	margin: 2px 0 0;
 	padding: 0;
 	border: 1px solid #CCC;
-	border-radius: 4px;
 	background: #FFF;
 }
 .jq-selectbox__search {
@@ -340,10 +339,13 @@
 	color: #231F20;
 }
 .jq-selectbox li.selected {
-	background-color: #A3ABB1;
+	background-color: #7291a4;
+	color: #fff;
+	font-size: ;
 }
 .jq-selectbox li:hover {
-	background-color: #08C;
+	background-color: #1b305c;
+	color: #fff;
 }
 .jq-selectbox li.disabled {
 	color: #AAA;

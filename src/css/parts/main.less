@@ -277,6 +277,7 @@ body {
       height: 100%;
       float: left;
       box-sizing: border-box;
+      position: relative;
       
         .scroll--banner {
           position: fixed;
@@ -363,6 +364,7 @@ body {
                       text-transform: uppercase;
                       position: relative;
                       padding-left: 4px;
+                      transition: color .5s ease;
 
                         & .arrow-city {
                           fill: #ef4601;
@@ -371,6 +373,12 @@ body {
                           right: -19px;
                           top: calc(~'50% - 4.5px');
                           width: 20px;
+                        }
+
+                        &:hover {
+                          color: @orange;
+                          transition: color .5s ease;
+
                         }
                     }
                 }
@@ -396,7 +404,7 @@ body {
                               transition: all .5s ease;
 
                                 &:hover {
-                                  fill: @footerInputColor;
+                                  fill: @cityLink;
                                   transition: all .5s ease;
                                 }
                             }
@@ -420,6 +428,8 @@ body {
                       width: 28px;
                       height: 28px;
                       fill: @orange;
+                      background-color: transparent;
+                      transition: all .5s ease;
                     }
                 }
 
@@ -459,6 +469,12 @@ body {
                       background-repeat: no-repeat;
                       background-position: center;
                       outline: none;
+                      transition: background .5s ease;
+
+                        &:hover {
+                          background-color: @sloganColor;
+                          transition: background .5s ease;
+                        }
                     }
                 }
             }
@@ -581,14 +597,15 @@ body {
           &__list-category {
             margin-top: 18px;
             font-size: 0;
-          /*  text-align: justify; */
+          /*  text-align: justify;
 
-             /* &:after {
+              &:after {
                 display: inline-block;
                 content: '';
                 width: 100%;
               }
               */
+
 
               .one-square {
                 .one-square();
@@ -1021,6 +1038,24 @@ body {
                             }
                         }
                     }
+                  .jq-selectbox__dropdown {
+
+                    li {
+                      font: 1em/1.625em @narrow;
+                      color: @cityLink;
+
+                        &:hover {
+                          color: @white;
+                        }
+
+                        &.selected {
+
+                          &.sel {
+                            color: @white;
+                          }
+                        }
+                    }
+                  }
                 }
             }
 
@@ -1124,6 +1159,12 @@ body {
                         padding-left: 18px;
                         font: .8125rem/1.1875rem @ptreg;
                         color: @footerInputColor;
+                      }
+
+                      .institution-anons {
+                        font: .8125rem/1rem @ptreg;
+                        color: @dostAnonsColor;
+                        margin-top: 5px;
                       }
 
                       a {
@@ -1832,6 +1873,7 @@ body {
               }
           }
 
+
       }
       .footer {
 
@@ -1846,6 +1888,12 @@ body {
                   background-size: 20px 38px;
                   width: 20px;
                   height: 38px;
+                  transition: background .5s ease;
+
+                  &:hover {
+                    background-image: url(../img/arrow-slider-hover.png);
+                    transition: background .5s ease;
+                  }
               }
 
               .swiper-button-prev,
@@ -1855,6 +1903,12 @@ body {
                 background-size: 20px 38px;
                 width: 20px;
                 height: 38px;
+                transition: background .5s ease;
+
+                  &:hover {
+                    background-image: url(../img/arrow-slider-hover.png);
+                    transition: background .5s ease;
+                  }
               }
 
               .swiper-wrapper {
@@ -1906,8 +1960,18 @@ body {
                           p {
 
                               &.title-category {
-                                color: @footerInputColor;
                                 margin-top: -2px;
+
+                                  a {
+                                    color: @footerInputColor;
+                                    transition: color .5s ease;
+                                    text-decoration: none;
+
+                                    &:hover {
+                                      color: @sloganColor;
+                                      transition: color .5s ease;
+                                    }
+                                  }
                               }
 
                               &.date {
@@ -1919,10 +1983,20 @@ body {
                               &.title-event {
                                 font-family: @narrow;
                                 font-weight: bold;
-                                color: @backLeftMenuColor;
                                 font-size: 16px;
                                 line-height: 20px;
                                 text-transform: uppercase;
+
+                                  a {
+                                    text-decoration: none;
+                                    color: @backLeftMenuColor;
+                                    transition: color .5s ease;
+
+                                      &:hover {
+                                        color: @orange;
+                                        transition: color .5s ease;
+                                      }
+                                  }
                               }
 
                               &.slide-address {
@@ -1971,11 +2045,39 @@ body {
                 position: relative;
                 text-align: left;
 
+                    &:hover {
+
+                      input {
+
+                        &[type=submit] {
+                          background-color: @sloganColor;
+                          transition: all .5s ease;
+                        }
+                      }
+                    }
+
+                    input {
+
+                      &:hover,
+                      &:focus {
+
+                        &[type=text] {
+                          border: 1px @sloganColor solid;
+                          transition: all .5s ease;
+                          color: @cityLink;
+                        }
+
+                        &[type=submit] {
+                          background-color: @sloganColor;
+                          transition: all .5s ease;
+                        }
+                      }
+                    }
+
                   input {
 
                       &[type=text] {
                         height: 48px;
-                        border: none;
                         padding-left: 15px;
                         box-sizing: border-box;
                         font: 1rem/1.625rem @narrow;
@@ -1983,6 +2085,9 @@ body {
                         text-transform: uppercase;
                         text-overflow:ellipsis;
                         outline: none;
+                        transition: all .5s ease;
+                        border: 1px @white solid;
+                        box-sizing: border-box;
 
                           &.subscript-name {
                             width: 100%;
@@ -1998,14 +2103,15 @@ body {
                         color: @white;
                         background-color: @orange;
                         height: 48px;
-                        padding: 5px 6%;
                         border: none;
+                        padding: 5px 6%;
                         text-transform: uppercase;
                         letter-spacing: .5px;
                         outline: none;
                         position: absolute;
                         right: 0;
                         top: 0;
+                        transition: all .5s ease;
                       }
                   }
 
@@ -2040,8 +2146,15 @@ body {
             transition: height .5s ease;
 
               &__block {
-
                 word-wrap: break-word;
+
+                  &:hover {
+
+                      & p.title-category {
+                        color: @sloganColor;
+                        transition: color .5s ease;
+                      }
+                  }
 
                   &:last-of-type {
                     margin-bottom: 0;
@@ -2051,6 +2164,12 @@ body {
                     font: bold 1.125em/1.625em @narrow;
                     color: @cityLink;
                     text-transform: uppercase;
+                    transition: color .5s ease;
+
+                      &.category--hover {
+                        color: @sloganColor;
+                        transition: color .5s ease;
+                      }
                   }
 
                   & > ul {
@@ -2063,6 +2182,12 @@ body {
                             font: .875em/1.5em @ptreg;
                             color: @backLeftMenuColor;
                             text-decoration: none;
+                            transition: color .5s ease;
+
+                              &:hover {
+                                color: @orange;
+                                transition: color .5s ease;
+                              }
                           }
                       }
                   }
@@ -2087,6 +2212,160 @@ body {
           &__copyright {
             background-color: @footerInputColor;
             height: 56px;
+          }
+      }
+    }
+
+    .popup-back {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .7);
+      z-index: 19;
+      left: 0;
+      top: 0;
+      display: none;
+
+      &.view--back {
+        display: block;
+      }
+    }
+    .popup-select-city  {
+      max-width: 560px;
+      min-width: 320px;
+      width: 100%;
+      height: 218px;
+      background-color: @white;
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 20;
+      transition: all .5s ease;
+      box-sizing: border-box;
+      padding: 32px 21px 21px 28px;
+
+      &.view--popup {
+        visibility: visible;
+        opacity: 1;
+        transition: all .5s ease;
+      }
+
+      p {
+
+          &.title-popup {
+            font: bold 1.6874em/1.6874em @narrow;
+            color: @sloganColor;
+            position: relative;
+            text-transform: uppercase;
+            padding-bottom: 7px;
+
+              &:after {
+                background-color: #e6e6e6;
+                bottom: 0px;
+                content: "";
+                display: block;
+                height: 4px;
+                left: 0;
+                position: absolute;
+                width: 89px;
+              }
+          }
+      }
+
+      .close-popup {
+        position: absolute;
+        right: 21px;
+        top: 21px;
+        width: 26px;
+        height: auto;
+        cursor: pointer;
+      }
+
+      .select-city {
+        width: 100%;
+        max-width: 386px;
+        vertical-align: middle;
+
+          &.opened {
+            .jq-selectbox__trigger {
+
+                &-arrow {
+                  transform: rotate(180deg);
+                }
+            }
+          }
+
+        .jq-selectbox {
+
+            &__select {
+              width: 100%;
+              height: 47px;
+              box-sizing: border-box;
+              font: 1.0625rem/1.625rem @narrow;
+              border-left: 1px @grayBorder solid;
+              border-top: 1px @grayBorder solid;
+              border-bottom: 1px @grayBorder solid;
+              text-transform: uppercase;
+              color: @cityLink;
+              transition: all .5s ease;
+
+                &:hover {
+                  border-color: @sloganColor;
+                  transition: all .5s ease
+                }
+            }
+
+            &__trigger-arrow {
+                background-image: url(../img/select-popup.png);
+                width: 22px;
+                height: 15px;
+                transform: rotate(0);
+                top: 14px;
+                right: 12px;
+            }
+
+            &__dropdown {
+
+                li {
+                  font: 1.0625rem/1.625rem @narrow;
+                  text-transform: uppercase;
+                  color: @cityLink;
+
+                    &.selected {
+
+                        &.sel {
+                          color: @white;
+                        }
+                    }
+
+                    &:hover {
+                      color: @white;
+                    }
+                }
+            }
+        }
+
+      }
+
+      &__wrap-select {
+        margin-top: 26px;
+        font-size: 0;
+        line-height: normal;
+
+          input[type=submit] {
+            border: none;
+            padding: 10px 37px 11px;
+            background-color: @orange;
+            color: #fff;
+            font: 1rem/1.625rem @narrow;
+            text-transform: uppercase;
+            vertical-align: middle;
+            transition: background .5s ease;
+
+              &:hover {
+                background-color: @sloganColor;
+                transition: background .5s ease;
+              }
           }
       }
     }
