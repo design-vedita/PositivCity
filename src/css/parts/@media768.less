@@ -133,7 +133,10 @@
           padding-left: 20px;
 
             &__list-category {
-              text-align: justify;
+
+              .row {
+                margin: 0 -.66%;
+              }
 
               &:after {
                 display: inline-block;
@@ -143,8 +146,19 @@
 
                 &__element {
 
+                    &.one-square {
+                      width: 32%;
+                      margin: 0 .66% 10px;
+                    }
+
+                    &.two-square {
+                      width: 32%;
+                      margin: 0 .66% 10px;
+                    }
+
                     &.four-square {
-                      width: 66.3%;
+                      width: 65.2%;
+                      margin: 0 .66% 10px;
 
                         &:after {
                           height: 1%;
@@ -193,24 +207,6 @@
                       }
                   }
               }
-
-            .one-square {
-              width: 32.8%;
-            }
-
-            .two-square {
-              width: 32.8%;
-            }
-
-            .four-square {
-
-            }
-
-            .six-square {
-              width: 600px;
-              min-height: 400px;
-              height: 100%;
-            }
           }
 
           &__index-description {

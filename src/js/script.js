@@ -99,12 +99,31 @@
 
                 } else if( clientWidth >= 460 && clientWidth <= 767 ) {
 
-                    $("#category-list").find(".one-square").appendTo("#category-list");
-                    $("#category-list").find(".two-square").appendTo("#category-list");
-                    $("#category-list").find(".four-square").appendTo("#category-list");
-                    $("#category-list").find(".six-square").appendTo("#category-list");
+                    if ( !$("#category-list .row").hasClass("re-layout"))
+                    {
+                        $("#category-list .row").addClass("re-layout")
+                        $("#category-list .row").find(".content__list-category__element").each(function(index, element){ $(element).attr('data-order',index) })
+                        $("#category-list .row").find(".one-square").appendTo("#category-list .row");
+                        $("#category-list .row").find(".two-square").appendTo("#category-list .row");
+                        $("#category-list .row").find(".four-square").appendTo("#category-list .row");
+                        $("#category-list .row").find(".six-square").appendTo("#category-list .row");
+                    }
 
                 } else if( clientWidth >= 768 && clientWidth <= 999) {
+                    $item.each(function() {
+                        if($(this).parent().is('.js-wrap')) {
+                            $(this).unwrap();
+                        }
+                    });
+                    if ($("#category-list .row").hasClass("re-layout"))
+                    {
+                        $("#category-list .row").removeClass("re-layout");
+                        var num_el = $("#category-list .row").find(".content__list-category__element").length;
+                        for (i = 0; i < num_el; i++) {
+                            $("#category-list").find(".content__list-category__element[data-order='"+i+"']").appendTo("#category-list .row");
+                        }
+                    }
+                } else if( clientWidth >= 1401) {
                     $item.each(function() {
                         if($(this).parent().is('.js-wrap')) {
                             $(this).unwrap();
@@ -157,10 +176,18 @@
 
         function setCatalogAttr() {
             var $widthCatalog = $('.js-catalog-list').width(),
-                $elem = $('.js-element').width();
+                $widthCategory = $('.js-category-list').width(),
+                $elem = $('.js-element').width(),
+                $elemCategory = $('.js-element-category').width();
+
+            console.log($elemCategory);
 
             $('.js-catalog-list').attr('data-width', $widthCatalog);
             $('.js-catalog-list').attr('elem-width', $elem);
+
+            $('.js-category-list').attr('data-width', $widthCategory);
+            $('.js-category-list').attr('elem-width', $elemCategory);
+
 
         }
 

@@ -597,15 +597,12 @@ body {
           &__list-category {
             margin-top: 18px;
             font-size: 0;
-          /*  text-align: justify;
+            overflow: hidden;
 
-              &:after {
-                display: inline-block;
-                content: '';
-                width: 100%;
+              .row {
+                margin: 0 -.33%;
+                overflow: hidden;
               }
-              */
-
 
               .one-square {
                 .one-square();
@@ -618,6 +615,7 @@ body {
 
               .four-square {
                 .four-square();
+
               }
 
               .six-square {
@@ -632,7 +630,7 @@ body {
               &__element {
                   position: relative;
                   display: inline-block;
-                overflow: hidden;
+                  overflow: hidden;
 
                   img {
                     width: 100%;
@@ -720,7 +718,7 @@ body {
 
                   &__preview {
                     position: absolute;
-                    left: 0;
+                    right: 0;
                     top: 0;
                     padding: 74px 12px 6px;
                     font: 13px/20px @ptreg;
@@ -1474,7 +1472,7 @@ body {
                     }
 
                     &.two-square-category {
-                      .one-square-category(19.75%*2);
+                      .one-square-category(19.5%*2);
                       min-width: 400px !important;
                     }
 
@@ -2283,7 +2281,7 @@ body {
 
       .select-city {
         width: 100%;
-        max-width: 386px;
+        max-width: 380px;
         vertical-align: middle;
 
           &.opened {
@@ -2302,9 +2300,7 @@ body {
               height: 47px;
               box-sizing: border-box;
               font: 1.0625rem/1.625rem @narrow;
-              border-left: 1px @grayBorder solid;
-              border-top: 1px @grayBorder solid;
-              border-bottom: 1px @grayBorder solid;
+              border: 1px @grayBorder solid;
               text-transform: uppercase;
               color: @cityLink;
               transition: all .5s ease;
