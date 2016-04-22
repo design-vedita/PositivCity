@@ -101,8 +101,8 @@
 
                     if ( !$("#category-list .row").hasClass("re-layout"))
                     {
-                        $("#category-list .row").addClass("re-layout")
-                        $("#category-list .row").find(".content__list-category__element").each(function(index, element){ $(element).attr('data-order',index) })
+                        $("#category-list .row").addClass("re-layout");
+                        $("#category-list .row").find(".content__list-category__element").each(function(index, element){ $(element).attr('data-order',index) });
                         $("#category-list .row").find(".one-square").appendTo("#category-list .row");
                         $("#category-list .row").find(".two-square").appendTo("#category-list .row");
                         $("#category-list .row").find(".four-square").appendTo("#category-list .row");
@@ -115,11 +115,11 @@
                             $(this).unwrap();
                         }
                     });
-                    if ($("#category-list .row").hasClass("re-layout"))
+                    if ($(".row").hasClass("re-layout"))
                     {
-                        $("#category-list .row").removeClass("re-layout");
-                        var num_el = $("#category-list .row").find(".content__list-category__element").length;
-                        for (i = 0; i < num_el; i++) {
+                        $(".row").removeClass("re-layout");
+                        var num_el = $(".row").find(".content__list-category__element").length;
+                        for ( var i = 0; i < num_el; i++) {
                             $("#category-list").find(".content__list-category__element[data-order='"+i+"']").appendTo("#category-list .row");
                         }
                     }
@@ -180,8 +180,6 @@
                 $elem = $('.js-element').width(),
                 $elemCategory = $('.js-element-category').width();
 
-            console.log($elemCategory);
-
             $('.js-catalog-list').attr('data-width', $widthCatalog);
             $('.js-catalog-list').attr('elem-width', $elem);
 
@@ -194,8 +192,12 @@
         setCatalogAttr();
 
         function changeMargin() {
-            var $container = $('.js-catalog-list'),
-                elem = $('.js-element');
+            var $container = $('.js-catalog-list');
+
+            if(!!$container)
+                $container = $('.js-catalog-list');
+            else
+                $container = $('.js-category-list');
 
 
             if(!!$container) {
@@ -244,6 +246,7 @@
         }
 
         changeMargin();
+
 
         /**
          * Стилизация чекбоксов и селектов
@@ -311,7 +314,25 @@
          * 320-768 when you click on the search button appears search
          * */
         searchButton.onclick = function() {
-            searchInput.classList.toggle('visible-search');
+            var clientWidth = document.documentElement.clientWidth;
+
+                this.classList.toggle('open');
+                searchInput.classList.toggle('visible-search');
+
+
+                if(this.classList.contains('open')) {
+                    this.querySelector('use').setAttribute('xlink:href','#close');
+                } else {
+                    this.querySelector('use').setAttribute('xlink:href','#search');
+                }
+
+                if(clientWidth >=320 && clientWidth <= 459) {
+                    if(this.classList.contains('open')) {
+                        burgerOrange.classList.add('no--visible');
+                    } else {
+                        burgerOrange.classList.remove('no--visible');
+                    }
+                }
         }
 
 

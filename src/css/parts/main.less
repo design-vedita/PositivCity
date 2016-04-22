@@ -544,7 +544,7 @@ body {
                 height: 400px;
 
                   img {
-                    height: 100%;
+                    width: 100%;
                   }
               }
 
@@ -677,6 +677,10 @@ body {
 
                   &.afiche-thema-2 {
                     .afiche-theme-2();
+                  }
+
+                  .afiche-theme-orange {
+                    .afiche-theme-orange();
                   }
 
                   &.slider-theme {
@@ -835,6 +839,12 @@ body {
                         font: 1rem/1.625rem @narrow;
                         color: @socColor;
                         text-transform: uppercase;
+                        transition: color .5s ease;
+
+                          &:hover {
+                            color: @cityLink;
+                            transition: color .5s ease;
+                          }
 
                           .crumb {
                             fill: @socColor;
@@ -1002,6 +1012,11 @@ body {
                                   color: @cityLink;
                                   margin-right: 10px;
                                   padding-left: 8px;
+
+                                    &.date {
+                                      display: inline-block;
+                                      vertical-align: middle;
+                                    }
                                 }
 
                                 &.no-border {
@@ -1009,6 +1024,23 @@ body {
                                     &:after {
                                       display: none;
                                     }
+                                }
+
+                                input[type=text] {
+                                  width: 178px;
+                                  height: 30px;
+                                  border: 1px @grayBorder solid;
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  vertical-align: middle;
+                                  font: 1rem/1625rem @narrow;
+                                  color: @socColor;
+                                  padding-left: 10px;
+                                  margin-right: 13px;
+                                  background-image: url(../img/data.svg);
+                                  background-position: 148px center;
+                                  background-size: 22px 20px;
+                                  background-repeat: no-repeat;
                                 }
                             }
 
@@ -1123,6 +1155,12 @@ body {
                            font: .8125rem/1.0625rem @ptreg;
                            color: @socColor;
                            text-transform: none;
+                           transition: color .5s ease;
+
+                            &:hover {
+                              color: @sloganColor;
+                              transition: color .5s ease;
+                            }
                          }
                       }
 
@@ -1134,6 +1172,11 @@ body {
                           a {
                             color: @backLeftMenuColor;
                             font: bold 1rem/1.25rem @narrow;
+
+                            &:hover {
+                              color: @orange;
+                              transition: color .5s ease;
+                            }
                           }
                       }
 
@@ -1175,6 +1218,20 @@ body {
                         padding-left: 1px;
                         letter-spacing: .6px;
                         position: relative;
+                        transition: color .5s ease;
+
+                          &.order {
+
+                              &:hover {
+                                color: @sloganColor;
+                                transition: color .5s ease;
+
+                                  .link-arrow {
+                                    fill: @sloganColor;
+                                    transition: fill .5s ease;
+                                  }
+                              }
+                          }
 
                           .link-arrow {
                             width: 20px;
@@ -1184,6 +1241,7 @@ body {
                             right: -2px;
                             position: relative;
                             padding-right: 20px;
+                            transition: fill .5s ease;
                           }
 
                       }
@@ -1235,6 +1293,11 @@ body {
                               li {
                                 display: inline-block;
                                 position: relative;
+                                border-top: 1px @white solid;
+                                border-left: 1px @white solid;
+                                border-right: 1px @white solid;
+                                margin-right: 5px;
+                                transition: all .5s ease;
 
                                   &.active {
                                     border-top: 1px @tabBorderColor solid;
@@ -1251,6 +1314,11 @@ body {
                                         bottom: -1px;
                                         z-index: 10;
                                       }
+                                  }
+
+                                  &:hover:not(.active) {
+                                    border-color: @sloganColor;
+                                    transition: all .5s ease;
                                   }
 
                                   a {
@@ -1325,7 +1393,18 @@ body {
 
                                   &.category-title {
                                     font: .9375em/1.625em @ptreg;
-                                    color: @footerInputColor;
+
+
+                                      a {
+                                        text-decoration: none;
+                                        color: @footerInputColor;
+                                        transition: color .5s ease;
+
+                                          &:hover {
+                                            color: @sloganColor;
+                                            transition: color .5s ease;
+                                          }
+                                      }
                                   }
                               }
 
@@ -1341,6 +1420,12 @@ body {
                                     top: 21px;
                                     letter-spacing: .5px;
                                     position: relative;
+                                    transition: background .5s ease;
+
+                                      &:hover {
+                                        background-color: @orange;
+                                        transition: background .5s ease;
+                                      }
                                   }
                               }
 
@@ -1455,6 +1540,20 @@ body {
               &__wrapper-list {
                   font-size: 0;
                   line-height: normal;
+
+                  &.section {
+                    margin-top: 15px;
+                    overflow: hidden;
+
+                      .row {
+                        margin: 0 -.33%;
+                        overflow: hidden;
+
+                          & > div {
+                            margin: 0 .33% 15px;
+                          }
+                      }
+                  }
 
                   &__element {
                     position: relative;
@@ -1615,6 +1714,12 @@ body {
                                     a {
                                       text-decoration: none;
                                       color: @footerInputColor;
+                                      transition: color .5s ease;
+
+                                        &:hover {
+                                          color: @sloganColor;
+                                          transition: color .5s ease;
+                                        }
                                     }
                                 }
 
@@ -1632,6 +1737,12 @@ body {
                                     a {
                                       text-decoration: none;
                                       color: @backLeftMenuColor;
+                                      transition: color .5s ease;
+
+                                        &:hover {
+                                          color: @orange;
+                                          transition: color .5s ease;
+                                        }
                                     }
                                 }
                             }
@@ -1852,6 +1963,17 @@ body {
                             color: @backLeftMenuColor;
                             text-transform: uppercase;
                             margin-top: 14px;
+
+                              a {
+                                text-decoration: none;
+                                color: @backLeftMenuColor;
+                                transition: color .5s ease;
+
+                                  &:hover {
+                                    color: @orange;
+                                    transition: color .5s ease;
+                                  }
+                              }
                           }
 
                           .good-data {
@@ -2280,8 +2402,7 @@ body {
       }
 
       .select-city {
-        width: 100%;
-        max-width: 380px;
+        width: 70%;
         vertical-align: middle;
 
           &.opened {
@@ -2350,7 +2471,8 @@ body {
 
           input[type=submit] {
             border: none;
-            padding: 10px 37px 11px;
+            padding: 10px 7.2% 11px;
+            min-width: 100px;
             background-color: @orange;
             color: #fff;
             font: 1rem/1.625rem @narrow;

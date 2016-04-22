@@ -67,21 +67,31 @@
               }
 
               .two-square {
-                width: 48.5%;
-                min-height: 400px;
-                height: 100%;
+                width: 48.6%;
+                margin: 0 .7% 10px;
               }
 
               .four-square {
                 width: 100%;
-                min-height: 400px;
-                height: 100%;
-                margin-left: 0 !important;
+                max-width: 100%;
+                margin: 0 .7% 10px;
+
               }
 
               .six-square {
                 width: 100%;
-                height: auto;
+                max-width: 100%;
+                margin: 0 .7% 10px;
+
+                  .list-afiche {
+
+                    ul {
+
+                      li {
+                        width: 100%;
+                      }
+                    }
+                  }
               }
             }
 
@@ -193,11 +203,12 @@
           }
 
           &__input {
-            margin-top: 97px;
-            position: relative;
-            width: 133%;
-            left: -33%;
+            margin-top: 69px;
+            position: absolute;
+            width: 222.5%;
+            left: -122.5%;
             display: none;
+            z-index: 10;
 
             &.visible-search {
               display: block;

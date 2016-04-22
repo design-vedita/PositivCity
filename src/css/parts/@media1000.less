@@ -71,7 +71,12 @@
 
               &__element {
 
-                &.slider-theme {
+                  &.orange-theme-events {
+                    padding-left: 20px;
+                    padding-right: 20px;
+                  }
+
+                  &.slider-theme {
 
                   .swiper-slide {
                     .height();
@@ -92,7 +97,8 @@
                   .one-square {
                     width: 100%;
 
-                      &:last-of-type {
+                      &:last-of-type,
+                      &:first-of-type {
                         margin-bottom: 0;
                       }
                   }
@@ -100,11 +106,17 @@
 
               .four-square {
                 .four-square(24.65%);
+
+                  &:after {
+                    height: 2.5%;
+                  }
               }
 
               .six-square {
-                width: 48%;
+                width: 74%;
                 min-width: 460px;
+                padding-left: 20px;
+                margin: 0 0.5% 10px;
               }
           }
         }

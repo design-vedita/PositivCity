@@ -78,11 +78,12 @@
             }
 
             &__input {
-              margin-top: 97px;
-              position: relative;
-              width: 133%;
-              left: -33%;
+              margin-top: 69px;
+              position: absolute;
+              width: 378%;
+              left: -278%;
               display: none;
+              z-index: 10;
 
                 &.visible-search {
                   display: block;
@@ -157,16 +158,17 @@
                     }
 
                     &.four-square {
-                      width: 65.2%;
+                      width: 65.35%;
                       margin: 0 .66% 10px;
 
                         &:after {
-                          height: 1%;
+                          height: 2%;
                         }
                     }
 
-                    &:nth-of-type(9) {
-                      margin-left: 0 !important;
+                    &.six-square {
+                      width: 100%;
+                      max-width: 100%;
                     }
                 }
             }

@@ -71,6 +71,10 @@
           .two-square {
             width: 100%;
 
+              &.orange-theme-events {
+                padding-left: 20px;
+                padding-right: 20px;
+              }
 
               &:after {
                 display: none;
@@ -79,11 +83,22 @@
 
           .four-square {
             width: 100%;
-            min-width: auto;
+            min-width: 100%;
           }
 
           .six-square {
             width: 100%;
+            min-width: 100%;
+
+              .list-afiche {
+
+                  ul {
+
+                      li {
+                        width: 100%;
+                      }
+                  }
+              }
           }
         }
 
@@ -138,6 +153,15 @@
             border-right: 1px #e6e6e6 solid;
             box-sizing: border-box;
             padding: 0 14px;
+
+              &.open {
+                right: -15px;
+                border: none;
+
+                  svg {
+                    fill: @leftMenuLink;
+                  }
+              }
           }
 
           &__burger460 {
@@ -156,15 +180,20 @@
               background-color: @orange;
             }
 
+              &.no--visible {
+                display: none;
+              }
+
           }
         }
 
         &__input {
-          margin-top: 97px;
-          position: relative;
-          width: 133%;
-          left: -33%;
+          margin-top: 0;
+          position: absolute;
+          width: 192%;
+          left: -123%;
           display: none;
+          z-index: 10;
 
           &.visible-search {
             display: block;
