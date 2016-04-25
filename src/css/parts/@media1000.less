@@ -37,6 +37,31 @@
         .content {
           padding-left: 20px;
 
+          .category-catalog-content {
+            border: 1px red solid;
+
+              &__wrapper-list {
+
+                &.section {
+
+                  .row {
+
+                    & > div {
+
+                      &.one-square-category {
+                        width: 19.5%;
+                      }
+
+                      &.two-square-category {
+                        width: 39%;
+                      }
+                    }
+                  }
+                }
+              }
+
+          }
+
           &__wrap-slide {
 
             &__block-slider {
@@ -78,11 +103,10 @@
 
                   &.slider-theme {
 
-                  .swiper-slide {
-                    .height();
+                    .swiper-slide {
+                      .height();
+                    }
                   }
-                }
-
               }
 
               .one-square {
@@ -97,8 +121,11 @@
                   .one-square {
                     width: 100%;
 
-                      &:last-of-type,
                       &:first-of-type {
+                        margin-bottom: 5.5%;
+                      }
+
+                      &:last-of-type {
                         margin-bottom: 0;
                       }
                   }

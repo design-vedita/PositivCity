@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/normalize.css"/>
     <link rel="stylesheet" href="../css/libs/swiper/swiper.min.css"/>
     <link rel="stylesheet" href="../css/libs/formstyler/jquery.formstyler.css"/>
+    <link rel="stylesheet" href="../css/libs/datedropper/datedropper.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
     <script src="../js/modernizr.custom.js"></script>
 </head>
@@ -325,12 +326,22 @@
                 </form>
             </div>
             <div class="catalog-content__sort">
-                <a href="javascript:undefined">
+                <a href="javascript:undefined" class="js-open-sort">
                     <svg class="sort">
                         <use xlink:href="#sort" />
                     </svg>
-                    <p> Сортировка по алфавиту от А-Я</p>
+                    <p data-html=" Сортировка по алфавиту от А-Я" class="js-inner"> Сортировка по алфавиту от А-Я</p>
                 </a>
+                <div class="catalog-content__sort__type-sort">
+                    <ul class="js-type-sort">
+                        <li class="js-sort-li" data-svg="desc" data-sort="Сортировка по алфавиту от Я-А">
+                            <svg class="sort sort-down">
+                                <use xlink:href="#sort" />
+                            </svg>
+                            Сортировка по алфавиту от Я-А
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="catalog-content__wrap-catalog js-wrap-banOrMap">
                 <div class="catalog-content__wrap-catalog__list js-catalog-list">
@@ -789,6 +800,7 @@
 <script type="text/javascript" src="../js/libs/swiper/swiper.min.js"></script>
 <script type="text/javascript" src="../js/libs/masonry/masonry.pkgd.min.js"></script>
 <script type="text/javascript" src="../js/libs/formstyler/jquery.formstyler.min.js"></script>
+<script type="text/javascript" src="../js/libs/datedropper/datedropper.min.js"></script>
 <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
 <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>

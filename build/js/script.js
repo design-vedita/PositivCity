@@ -18,6 +18,115 @@
             map = document.getElementsByClassName('js-yMap')[0],
             rightBlock = document.getElementsByClassName('js-right-block')[0];
 
+        function mapSlider() {
+            var slider = document.getElementsByClassName('js-map-slider')[0];
+
+                if(!!slider) {
+                    var slide = slider.getElementsByClassName('swiper-slide'),
+                        sliderWidth = slider.offsetWidth,
+                        sliderHeight = sliderWidth * .33;
+
+                        slider.style.height = sliderHeight + 'px';
+                        slider.style.minHeight = '400px';
+
+                    for(var i = 0; i < slide.length; i++) {
+                        slide[i].style.height = sliderHeight + 'px';
+                        slide[i].style.minHeight = '400px';
+                    }
+                }
+        }
+
+        mapSlider();
+
+
+        function heightBlocks() {
+            var clientWidth = document.documentElement.clientWidth;
+
+                if(clientWidth >= 460) {
+                    var max_height = $(".anchor").width();
+                    console.log(max_height);
+                    $(".two-square").css("height", max_height);
+                    $(".four-square:not(.anchor)").css("height", max_height);
+                    $(".six-square").css("height", max_height);
+                }
+
+
+
+        }
+
+        heightBlocks();
+
+
+        /**
+         * Показываем сортировку в каталоге
+         */
+
+        function openSort() {
+            var link = document.getElementsByClassName('js-open-sort')[0],
+                sorts = document.getElementsByClassName('js-type-sort')[0],
+                p = document.getElementsByClassName('js-inner')[0],
+                svg = '<svg class="sort"><use xlink:href="#sort" /></svg>';
+
+                if(!!sorts) {
+                    var sortsLi = sorts.getElementsByClassName('js-sort-li'),
+                        child = sorts.getElementsByClassName('child');
+                }
+
+                if(!!link) {
+                    link.onclick = function() {
+                        sorts.parentNode.classList.toggle('view--sort');
+                        var html = p.getAttribute('data-html');
+
+
+                        if(child.length == 0) {
+                            if (html != p.textContent) {
+                                var li = document.createElement('li');
+                                li.classList.add('child','js-sort-li');
+                                li.setAttribute('data-sort', html);
+                                li.setAttribute('data-svg', 'asc');
+                                li.innerHTML = svg + html;
+                                li.addEventListener('click',function(){
+                                    var typeSort = this.getAttribute('data-sort'),
+                                        desc = this.getAttribute('data-svg');
+
+                                    if(desc == 'desc')
+                                        link.querySelector('svg').classList.add('sort-down');
+                                    else
+                                        link.querySelector('svg').classList.remove('sort-down');
+
+                                    p.innerHTML = typeSort;
+                                    sorts.parentNode.classList.toggle('view--sort');
+                                });
+                                sorts.appendChild(li);
+                            }
+                        }
+
+                    }
+                }
+
+
+
+                if(!!sortsLi) {
+                    for (var i = 0; i < sortsLi.length; i++) {
+                        sortsLi[i].onclick = function() {
+                            var typeSort = this.getAttribute('data-sort'),
+                                desc = this.getAttribute('data-svg');
+
+                            if(desc)
+                                link.querySelector('svg').classList.add('sort-down');
+                            else
+                                link.querySelector('svg').classList.remove('sort-down');
+
+                            p.innerHTML = typeSort;
+                            sorts.parentNode.classList.toggle('view--sort');
+                        }
+                    }
+                }
+
+        }
+
+        openSort();
+
         /**
          * Всплывающее окно по центру
          */
@@ -535,6 +644,9 @@
             changeMargin();
             adaptive();
             popupCenter();
+            heightBlocks();
+            mapSlider();
+
 
 
             var clientWidth = document.documentElement.clientWidth;
@@ -688,25 +800,4 @@
 
     });
 
-    window.onload = function() {
-        /**
-         * initialize masonry
-         * */
-/*
-        $('.js-category-list').masonry({
-            itemSelector: '.item',
-            singleMode: false,
-            isResizable: true,
-            isAnimated: true,
-            isInitLayout: false,
-            animationOptions: {
-                queue: false,
-                duration: 500
-            },
-            gutter: 30
-        });
-        */
-
-
-    }
 }());
