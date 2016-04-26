@@ -16,7 +16,13 @@
             footerLinks = document.getElementsByClassName('js-footer-links')[0],
             banner = document.getElementsByClassName('js-banner')[0],
             map = document.getElementsByClassName('js-yMap')[0],
-            rightBlock = document.getElementsByClassName('js-right-block')[0];
+            rightBlock = document.getElementsByClassName('js-right-block')[0],
+            clientWidth = document.documentElement.clientWidth;
+
+
+        /**
+         * Слайдер в товарной карте
+         */
 
         function mapSlider() {
             var slider = document.getElementsByClassName('js-map-slider')[0];
@@ -772,7 +778,10 @@
                             banner.classList.add('scroll--banner');
 
                         if(!!map)
-                            map.classList.add('scroll--map');
+                            if(clientWidth >= 1045) {
+                                map.classList.remove('scroll-map');
+                            }
+
 
                     } else {
 

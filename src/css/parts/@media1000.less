@@ -134,18 +134,80 @@
               .four-square {
                 .four-square(24.65%);
 
-                  &:after {
-                    height: 2.5%;
+                  &.critic-theme-gray,
+                  &.critic-theme {
+                    padding-left: 22px !important;
+
+                      .critic-list {
+                        margin-top: 40px;
+                      }
+
+                      .element-critic {
+                          margin-bottom: 19px;
+                          padding-bottom: 16px;
+
+                            &:nth-of-type(3) {
+                              border-bottom: none;
+                            }
+
+                            .image {
+                              width: 70px;
+                            }
+
+                            .preview-text {
+
+                                p {
+                                  font-size: 1.1875em !important;
+                                  line-height: 1.5em !important;
+                                }
+                            }
+
+                            &:nth-of-type(4),
+                            &:nth-of-type(5),
+                            &:nth-of-type(6) {
+                              display: none;
+                            }
+
+                      }
                   }
               }
 
               .six-square {
                 width: 74%;
                 min-width: 460px;
-                padding-left: 20px;
                 margin: 0 0.5% 10px;
+
+                  &.afiche-thema-blue,
+                  &.afiche-thema {
+
+                    .list-afiche {
+
+                        ul {
+
+                            li {
+
+                                &:nth-of-type(5),
+                                &:nth-of-type(6) {
+                                  display: none;
+                                }
+
+                                .image-slide {
+                                  width: 101px;
+                                  min-height: auto;
+                                }
+                            }
+                        }
+                    }
+                  }
               }
           }
+        }
+
+        .footer {
+
+            &__copyright {
+              padding-left: 20px;
+            }
         }
       }
 

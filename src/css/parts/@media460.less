@@ -76,20 +76,64 @@
                 max-width: 100%;
                 margin: 0 .7% 10px;
 
+                  &.critic-theme-gray,
+                  &.critic-theme {
+                      height: auto !important;
+                      padding-left: 18px !important;
+
+                        .critic-list {
+                          margin-top: 30px;
+                        }
+
+                        .element-critic {
+                            padding-bottom: 24px;
+
+                              &:nth-of-type(3) {
+                                border-bottom: none;
+                              }
+
+                              &:nth-of-type(4),
+                              &:nth-of-type(5),
+                              &:nth-of-type(6) {
+                                display: none;
+                              }
+
+                              .image {
+                                width: 70px;
+                              }
+
+                              .preview-text {
+
+                                  p {
+                                    font-size: 1.1875em !important;
+                                    line-height: 1.5em !important;
+                                  }
+                              }
+
+                        }
+                  }
+
               }
 
               .six-square {
                 width: 100%;
                 max-width: 100%;
                 margin: 0 .7% 10px;
+                height: auto !important;
 
-                  .list-afiche {
+                  &.afiche-thema-blue,
+                  &.afiche-thema {
+                    min-width: auto;
+                    padding-left: 18px !important;
 
-                    ul {
 
-                      li {
-                        text-align: left;
-                        width: 100%;
+                    .list-afiche {
+
+                      ul {
+
+                        li {
+                          text-align: left;
+                          width: 100%;
 
                           &:nth-of-type(1) {
                             margin-top: 0;
@@ -102,6 +146,16 @@
                           .text-slide {
                             width: calc(~'100% - 129px');
                           }
+
+                          &:nth-of-type(5),
+                          &:nth-of-type(6) {
+                            display: none;
+                          }
+
+                          .image-slide {
+                            width: 101px;
+                          }
+                        }
                       }
                     }
                   }
@@ -230,6 +284,12 @@
         }
 
         .footer {
+
+          &__copyright {
+            padding-right: 20px;
+            padding-left: 20px;
+          }
+
           &__subscription {
             padding-left: 20px;
             padding-right: 20px;

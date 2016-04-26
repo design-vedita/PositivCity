@@ -356,7 +356,7 @@ body {
             &__top {
 
                 &__city {
-                  width: 11.38888888888889%; /*82/720*/
+                  width: 22%; /*82/720*/
                   float: left;
 
                     .city-link {
@@ -387,7 +387,7 @@ body {
 
                 &__soc {
                   float: right;
-                  width: calc(~'100% - 11.38888888888889%');
+                  width: calc(~'100% - 22%');
 
                     ul {
                       list-style-type: none;
@@ -1595,6 +1595,44 @@ body {
                     margin-bottom: 15px;
                     display: inline-block;
 
+                      a {
+                        text-decoration: none;
+                        color: @white;
+                      }
+
+                      &__preview {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        padding: 74px 12px 6px;
+                        font: 13px/20px @ptreg;
+                        background-color: rgba(0, 0, 0, .77);
+                        opacity: 0;
+                        box-sizing: border-box;
+                        visibility: hidden;
+                        height: 100%;
+                        transition: opacity .5s ease 0s, visibility 0s linear .5s;
+                        text-align: left;
+                        width: 100%;
+                      }
+
+                      &:hover .preview {
+                        opacity: 1;
+                        visibility: visible;
+                        transition: opacity .5s ease;
+                      }
+
+                      &:hover .element-title {
+                        background-color: transparent !important;
+                        font: 13px/20px @ptreg;
+                        top: 26px;
+                        left: 12px;
+                        right: auto;
+                        z-index: 10;
+                        transition: left .5s ease, top .5s ease;
+                        padding: 0;
+                      }
+
                     &.dop-block {
                       display: none;
                     }
@@ -2388,6 +2426,23 @@ body {
           &__copyright {
             background-color: @footerInputColor;
             height: 56px;
+            padding-left: 40px;
+            padding-right: 40px;
+            position: relative;
+
+              .copy-text {
+                color: @footerSubscription;
+                font: .875em/1.625em @ptreg;
+                padding-top: 19px;
+                float: left;
+              }
+
+              .logo {
+                float: right;
+                width: 134px;
+                height: auto;
+                padding-top: 9px;
+              }
           }
       }
     }

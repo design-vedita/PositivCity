@@ -93,39 +93,44 @@
 
         .footer {
 
-          &__subscription {
-            padding-left: 20px;
-            padding-right: 20px;
+            &__copyright {
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+
+            &__subscription {
+              padding-left: 20px;
+              padding-right: 20px;
+
+                &__block {
+
+                    &:first-of-type {
+                      display: block;
+                      margin-bottom: 15px;
+                    }
+
+                    &:nth-of-type(2) {
+                      width: 49%;
+                    }
+
+                    &:nth-of-type(3) {
+                      width: 49%;
+                    }
+                }
+            }
+
+            &__links {
+              padding-left: 20px;
+              padding-right: 20px;
+              height: 900px;
+
 
               &__block {
-
-                  &:first-of-type {
-                    display: block;
-                    margin-bottom: 15px;
-                  }
-
-                  &:nth-of-type(2) {
-                    width: 49%;
-                  }
-
-                  &:nth-of-type(3) {
-                    width: 49%;
-                  }
+                margin-right: 1.2%;
+                margin-bottom: 25px;
+                width: 33%;
               }
-          }
-
-          &__links {
-            padding-left: 20px;
-            padding-right: 20px;
-            height: 900px;
-
-
-            &__block {
-              margin-right: 1.2%;
-              margin-bottom: 25px;
-              width: 33%;
             }
-          }
 
         }
 
@@ -155,20 +160,77 @@
                     &.two-square {
                       width: 32%;
                       margin: 0 .66% 10px;
+
+
                     }
 
                     &.four-square {
                       width: 65.35%;
                       margin: 0 .66% 10px;
+                      min-height: 400px;
 
-                        &:after {
-                          height: 2%;
+                        &.slider-theme {
+                          min-height: 454px;
+                        }
+
+                        &.critic-theme-gray,
+                        &.critic-theme {
+
+                          .element-critic {
+                            margin-bottom: 19px;
+                            padding-bottom: 16px;
+
+                              &:nth-of-type(3) {
+                                border-bottom: 0;
+                              }
+
+                              &:nth-of-type(4),
+                              &:nth-of-type(5),
+                              &:nth-of-type(6) {
+                                display: none;
+                              }
+
+                              .image {
+                                width: 70px;
+                              }
+
+                              .preview-text {
+
+                                  p {
+                                    font-size: 1.1875em !important;
+                                    line-height: 1.5em !important;
+                                  }
+                              }
+
+                          }
                         }
                     }
 
                     &.six-square {
                       width: 100%;
                       max-width: 100%;
+
+                      &.afiche-thema-blue,
+                      &.afiche-thema {
+
+                        .list-afiche {
+
+                          ul {
+
+                            li {
+
+                              &:nth-of-type(5),
+                              &:nth-of-type(6) {
+                                display: none;
+                              }
+
+                              .image-slide {
+                                width: 101px;
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                 }
             }

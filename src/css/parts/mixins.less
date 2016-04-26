@@ -90,7 +90,7 @@
     box-sizing: border-box;
 
     .element-title {
-      font: bold 27px/27px @narrow;
+      font: bold 1.6875rem/1.6875rem @narrow;
       color: @sloganColor;
       text-transform: uppercase;
       position: static;
@@ -114,8 +114,8 @@
         li {
           display: inline-block;
           width: 50%;
-        /*  margin-top: 48px;*/
-          margin-top: 5.6%;
+          margin-top: 28px;
+
 
           &:nth-of-type(1),
           &:nth-of-type(2) {
@@ -129,13 +129,9 @@
           }
 
           .image-slide {
-            width: 100px;
-            height: 100px;
-            background-color: #a6adb8;
+            width: 30%;
+            height: 127px;
             float: left;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
 
             a {
               display: block;
@@ -145,11 +141,11 @@
           }
 
           .text-slide {
-            font-size: 13px;
-            line-height: 26px;
+            font-size: .8125rem;
+            line-height: 1.625rem;
             font-family: @ptreg;
             margin-left: 4%;
-            width: calc(~'100% - 125px');
+            width: 66%;
             float: left;
 
             p {
@@ -172,15 +168,16 @@
 
               &.date {
                 color: @orange;
-                font-size: 14px;
+                font-size: .875rem;
               }
 
               &.title-event {
                 font-family: @narrow;
                 font-weight: bold;
-                font-size: 16px;
-                line-height: 20px;
+                font-size: 1.125rem;
+                line-height: 1.4375rem;
                 text-transform: uppercase;
+                text-align: left;
 
                   a {
                     color: @backLeftMenuColor;
@@ -207,9 +204,10 @@
     background-color: @sloganColor;
     padding: 43px 0 30px 27px;
     box-sizing: border-box;
+    min-height: 510px;
 
     .element-title {
-      font: bold 27px/27px @narrow;
+      font: bold 1.6875rem/1.6875rem @narrow;
       color: @white;
       text-transform: uppercase;
       position: static;
@@ -221,7 +219,7 @@
       ul {
         list-style-type: none;
         font-size: 0;
-        margin-top: 47px;
+        margin-top: 40px;
         text-align: justify;
 
         &:after {
@@ -233,7 +231,7 @@
         li {
           display: inline-block;
           width: 50%;
-          margin-top: 48px;
+          margin-top: 28px;
 
             &:nth-of-type(1),
             &:nth-of-type(2) {
@@ -247,13 +245,9 @@
           }
 
           .image-slide {
-            width: 100px;
-            height: 100px;
-            background-color: #a6adb8;
+            width: 30%;
+            height: 127px;
             float: left;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
 
             a {
               display: block;
@@ -263,11 +257,11 @@
           }
 
           .text-slide {
-            font-size: 13px;
-            line-height: 26px;
+            font-size: .8125rem;
+            line-height: 1.625rem;
             font-family: @ptreg;
             margin-left: 4%;
-            width: calc(~'100% - 125px');
+            width: 60%;
             float: left;
 
             p {
@@ -288,16 +282,17 @@
 
               &.date {
                 color: @dateColor;
-                font-size: 14px;
+                font-size: .875rem;
               }
 
               &.title-event {
                 font-family: @narrow;
                 font-weight: bold;
                 color: @white;
-                font-size: 16px;
-                line-height: 20px;
+                font-size: 1rem;
+                line-height: 1.25rem;
                 text-transform: uppercase;
+                text-align: left;
 
                   a {
                     text-decoration: none;
@@ -354,6 +349,7 @@
           color: @sloganColor;
           text-transform: uppercase;
           transition: color .5s ease;
+          text-align: left;
 
             &:hover {
               color: @white;
@@ -407,6 +403,7 @@
           color: @white;
           text-transform: uppercase;
           transition: color .5s ease;
+          text-align: left;
 
           &:hover {
             /*color: @white;*/
@@ -471,7 +468,7 @@
     box-sizing: border-box;
 
     .element-title {
-      font: bold 27px/27px @narrow;
+      font: bold 1.6875rem/1.6875rem @narrow;
       color: @white;
       text-transform: uppercase;
       position: static;
@@ -480,14 +477,18 @@
     }
 
     .critic-list {
-      margin-top: 40px;
+      margin-top: 22px;
       text-align: left;
       font-size: medium;
 
       .element-critic {
         border-bottom: 1px rgba(114, 145, 164, .21) solid;
         padding-bottom: 7px;
-        margin-bottom: 23px;
+        margin-bottom: 11px;
+
+          &:last-of-type {
+            border-bottom: none;
+          }
 
         &:last-of-type {
           margin-bottom: 0;
@@ -501,20 +502,12 @@
         }
 
         .image {
-          width: 65px;
-          height: 75px;
-          background-color: @socColor;
-          position: relative;
+          width: 17%;
           overflow: hidden;
 
           img {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
             width: 100%;
-            height: 100%;
+            height: auto;
           }
         }
 
@@ -536,8 +529,8 @@
             margin-top: 6px;
 
             p {
-              font-size:  1.0625em;
-              line-height: 1.3125em;
+              font-size:  1.1875em;
+              line-height: 1.5em;
             }
           }
         }
@@ -548,11 +541,11 @@
   }
   .critic-theme-gray() {
     background-color: @h1lineColor;
-    padding: 44px 33px 30px 23px;
+    padding: 44px 33px 30px 30px;
     box-sizing: border-box;
 
     .element-title {
-      font: bold 27px/27px @narrow;
+      font: bold 1.6875rem/1.6875rem @narrow;
       color: @sloganColor;
       text-transform: uppercase;
       position: static;
@@ -561,14 +554,14 @@
     }
 
     .critic-list {
-      margin-top: 40px;
+      margin-top: 22px;
       text-align: left;
       font-size: medium;
 
       .element-critic {
         border-bottom: 1px rgba(114, 145, 164, .21) solid;
         padding-bottom: 7px;
-        margin-bottom: 23px;
+        margin-bottom: 11px;
 
         &:last-of-type {
           margin-bottom: 0;
@@ -582,20 +575,12 @@
         }
 
         .image {
-          width: 65px;
-          height: 75px;
-          background-color: @socColor;
-          position: relative;
+          width: 17%;
           overflow: hidden;
 
           img {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
             width: 100%;
-            height: 100%;
+            height: auto;
           }
         }
 
@@ -672,17 +657,20 @@
         }
 
         &.title-event {
-          font: bold 1.1875em/1.6875em @narrow;
+          /*font: bold 1.1875em/1.6875em @narrow;*/
+          font: bold 1.375em/1.75em @narrow;
           color: @white;
           text-transform: uppercase;
-          margin-top: 37px;
+         /* margin-top: 37px; */
+          margin-top: 5%;
+          text-align: left;
         }
       }
     }
   }
   .gray-theme-events() {
     background-color: @h1lineColor;
-    padding: 26px 20px 26px;
+    padding: 26px 30px 26px;
     box-sizing: border-box;
     font-size: medium;
 
@@ -715,23 +703,24 @@
         }
 
         &.title-event {
-          font: bold 1.1875em/1.6875em @narrow;
+          /*font: bold 1.1875em/1.6875em @narrow;*/
+          font: bold 1.375em/1.75em @narrow;
           color: @sloganColor;
           text-transform: uppercase;
           margin-top: 37px;
+          text-align: left;
         }
       }
     }
   }
   .green-theme-events() {
     background-color: @footerInputColor;
-    padding: 26px 20px 26px;
+    padding: 26px 30px 26px;
     box-sizing: border-box;
     font-size: medium;
 
     .img {
-      width: 165px;
-      height: 165px;
+      width: 100%;
       overflow: hidden;
       border-radius: 50%;
       position: relative;
@@ -759,10 +748,12 @@
         }
 
         &.title-event {
-          font: bold 1.1875em/1.6875em @narrow;
+         /* font: bold 1.1875em/1.6875em @narrow;*/
+          font: bold 1.375em/1.75em @narrow;
           color: @sloganColor;
           text-transform: uppercase;
           margin-top: 37px;
+          text-align: left;
         }
       }
     }
