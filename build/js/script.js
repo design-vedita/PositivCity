@@ -16,9 +16,61 @@
             footerLinks = document.getElementsByClassName('js-footer-links')[0],
             banner = document.getElementsByClassName('js-banner')[0],
             map = document.getElementsByClassName('js-yMap')[0],
-            rightBlock = document.getElementsByClassName('js-right-block')[0],
-            clientWidth = document.documentElement.clientWidth;
+            rightBlock = document.getElementsByClassName('js-right-block')[0];
 
+        /**
+         * Стилизованный инпут в галерее, его обработка
+         */
+
+        function customInputFile() {
+
+            var $wrapper = $( ".file-upload" ),
+                $inp = $wrapper.find( "input" ),
+                $btn = $wrapper.find( "button" ),
+                $lbl = $wrapper.find( "mark" );
+            $btn.focus(function(){
+                $inp.focus()
+            });
+
+
+            $inp.focus(function(){
+                $wrapper.addClass( "focus" );
+            }).blur(function(){
+                $wrapper.removeClass( "focus" );
+            });
+
+            $btn.add( $lbl ).click(function(){
+                $inp.click();
+            });
+
+            $btn.on(function(){
+                $wrapper.addClass( "focus" );
+            }).blur(function(){
+                $wrapper.removeClass( "focus" );
+            });
+
+            var fileApi = ( window.File && window.FileReader && window.FileList && window.Blob ) ? true : false;
+
+            $inp.change(function(){
+                var $fileName;
+                if( fileApi && $inp[ 0 ].files[ 0 ] )
+                    $fileName = $inp[ 0 ].files[ 0 ].name;
+                else
+                    $fileName = $inp.val().replace( "C:\\fakepath\\", '' );
+
+                if( ! $fileName.length )
+                    return;
+
+                if( $lbl.is( ":visible" ) ){
+                    $lbl.text( $fileName );
+                    $btn.text( "Выбрать" );
+                }else
+                    $btn.text( $fileName );
+            }).change();
+
+        }
+
+        customInputFile();
 
         /**
          * Слайдер в товарной карте
@@ -50,14 +102,14 @@
 
                 if(clientWidth >= 460) {
                     var max_height = $(".anchor").width();
-                    console.log(max_height);
                     $(".two-square").css("height", max_height);
-                    $(".four-square:not(.anchor)").css("height", max_height);
+                    $(".four-square").css("height", max_height);
                     $(".six-square").css("height", max_height);
+                } else {
+                    $(".two-square").css("height", '');
+                    $(".four-square").css("height", '');
+                    $(".six-square").css("height", '');
                 }
-
-
-
         }
 
         heightBlocks();
@@ -418,7 +470,7 @@
         });
 
         var swiperCatalog = new Swiper('.js-slider-theme', {
-            pagination: '.swiper-pagination',
+            pagination: '.swiper-pagination-catalog',
             paginationClickable: true,
             height: 400
         });
@@ -610,6 +662,7 @@
                     }
 
                     changeMargin();
+                    //heightBlocks();
                 }
             } else if(clientWidth < 767) {
                 rightBlock.style.width = '';
@@ -768,32 +821,33 @@
 
                     }
                 }
+            if(!!!isIos) {
+                if(clientWidth > 768) {
 
-            if(clientWidth > 768) {
-               // window.scrollBy(0, 1);
-                if(!!wrapBanner) {
-                    if(scrollTop >= getOffsetRect(wrapBanner).top) {
+                    if(!!wrapBanner) {
+                        if(scrollTop >= getOffsetRect(wrapBanner).top) {
 
-                        if(!!banner)
-                            banner.classList.add('scroll--banner');
+                            if(!!banner)
+                                banner.classList.add('scroll--banner');
 
-                        if(!!map)
-                            if(clientWidth >= 1045) {
-                                map.classList.remove('scroll-map');
-                            }
+                            if(!!map)
+                                if(clientWidth >= 1045) {
+                                    map.classList.remove('scroll-map');
+                                }
 
 
-                    } else {
+                        } else {
 
-                        if(!!banner)
-                            banner.classList.remove('scroll--banner');
+                            if(!!banner)
+                                banner.classList.remove('scroll--banner');
 
-                        if(!!map)
-                            map.classList.remove('scroll--map');
+                            if(!!map)
+                                map.classList.remove('scroll--map');
+                        }
+                        showVisible();
                     }
-                    showVisible();
-                }
 
+                }
             }
 
         }

@@ -136,6 +136,7 @@ body {
 
                     a {
                       color: @socColor;
+                      outline: none;
                     }
 
                     .wrap-link {
@@ -216,6 +217,7 @@ body {
                   width: 100%;
                   height: 69%;
                   padding-top: 15px;
+                  outline: none;
                 }
             }
         }
@@ -671,7 +673,7 @@ body {
                       .light-blue-theme();
                     }
                   }
-
+                  /**/
                   &.afiche-thema {
                     .afiche-theme();
                   }
@@ -680,17 +682,37 @@ body {
                     .afiche-theme-blue();
                   }
 
-                  &.afiche-thema-2 {
+                  &.afiche-thema-orange {
+                    .afiche-theme-orange();
+                  }
+
+                  &.afiche-thema-green {
+                    .afiche-theme-green();
+                  }
+                  /**/
+
+                 /**/
+                  &.afiche-theme-2 {
                     .afiche-theme-2();
                   }
 
-                  &.afiche-theme-orange {
-                    .afiche-theme-orange();
+                  &.afiche-theme-2-orange {
+                    .afiche-theme-2-orange();
                   }
+
+                  &.afiche-theme-2-blue {
+                    .afiche-theme-2-blue();
+                  }
+
+                  &.afiche-theme-2-gray {
+                    .afiche-theme-2-gray();
+                  }
+                /**/
 
                   &.slider-theme {
                     .slider-theme();
                   }
+                  /**/
 
                   &.critic-theme {
                     .critic-theme();
@@ -700,12 +722,26 @@ body {
                     .critic-theme-gray();
                   }
 
+                  &.critic-theme-green {
+                    .critic-theme-green();
+                  }
+
+                  &.critic-theme-orange {
+                    .critic-theme-orange();
+                  }
+
+                  /**/
+
                   &.orange-theme-events {
                     .orange-theme-events();
                   }
 
                   &.gray-theme-events {
                     .gray-theme-events();
+                  }
+
+                  &.blue-theme-events {
+                    .blue-theme-events();
                   }
 
                   &.green-theme-events {
@@ -747,7 +783,7 @@ body {
                     transition: opacity .5s ease;
                   }
 
-                  &:not(.afiche-thema):not(.afiche-thema-2):not(.critic-theme):not(.critic-theme-gray):not(.afiche-thema-blue):hover .element-title {
+                  &:not(.afiche-thema):not(.afiche-thema-2):not(.critic-theme):not(.critic-theme-gray):not(.critic-theme-green):not(.critic-theme-orange):not(.afiche-thema-green):not(.afiche-thema-orange):not(.afiche-thema-blue):hover .element-title {
                     background-color: transparent;
                     font: 13px/20px @ptreg;
                     top: 26px;
@@ -1754,11 +1790,119 @@ body {
 
             &__banner-block {
               width: 240px;
-              height: 400px;
+              min-height: 400px;
               float: right;
               position: relative;
 
               .banner();
+
+                img{
+                  width: 100%;
+                }
+
+                &__form {
+                  position: relative;
+                  background-color: @backFilterColor;
+                  padding: 33px 14px 24px 11px;
+                  box-sizing: border-box;
+                  margin-bottom: 16px;
+
+                    .line {
+                      width: 100%;
+                      height: 1px;
+                      background-color: @white;
+                      margin-top: 22px;
+                    }
+
+                    input {
+
+                        &[type=text] {
+                          width: 100%;
+                          border: 1px @grayBorder solid;
+                          box-sizing: border-box;
+                          height: 37px;
+                          background-color: @white;
+                          padding-left: 10px;
+                          margin-top: 16px;
+                          font: 1em/1.625em @narrow;
+                          text-transform: uppercase;
+                          color: @socColor;
+
+                            &::-webkit-input-placeholder {
+                              color: @socColor;
+                              text-overflow:ellipsis;
+                            }
+
+                            &::-moz-placeholder {
+                              color: @socColor;
+                              text-overflow:ellipsis;
+                            }
+
+                            &:focus,
+                            &:hover {
+                              border-color: @socColor;
+                              transition: all .5s ease;
+                              color: @footerInputColor;
+                            }
+                        }
+
+                        &[type=submit] {
+                          width: 100%;
+                          height: 48px;
+                          background-color: @sloganColor;
+                          border: none;
+                          cursor: pointer;
+                          color: @white;
+                          font: 1em/1.625em @narrow;
+                          text-transform: uppercase;
+                          margin-top: 13px;
+                        }
+                    }
+
+                    .file-upload{
+                      position: relative;
+                      overflow: hidden;
+                      height: 37px;
+
+                        & > .button {
+                          float: right;
+                          display: block;
+                          width: 97px;
+                          height: 37px;
+                          text-align: center;
+                          font: 1em/1.625em @narrow;
+                          color: @white;
+                          text-transform: uppercase;
+                          box-sizing: border-box;
+                          padding-top: 5px;
+                          background-color: @footerInputColor;
+                          cursor: pointer;
+                        }
+
+                        & > mark{
+                          display: block;
+                          cursor: pointer;
+                          width: 113px;
+                          border: 1px @grayBorder solid;
+                          box-sizing: border-box;
+                          height: 37px;
+                          background-color: @white;
+                          padding-left: 10px;
+                          color: @socColor;
+                          padding-top: 5px;
+                          font: 1em/1.625em @narrow;
+                          text-transform: uppercase;
+                        }
+
+                        input[type=file]{
+                          position: absolute;
+                          top: 0;
+                          opacity: 0;
+                          width: 100%;
+                          cursor: pointer;
+                        }
+                    }
+                }
             }
 
             &:after {
@@ -2301,7 +2445,6 @@ body {
                         outline: none;
                         transition: all .5s ease;
                         border: 1px @white solid;
-                        box-sizing: border-box;
 
                           &.subscript-name {
                             width: 100%;

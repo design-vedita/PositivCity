@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="format-detection" content="telephone=no">
     <title>Главная</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=2.0"/>
     <link rel="stylesheet" href="../css/normalize.css"/>
     <link rel="stylesheet" href="../css/libs/swiper/swiper.min.css"/>
     <link rel="stylesheet" href="../css/libs/formstyler/jquery.formstyler.css"/>
@@ -311,8 +312,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="gallery__banner-block js-banner">
-                    <img src="../img/banner-mini-2.jpg" alt=""/>
+                <div class="gallery__banner-block">
+                    <div class="gallery__banner-block__form js-form">
+                        <form action="" method="post">
+                            <label class="file-upload">
+                                <span class="button">Файл</span>
+                                <mark></mark>
+                                <input type="file">
+                            </label>
+                            <input type="text" name="" placeholder="Ваше имя"/>
+                            <input type="text" name="" placeholder="Название фото"/>
+                            <div class="line"></div>
+                            <input type="submit" value="Отправить"/>
+                        </form>
+                    </div>
+                    <div class="js-banner">
+                        <img src="../img/banner-mini-2.jpg" alt=""/>
+                    </div>
                 </div>
             </div>
         </div>
