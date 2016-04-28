@@ -9,6 +9,83 @@ html {
 }
 body {
   background-color: #282828;
+
+    #ui-datepicker-div {
+      padding: 30px;
+      box-sizing: border-box;
+      z-index: 101;
+
+        &:before,
+        &:after {
+          content: '';
+          width: 0;
+          position: absolute;
+          right: 19px;
+          top: -24px;
+          border: 12px solid transparent;
+        }
+
+        &:before {
+          border-bottom-color: @grayBorder;
+          border-width: 12px;
+          top: -25px;
+        }
+
+        &:after {
+          border-bottom-color: @white;
+          border-width: 12px;
+        }
+
+        .ui-widget-content {
+          border-color: @grayBorder;
+        }
+
+        .ui-widget-header {
+          font: bold 1.25em/1.625em @narrow;
+          color: @sloganColor;
+          text-transform: uppercase;
+        }
+
+        .ui-datepicker-calendar {
+
+            tr {
+
+                th {
+                  font: .875em/1.625em @narrow;
+                  text-transform: uppercase;
+                  color: @socColor;
+                }
+
+                td {
+                  font: 1em/1.625em @ptreg;
+                  color: @backLeftMenuColor;
+
+                    a {
+
+                      &.ui-state-default {
+                        border: none;
+                        text-align: center;
+                        background-color: transparent;
+
+                          &.ui-state-hover,
+                          &.ui-state-active {
+                            background-color: @footerInputColor;
+                            border-radius: 50%;
+                            color: @white;
+                          }
+
+
+                          &.ui-state-highlight {
+                            background-color: @orange;
+                            color: @white;
+                            border-radius: 50%;
+                          }
+                      }
+                    }
+                }
+            }
+        }
+    }
 }
 .clearfix {
   clear: both;
@@ -1053,6 +1130,7 @@ body {
                                   color: @cityLink;
                                   margin-right: 10px;
                                   padding-left: 8px;
+                                  cursor: pointer;
 
                                     &.date {
                                       display: inline-block;
@@ -1422,7 +1500,7 @@ body {
                             padding-top: 9px;
                             position: relative;
 
-                              & > div {
+                              & > div[data-link] {
                                   display: none;
 
                                   &.view-block {
@@ -1730,6 +1808,7 @@ body {
 
                         &.one-square-category {
                           .one-square-category(16.12%);
+                         /* .one-square-category(15.7%);*/
                         }
 
                         &.two-square-category {
@@ -2059,8 +2138,12 @@ body {
 
                   .article-category {
                     font: .9375em/1.625em @ptreg;
-                    color: @footerInputColor;
                     float: right;
+
+                     a {
+                       color: @footerInputColor;
+                       text-decoration: none;
+                     }
                   }
 
                   h2 {
@@ -2491,7 +2574,7 @@ body {
           }
 
           &__links {
-            background-color: #ced4de;
+            background-color: @footerLinksBackground;
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
@@ -2561,6 +2644,66 @@ body {
                            font-size: 1.3125em;
                            font-family: @narrow;
                          }
+                      }
+                  }
+
+                  &__soc-seti {
+                    margin-top: 20px;
+
+                      ul {
+                        font-size: 0;
+                        line-height: normal;
+
+                          li {
+                            display: inline-block;
+                            border-left: 1px @socColor solid;
+                            border-top: 1px @socColor solid;
+                            border-bottom: 1px @socColor solid;
+                            width: 22%;
+                            text-align: center;
+                            min-width: 40px;
+                            position: relative;
+
+                              &:last-of-type {
+                                border-right: 1px @socColor solid;
+                              }
+
+                              a {
+                                padding: 14px 0;
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+
+                                &:hover {
+
+                                    .ico-footer {
+                                      fill: @cityLink;
+                                      transition: all .5s ease;
+                                    }
+                                }
+                              }
+
+
+                              .ico-footer {
+                                fill: #a6adb8;
+                                height: 17px;
+                                transition: all 0.5s ease 0s;
+                                width: 17px;
+
+                              }
+                          }
+                      }
+
+                      &.open--menu {
+
+                          ul {
+
+                              li {
+                                border-right:  1px @socColor solid;
+                                margin-bottom: 5px;
+                                margin-right: 5px;
+                              }
+                          }
                       }
                   }
               }

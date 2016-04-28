@@ -273,9 +273,11 @@
               a {
                 text-decoration: none;
                 color: @white;
+                transition: color .5s ease;
 
                 &:hover {
-                  color: @orange;
+                  color: @footerInputColor;
+                  transition: color .5s ease;
                 }
               }
             }
@@ -297,9 +299,11 @@
               a {
                 text-decoration: none;
                 color: @white;
+                transition: color .5s ease;
 
                 &:hover {
-                  color: @orange;
+                  color: @dateColor;
+                  transition: color .5s ease;
                 }
               }
             }
@@ -385,9 +389,11 @@
               a {
                 text-decoration: none;
                 color: @white;
+                transition: color .5s ease;
 
                 &:hover {
-                  color: @orange;
+                  color: @sloganColor;
+                  transition: color .5s ease;
                 }
               }
             }
@@ -409,9 +415,11 @@
               a {
                 text-decoration: none;
                 color: @white;
+                transition: color .5s ease;
 
                 &:hover {
-                  color: @orange;
+                  color: @dateColor;
+                  transition: color .5s ease;
                 }
               }
             }
@@ -497,9 +505,11 @@
               a {
                 text-decoration: none;
                 color: @white;
+                transition: color .5s ease;
 
                 &:hover {
-                  color: @orange;
+                  color: @sloganColor;
+                  transition: color .5s ease;
                 }
               }
             }
@@ -521,9 +531,11 @@
               a {
                 text-decoration: none;
                 color: @sloganColor;
+                transition: color .5s ease;
 
                 &:hover {
-                  color: @orange;
+                  color: @white;
+                  transition: color .5s ease;
                 }
               }
             }
@@ -621,20 +633,24 @@
         transition: color .5s ease;
         text-align: left;
 
-        &:hover {
-          color: @white;
-          transition: color .5s ease;
-        }
+          &:hover {
+            color: @white;
+            transition: color .5s ease;
+          }
       }
 
       &.category-event {
         font: .8125em/1.625em @ptreg;
-        color: @white;
 
-        &:hover {
-          color: @sloganColor;
-          transition: color .5s ease;
-        }
+          a {
+            color: @white;
+            transition: color .5s ease;
+
+              &:hover {
+                color: @sloganColor;
+                transition: color .5s ease;
+              }
+          }
       }
     }
   }
@@ -676,19 +692,23 @@
         text-align: left;
 
         &:hover {
-          /*color: @white;*/
+          color: @dateColor;
           transition: color .5s ease;
         }
       }
 
       &.category-event {
         font: .8125em/1.625em @ptreg;
-        color: @white;
 
-        &:hover {
-          /* color: @sloganColor;*/
-          transition: color .5s ease;
-        }
+          a {
+            color: @white;
+            transition: color .5s ease;
+
+              &:hover {
+                color: @sloganColor;
+                transition: color .5s ease;
+              }
+          }
       }
     }
   }
@@ -729,19 +749,23 @@
         text-align: left;
 
         &:hover {
-          /*color: @white;*/
+          color: @dateColor;
           transition: color .5s ease;
         }
       }
 
       &.category-event {
         font: .8125em/1.625em @ptreg;
-        color: @white;
 
-        &:hover {
-          /* color: @sloganColor;*/
-          transition: color .5s ease;
-        }
+          a {
+            color: @white;
+            transition: color .5s ease;
+
+              &:hover {
+                color: @footerInputColor;
+                transition: color .5s ease;
+              }
+          }
       }
     }
   }
@@ -782,19 +806,23 @@
         text-align: left;
 
         &:hover {
-          /*color: @white;*/
+          color: @orange;
           transition: color .5s ease;
         }
       }
 
       &.category-event {
         font: .8125em/1.625em @ptreg;
-        color: @footerInputColor;
 
-        &:hover {
-          /* color: @sloganColor;*/
-          transition: color .5s ease;
-        }
+          a {
+            color: @footerInputColor;
+            transition: color .5s ease;
+
+              &:hover {
+                color: @sloganColor;
+                transition: color .5s ease;
+              }
+          }
       }
     }
   }
@@ -870,6 +898,16 @@
           p {
             font-size:  1.1875em;
             line-height: 1.5em;
+
+              a {
+                color: @white;
+                transition: color .5s ease;
+
+                &:hover {
+                  color: @dateColor;
+                  transition: color .5s ease;
+                }
+              }
           }
         }
       }
@@ -943,9 +981,15 @@
             font-size:  1.0625em;
             line-height: 1.3125em;
 
-             a {
-               color: @sloganColor;
-             }
+            a {
+              color: @sloganColor;
+              transition: color .5s ease;
+
+              &:hover {
+                color: @orange;
+                transition: color .5s ease;
+              }
+            }
           }
         }
       }
@@ -1021,6 +1065,12 @@
 
             a {
               color: @sloganColor;
+              transition: color .5s ease;
+
+                &:hover {
+                  color: @white;
+                  transition: color .5s ease;
+                }
             }
           }
         }
@@ -1097,6 +1147,12 @@
 
             a {
               color: @white;
+              transition: color .5s ease;
+
+                &:hover {
+                  color: @dateColor;
+                  transition: color .5s ease;
+                }
             }
           }
         }
@@ -1149,17 +1205,30 @@
         a {
           color: @dateColor;
           text-decoration: none;
+          transition: color .5s ease;
+
+            &:hover {
+              color: @sloganColor;
+              transition: color .5s ease;
+            }
         }
       }
 
       &.title-event {
-        font: bold 1.375em/1.75em @narrow;
+        /*font: bold 1.375em/1.25em @narrow;*/
+        font: bold 1.3em/1.25em @narrow;
         text-transform: uppercase;
         margin-top: 16px;
         text-align: left;
 
         a {
           color: @white;
+          transition: color .5s ease;
+
+            &:hover {
+              color: @dateColor;
+              transition: color .5s ease;
+            }
         }
       }
     }
@@ -1199,18 +1268,30 @@
 
         a {
           color: @footerInputColor;
+          transition: color .5s ease;
+
+            &:hover {
+              color: @sloganColor;
+              transition: color .5s ease;
+            }
         }
       }
 
       &.title-event {
-        /*font: bold 1.1875em/1.6875em @narrow;*/
-        font: bold 1.375em/1.75em @narrow;
+        /*font: bold 1.375em/1.25em @narrow;*/
+        font: bold 1.3em/1.25em @narrow;
         text-transform: uppercase;
         margin-top: 16px;
         text-align: left;
 
         a {
           color: @sloganColor;
+          transition: color .5s ease;
+
+            &:hover {
+              color: @orange;
+              transition: color .5s ease;
+            }
         }
       }
     }
@@ -1246,18 +1327,34 @@
 
       &.category-event {
         font: .8125em @ptreg;
-        color: @white;
         margin-top: 7px;
+
+          a {
+            color: @white;
+            transition: color .5s ease;
+
+            &:hover {
+              color: @sloganColor;
+              transition: color .5s ease;
+            }
+          }
       }
 
       &.title-event {
-        font: bold 1.375em/1.75em @narrow;
+        /*font: bold 1.375em/1.25em @narrow;*/
+        font: bold 1.3em/1.25em @narrow;
         text-transform: uppercase;
         margin-top: 16px;
         text-align: left;
 
         a {
           color: @sloganColor;
+          transition: color .5s ease;
+
+            &:hover {
+              color: @white;
+              transition: color .5s ease;
+            }
         }
       }
     }
@@ -1293,19 +1390,35 @@
 
       &.category-event {
         font: .8125em @ptreg;
-        color: @white;
         margin-top: 7px;
+
+         a {
+           color: @white;
+           transition: color .5s ease;
+
+            &:hover {
+              color: @footerInputColor;
+              transition: color .5s ease;
+            }
+         }
       }
 
       &.title-event {
-        font: bold 1.375em/1.75em @narrow;
+        /*font: bold 1.375em/1.25em @narrow;*/
+        font: bold 1.3em/1.25em @narrow;
         text-transform: uppercase;
         margin-top: 16px;
         text-align: left;
 
-        a {
-          color: @white;
-        }
+          a {
+            color: @white;
+            transition: color .5s ease;
+
+              &:hover {
+                color: @dateColor;
+                transition: color .5s ease;
+              }
+          }
       }
     }
   }

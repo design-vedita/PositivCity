@@ -509,13 +509,22 @@
          **/
 
         $('.js-left-submenu li').mouseenter(function(){
-            $(this).find('div').addClass('color--orange');
-            $(this).addClass('color--blue');
+            var $div = $(this).find('div');
+
+                $div.addClass('color--orange');
+                $(this).addClass('color--blue');
         });
 
         $('.js-left-submenu li').mouseleave(function(){
-            $(this).find('div').removeClass('color--orange');
-            $(this).removeClass('color--blue');
+            var $div = $(this).find('div');
+
+                if($(this).hasClass('active-menu')) {
+
+                } else {
+                    $div.removeClass('color--orange');
+                    $(this).removeClass('color--blue');
+                }
+
         });
 
         /*------------------------------------------------------------------------------*/
@@ -560,6 +569,10 @@
             if(clientWidth >= 768) {
                 burger.onclick = function() {
 
+                    var footerSoc = document.getElementsByClassName('js-seti')[0];
+
+                        footerSoc.classList.toggle('open--menu');
+
                     /**
                      * Если после маленького экрана ресайз на большой,
                      * чтобы меню работало правильно при открытии, выставляем своё максимальное значение
@@ -598,7 +611,6 @@
                      * чтобы наши ссылки в футере помещались
                      * */
                     if(clientWidth >= 1400 && clientWidth <= 1960) {
-                        var  heightLinks = footerLinks.offsetHeight;
                         var  heightLinks = footerLinks.offsetHeight;
 
                         if(this.classList.contains('view-menu')) {
@@ -852,6 +864,10 @@
 
         }
         scrollBanner();
+
+        $('.js-date-input').datepicker({
+            dateFormat: "dd.mm.yy"
+        });
 
 
         window.onscroll = function() {
