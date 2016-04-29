@@ -1,0 +1,109 @@
+#ui-datepicker-div {
+  padding: 30px;
+  box-sizing: border-box;
+  z-index: 101;
+
+  .ui-icon-circle-triangle-e {
+    background-image: url(../img/arrow-slider.png);
+    background-size: cover;
+    background-position: center center;
+    cursor: pointer;
+
+      &:hover {
+        background-image: url(../img/arrow-slider-hover.png);
+      }
+  }
+
+  .ui-icon-circle-triangle-w {
+    background-image: url(../img/arrow-slider.png);
+    background-size: cover;
+    transform: rotate(-180deg);
+    background-position: center center;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url(../img/arrow-slider-hover.png);
+    }
+  }
+
+  .ui-state-hover {
+    background-color: transparent;
+    border: none;
+  }
+
+  .ui-icon {
+    width: 9px;
+    height: 16px;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    width: 0;
+    position: absolute;
+    right: 19px;
+    top: -24px;
+    border: 12px solid transparent;
+  }
+
+  &:before {
+    border-bottom-color: @grayBorder;
+    border-width: 12px;
+    top: -25px;
+  }
+
+  &:after {
+    border-bottom-color: @white;
+    border-width: 12px;
+  }
+
+  .ui-widget-content {
+    border-color: @grayBorder;
+  }
+
+  .ui-widget-header {
+    font: bold 1.25em/1.625em @narrow;
+    color: @sloganColor;
+    text-transform: uppercase;
+  }
+
+  .ui-datepicker-calendar {
+
+    tr {
+
+      th {
+        font: .875em/1.625em @narrow;
+        text-transform: uppercase;
+        color: @socColor;
+      }
+
+      td {
+        font: 1em/1.625em @ptreg;
+        color: @backLeftMenuColor;
+
+        a {
+
+          &.ui-state-default {
+            border: none;
+            text-align: center;
+            background-color: transparent;
+
+            &.ui-state-hover,
+            &.ui-state-active {
+              background-color: @footerInputColor;
+              border-radius: 50%;
+              color: @white;
+            }
+
+
+            &.ui-state-highlight {
+              background-color: @orange;
+              color: @white;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

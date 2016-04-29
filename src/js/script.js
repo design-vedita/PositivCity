@@ -19,6 +19,37 @@
             rightBlock = document.getElementsByClassName('js-right-block')[0];
 
         /**
+         * костыль
+         * если нужны пустые блоки у них ставится имя &nbsp и на их месте будет
+         * пустота размером с квадрат
+         */
+
+        var emptyElem = document.getElementsByClassName('js-item');
+
+            if(!!emptyElem) {
+
+                for (var i = 0; i < emptyElem.length; i++) {
+
+                    var title = emptyElem[i].getElementsByClassName('element-title'),
+                        preview = emptyElem[i].getElementsByClassName('preview');
+
+                        for(var j = 0; j < title.length; j++) {
+
+                            if(title[j].innerHTML == '&nbsp;') {
+                                title[j].style.padding = 0;
+                                title[j].style.height = 0;
+                                emptyElem[i].querySelector('a').removeAttribute('href');
+
+                                for(var k = 0; k < preview.length; k++) {
+                                    preview[k].style.display = 'none';
+                                }
+                            }
+                        }
+
+                }
+            }
+
+        /**
          * Стилизованный инпут в галерее, его обработка
          */
 

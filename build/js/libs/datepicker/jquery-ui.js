@@ -1070,10 +1070,23 @@
 			// fix width for dynamic number of date pickers
 			// and adjust position before showing
 			offset = $.datepicker._checkOffset(inst, offset, isFixed);
-			inst.dpDiv.css({position: ($.datepicker._inDialog && $.blockUI ?
-				"static" : (isFixed ? "fixed" : "absolute")), display: "none",
-				left: (offset.left - 96) + "px", top: offset.top + 20 + "px"}); //добавляем отступ от инпута сверху и выравниваем
-																				// правый край относительно инпута, как в дизайне
+
+			/*------------------------------ Добавлялки ---------------------------------------*/
+			var clientWidth = document.documentElement.clientWidth
+
+				if (clientWidth >=760) {
+					inst.dpDiv.css({position: ($.datepicker._inDialog && $.blockUI ?
+						"static" : (isFixed ? "fixed" : "absolute")), display: "none",
+						left: (offset.left - 96) + "px", top: offset.top + 20 + "px"}); //добавляем отступ от инпута сверху и выравниваем
+																						// правый край относительно инпута, как в дизайне
+				} else {
+					inst.dpDiv.css({position: ($.datepicker._inDialog && $.blockUI ?
+						"static" : (isFixed ? "fixed" : "absolute")), display: "none",
+						left: offset.left + "px", top: offset.top + 20 + "px"});
+				}
+
+			/*----------------------------------------------------------------------------------*/
+
 
 			if (!inst.inline) {
 				showAnim = $.datepicker._get(inst, "showAnim");

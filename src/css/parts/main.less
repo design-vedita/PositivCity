@@ -10,82 +10,9 @@ html {
 body {
   background-color: #282828;
 
-    #ui-datepicker-div {
-      padding: 30px;
-      box-sizing: border-box;
-      z-index: 101;
-
-        &:before,
-        &:after {
-          content: '';
-          width: 0;
-          position: absolute;
-          right: 19px;
-          top: -24px;
-          border: 12px solid transparent;
-        }
-
-        &:before {
-          border-bottom-color: @grayBorder;
-          border-width: 12px;
-          top: -25px;
-        }
-
-        &:after {
-          border-bottom-color: @white;
-          border-width: 12px;
-        }
-
-        .ui-widget-content {
-          border-color: @grayBorder;
-        }
-
-        .ui-widget-header {
-          font: bold 1.25em/1.625em @narrow;
-          color: @sloganColor;
-          text-transform: uppercase;
-        }
-
-        .ui-datepicker-calendar {
-
-            tr {
-
-                th {
-                  font: .875em/1.625em @narrow;
-                  text-transform: uppercase;
-                  color: @socColor;
-                }
-
-                td {
-                  font: 1em/1.625em @ptreg;
-                  color: @backLeftMenuColor;
-
-                    a {
-
-                      &.ui-state-default {
-                        border: none;
-                        text-align: center;
-                        background-color: transparent;
-
-                          &.ui-state-hover,
-                          &.ui-state-active {
-                            background-color: @footerInputColor;
-                            border-radius: 50%;
-                            color: @white;
-                          }
-
-
-                          &.ui-state-highlight {
-                            background-color: @orange;
-                            color: @white;
-                            border-radius: 50%;
-                          }
-                      }
-                    }
-                }
-            }
-        }
-    }
+}
+a {
+  outline: none;
 }
 .clearfix {
   clear: both;
@@ -533,7 +460,7 @@ body {
                       border: 1px @grayBorder solid;
                       box-sizing: border-box;
                       padding-left: 10px;
-                      font: .875em @narrow;
+                      font: 1.125em/1.625em @narrow;
                       color: @cityLink;
                       outline: none;
                     }
@@ -1156,10 +1083,21 @@ body {
                                   color: @socColor;
                                   padding-left: 10px;
                                   margin-right: 13px;
-                                  background-image: url(../img/data.svg);
-                                  background-position: 148px center;
-                                  background-size: 22px 20px;
-                                  background-repeat: no-repeat;
+                                  transition: border-color .5s ease;
+
+                                    &.from,
+                                    &.to {
+                                      background-image: url(../img/data.svg);
+                                      background-position: 148px center;
+                                      background-size: 22px 20px;
+                                      background-repeat: no-repeat;
+                                    }
+
+                                    &:hover,
+                                    &:focus {
+                                      border-color: @socColor;
+                                      transition: border-color .5s ease;
+                                    }
                                 }
                             }
 
@@ -1817,6 +1755,26 @@ body {
                         }
                       }
                     }
+
+                    &.one-section {
+                      margin-top: 0;
+
+                      .row {
+
+                        & > div {
+                          margin: 0 .41% 15px;
+
+                          &.one-square-category {
+                            .one-square-category(15.7%);
+                          }
+
+                          &.two-square-category {
+                            .one-square-category(16.1%*2);
+                            min-width: 415px !important;
+                          }
+                        }
+                      }
+                    }
                   }
               }
 
@@ -2091,6 +2049,57 @@ body {
                 &__inner-text {
                   float: left;
                   width: calc(~'100% - 284px');
+
+                    .search-page {
+
+                        .search-query {
+                          border: 1px solid @leftMenuLink;
+                          box-sizing: border-box;
+                          height: 48px;
+                          font: 1.125em/1.625em @narrow;
+                          color: @cityLink;
+                          padding-left: 10px;
+                          width: 100%;
+                        }
+
+                        .search-button {
+                          background: @orange url("../img/search.svg") no-repeat scroll center center / 26px auto;
+                          border: medium none;
+                          cursor: pointer;
+                          height: 48px;
+                          outline: medium none;
+                          transition: background 0.5s ease 0s;
+                          text-indent: -999999px;
+                          width: 52px;
+                        }
+
+                        .search-advanced-result {
+                          font: 1em/1.625em @ptreg;
+                          color: @socColor;
+                          margin-bottom: 20px;
+
+                            & .search-result {
+                              font: bold .8125em/1.625em @ptreg;
+                              color: @socColor;
+                            }
+                        }
+
+                        .search-sorting {
+                          font: 1em/1.625em @ptreg;
+                          color: @socColor;
+
+                           a {
+                             color: @footerInputColor;
+                             text-decoration: none;
+                             transition: color .5s ease;
+
+                              &:hover {
+                                color: @sloganColor;
+                                transition: color .5s ease;
+                              }
+                           }
+                        }
+                    }
                 }
 
                 &__banner-block {
