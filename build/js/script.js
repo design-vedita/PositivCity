@@ -853,15 +853,26 @@
                 }
 
                 function showVisible() {
-                    var footer = document.getElementsByTagName('footer')[0];
+                    var footer = document.getElementsByTagName('footer')[0],
+                        content = document.getElementsByClassName('js-content')[0];
 
-                    if (isVisible(footer)) {
-                        if(!!banner)
-                            banner.classList.remove('scroll--banner');
+                    if(!!content) {
+                        if (isVisible(content)) {
+                            if(!!banner)
+                                banner.classList.remove('scroll--banner');
 
-                        if(!!map)
-                            map.classList.remove('scroll--map');
+                            if(!!map)
+                                map.classList.remove('scroll--map');
+                        }
+                    } else {
+                        if (isVisible(footer)) {
+                            if(!!banner)
+                                banner.classList.remove('scroll--banner');
 
+                            if(!!map)
+                                map.classList.remove('scroll--map');
+
+                        }
                     }
                 }
             if(!!!isIos) {
@@ -870,12 +881,21 @@
                     if(!!wrapBanner) {
                         if(scrollTop >= getOffsetRect(wrapBanner).top) {
 
-                            if(!!banner)
-                                banner.classList.add('scroll--banner');
+                            if(!!banner) {
+
+                                var flagArticle = banner.classList.contains('js-article');
+
+                                    banner.classList.add('scroll--banner');
+
+                                    if(flagArticle && clientWidth < 1308)
+                                        banner.classList.remove('scroll--banner');
+
+                            }
+
 
                             if(!!map)
                                 if(clientWidth >= 1045) {
-                                    map.classList.remove('scroll-map');
+                                    map.classList.add('scroll--map');
                                 }
 
 

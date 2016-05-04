@@ -3295,6 +3295,16 @@ a {
   font-size: 1.3125em;
   font-family: 'PT Sans Narrow', sans-serif;
 }
+.wrapper .right-block .footer__links__block__contacts a {
+  font: 0.875em/1.5em 'PT Sans', sans-serif;
+  color: #282828;
+  text-decoration: none;
+  transition: color .5s ease;
+}
+.wrapper .right-block .footer__links__block__contacts a:hover {
+  color: #ef4601;
+  transition: color .5s ease;
+}
 .wrapper .right-block .footer__links__block__soc-seti {
   margin-top: 20px;
 }
