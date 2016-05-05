@@ -846,8 +846,8 @@
 
                     var windowHeight = document.documentElement.clientHeight;
 
-                    var topVisible = coords.top > 0 && coords.top < windowHeight;
-                    var bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
+                    var topVisible =  coords.top > 0 && coords.top < windowHeight;
+                    var bottomVisible = coords.bottom < windowHeight && coords.bottom >= -15;
 
                     return topVisible || bottomVisible;
                 }

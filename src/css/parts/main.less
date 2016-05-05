@@ -840,6 +840,11 @@ a {
                     text-transform: uppercase;
                   }
 
+                  span {
+                    font-weight: bold;
+                    color: @backLeftMenuColor;
+                  }
+
                   ul {
                     list-style-type: none;
                     margin-bottom: 19px;
@@ -922,8 +927,16 @@ a {
           &.category-catalog-content,
           &.article-catalog,
           &.article-page,
-          &.gallery {
+          &.gallery,
+          &.index-category {
             .title-page();
+          }
+
+          &.index-category {
+
+              .content__breadcrumbs {
+                margin-bottom: 25px;
+              }
           }
 
           .soc-block {
@@ -2167,6 +2180,11 @@ a {
                     margin-bottom: 21px;
                   }
 
+                  span {
+                    font-weight: bold;
+                    color: @backLeftMenuColor;
+                  }
+
                   ul:not(.ya-share2__list) {
                     list-style-type: none;
                     margin-bottom: 19px;
@@ -2320,6 +2338,148 @@ a {
                 height: 400px;
                 float: right;
                 position: relative;
+              }
+          }
+
+          .subscribe {
+
+              .errortext {
+                font: 1.125em/1.875em "PT Sans",sans-serif;
+                color: @orange;
+              }
+
+              .subscription {
+
+                  .subscription-title-inner {
+                    background-color: @footerSubscription;
+                    font: bold 1.125em/1.4375em @narrow;
+                    text-transform: uppercase;
+                    color: @backLeftMenuColor;
+                  }
+
+                  .subscription-notes {
+                    font: bold 1.125em/1.4375em @narrow;
+                    text-transform: uppercase;
+                    color: @backLeftMenuColor;
+                    margin: 0;
+                  }
+
+                  .subscription-form {
+                      border-color: @leftMenuLink;
+
+                        .field-name {
+                            font: bold 1em/1.625em @narrow;
+                            color: @cityLink;
+                            text-transform: uppercase;
+                            text-align: left;
+                        }
+
+                        .subscription-format {
+                          font: bold 1em/1.625em @narrow;
+                          color: @cityLink;
+                          text-transform: uppercase;
+
+                            span {
+                              color: @cityLink;
+                            }
+                        }
+
+                        .subscription-rubric {
+                          overflow: visible;
+
+                            label {
+                              display: inline-block;
+                              color: @cityLink;
+                              cursor: pointer;
+                              font: 17px/26px "PT Sans Narrow",sans-serif;
+                              margin-left: 0;
+                              padding-left: 8px;
+                              position: relative;
+                            }
+                        }
+
+                        .subscription-buttons {
+
+                            input[type=submit] {
+                              background-color: @orange;
+                              border: medium none;
+                              color: @white;
+                              font: 1rem/1.625rem "PT Sans Narrow",sans-serif;
+                              height: 48px;
+                              letter-spacing: 0.5px;
+                              outline: medium none;
+                              padding: 5px 25px;
+                              text-transform: uppercase;
+                              transition: all 0.5s ease 0s;
+                            }
+                        }
+
+                        .field-form {
+
+                            input[type=text] {
+                                border: 1px @grayBorder solid;
+                                height: 30px;
+                                font: 1.125em/1.625em @narrow;
+                                outline: none;
+                                box-sizing: border-box;
+                                padding-left: 10px;
+                                color: @cityLink;
+                                max-width: 250px;
+                                width: 100%;
+                            }
+
+                          .jq-checkbox {
+                            top: -2px;
+                            outline: none;
+                          }
+                        }
+
+                        .subscription-layout {
+
+                            label {
+                              display: inline-block;
+                              color: @cityLink;
+                              cursor: pointer;
+                              font: 17px/26px "PT Sans Narrow",sans-serif;
+                              margin-left: 0;
+                              padding-left: 8px;
+                              padding-right: 8px;
+                              position: relative;
+                            }
+                        }
+                  }
+
+                  .subscription-utility {
+                    color: @colorText;
+                    font: 1.125em/1.875em "PT Sans",sans-serif;
+
+                      .subscription-textbox {
+                        max-width: 230px;
+                        width: 100%;
+                        border: 1px solid @grayBorder;
+                        box-sizing: border-box;
+                        color: @cityLink;
+                        font: 1.125em/1.625em "PT Sans Narrow",sans-serif;
+                        height: 48px;
+                        outline: medium none;
+                        padding-left: 10px;
+                        text-transform: uppercase;
+                        margin-bottom: 10px;
+                      }
+
+                      input[type=submit] {
+                        background-color: @orange;
+                        border: medium none;
+                        color: @white;
+                        font: 1rem/1.625rem "PT Sans Narrow",sans-serif;
+                        height: 47px;
+                        letter-spacing: 0.5px;
+                        outline: medium none;
+                        padding: 5px 25px 4px;
+                        text-transform: uppercase;
+                        transition: all 0.5s ease 0s;
+                      }
+                  }
               }
           }
 
