@@ -463,6 +463,9 @@ a {
                       font: 1.125em/1.625em @narrow;
                       color: @cityLink;
                       outline: none;
+                      border-radius: 0;
+                      -webkit-appearance: none;
+                      box-shadow: none;
                     }
                     &[type=submit] {
                       width: 52px;
@@ -478,6 +481,9 @@ a {
                       background-position: center;
                       outline: none;
                       transition: background .5s ease;
+                      border-radius: 0;
+                      -webkit-appearance: none;
+                      box-shadow: none;
 
                         &:hover {
                           background-color: @sloganColor;
@@ -1097,6 +1103,9 @@ a {
                                   padding-left: 10px;
                                   margin-right: 13px;
                                   transition: border-color .5s ease;
+                                  border-radius: 0;
+                                  -webkit-appearance: none;
+                                  box-shadow: none;
 
                                     &.from,
                                     &.to {
@@ -1123,6 +1132,9 @@ a {
                               text-transform: uppercase;
                               padding: 10px 25px;
                               margin-left: 20px;
+                              border-radius: 0;
+                              -webkit-appearance: none;
+                              box-shadow: none;
 
                                 &.reset {
                                   width: 52px;
@@ -1593,6 +1605,10 @@ a {
                                     font: 1.0625em/1.625em @ptreg;
                                     color: @colorText;
 
+                                      span {
+                                        font-weight: bold;
+                                        color: @backLeftMenuColor;
+                                      }
 
                                       p {
                                         margin-bottom: 20px;
@@ -1877,6 +1893,9 @@ a {
                           font: 1em/1.625em @narrow;
                           text-transform: uppercase;
                           color: @socColor;
+                          border-radius: 0;
+                          -webkit-appearance: none;
+                          box-shadow: none;
 
                             &::-webkit-input-placeholder {
                               color: @socColor;
@@ -1906,6 +1925,9 @@ a {
                           font: 1em/1.625em @narrow;
                           text-transform: uppercase;
                           margin-top: 13px;
+                          border-radius: 0;
+                          -webkit-appearance: none;
+                          box-shadow: none;
                         }
                     }
 
@@ -1968,6 +1990,20 @@ a {
               .article-catalog {
 
                 &__wrapper {
+
+                    & > p {
+                      color: @colorText;
+                      font: 1.125em/1.875em @ptreg;
+
+                        .errortext {
+                          color: @orange;
+                        }
+                    }
+
+                    & > table {
+                      color: @colorText;
+                      font: 1.125em/1.875em @ptreg;
+                    }
 
                     &__element {
                       padding-bottom: 27px;
@@ -2411,6 +2447,9 @@ a {
                               padding: 5px 25px;
                               text-transform: uppercase;
                               transition: all 0.5s ease 0s;
+                              border-radius: 0;
+                              -webkit-appearance: none;
+                              box-shadow: none;
                             }
                         }
 
@@ -2426,6 +2465,9 @@ a {
                                 color: @cityLink;
                                 max-width: 250px;
                                 width: 100%;
+                                border-radius: 0;
+                                -webkit-appearance: none;
+                                box-shadow: none;
                             }
 
                           .jq-checkbox {
@@ -2465,6 +2507,9 @@ a {
                         padding-left: 10px;
                         text-transform: uppercase;
                         margin-bottom: 10px;
+                        border-radius: 0;
+                        -webkit-appearance: none;
+                        box-shadow: none;
                       }
 
                       input[type=submit] {
@@ -2478,6 +2523,9 @@ a {
                         padding: 5px 25px 4px;
                         text-transform: uppercase;
                         transition: all 0.5s ease 0s;
+                        border-radius: 0;
+                        -webkit-appearance: none;
+                        box-shadow: none;
                       }
                   }
               }
@@ -2675,11 +2723,17 @@ a {
                           border: 1px @sloganColor solid;
                           transition: all .5s ease;
                           color: @cityLink;
+                          border-radius: 0;
+                          -webkit-appearance: none;
+                          box-shadow: none;
                         }
 
                         &[type=submit] {
                           background-color: @sloganColor;
                           transition: all .5s ease;
+                          border-radius: 0;
+                          -webkit-appearance: none;
+                          box-shadow: none;
                         }
                       }
                     }
@@ -2697,6 +2751,9 @@ a {
                         outline: none;
                         transition: all .5s ease;
                         border: 1px @white solid;
+                        border-radius: 0;
+                        -webkit-appearance: none;
+                        box-shadow: none;
 
                           &.subscript-name {
                             width: 100%;
@@ -2721,6 +2778,9 @@ a {
                         right: 0;
                         top: 0;
                         transition: all .5s ease;
+                        border-radius: 0;
+                        -webkit-appearance: none;
+                        box-shadow: none;
                       }
                   }
 
@@ -3057,6 +3117,9 @@ a {
             text-transform: uppercase;
             vertical-align: middle;
             transition: background .5s ease;
+            border-radius: 0;
+            -webkit-appearance: none;
+            box-shadow: none;
 
               &:hover {
                 background-color: @sloganColor;
