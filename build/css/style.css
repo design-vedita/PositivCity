@@ -2948,7 +2948,7 @@ a {
   color: #646464;
   margin-bottom: 21px;
 }
-.wrapper .right-block .content .article-page__inner-text span {
+.wrapper .right-block .content .article-page__inner-text p span {
   font-weight: bold;
   color: #282828;
 }
@@ -4748,7 +4748,7 @@ a {
     width: 100%;
   }
   .wrapper .right-block .content .catalog-content__wrap-catalog .similar > div {
-    width: 47%;
+    width: 44%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -4759,7 +4759,7 @@ a {
     width: 100%;
   }
   .wrapper .right-block .content .catalog-content__wrap-catalog .similar > div {
-    width: 45%;
+    width: 44.5%;
   }
 }
 @media screen and (max-width: 500px) {
