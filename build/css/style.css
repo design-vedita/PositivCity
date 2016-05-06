@@ -495,6 +495,7 @@ a {
   text-transform: uppercase;
   color: #1b305c;
   margin-bottom: 11px;
+  word-wrap: break-word;
 }
 .wrapper .right-block .content__wrap-slide__block-slider__text-slide .text-slide {
   font: 1.125em/1.625em 'PT Sans', sans-serif;
@@ -592,7 +593,7 @@ a {
 }
 .wrapper .right-block .content__list-category .four-square {
   width: 32.65%;
-  min-width: 400px;
+  /*min-width: 400px;*/
   margin: 0 .33% 10px;
   display: inline-block;
   vertical-align: top;
@@ -608,7 +609,7 @@ a {
 .wrapper .right-block .content__list-category .six-square {
   width: 49.35%;
   margin: 0 .33% 10px;
-  min-width: 600px;
+  /*min-width: 600px;*/
   display: inline-block;
   vertical-align: top;
   box-sizing: border-box;
@@ -1041,7 +1042,7 @@ a {
   position: absolute;
   bottom: 0;
   width: 100%;
-  min-height: 145px;
+  min-height: 35%;
   background-color: #7291a4;
   box-sizing: border-box;
   padding: 29px 30px 21px 13px;
@@ -1089,8 +1090,7 @@ a {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* min-height: 145px;*/
-  height: 35%;
+  min-height: 35%;
   background-color: #ef4601;
   box-sizing: border-box;
   padding: 29px 30px 21px 13px;
@@ -1138,7 +1138,7 @@ a {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 35%;
+  min-height: 35%;
   background-color: #1b305c;
   box-sizing: border-box;
   padding: 29px 30px 21px 13px;
@@ -1186,7 +1186,7 @@ a {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 35%;
+  min-height: 35%;
   background-color: #e6e6e6;
   box-sizing: border-box;
   padding: 29px 30px 21px 13px;
@@ -1788,6 +1788,7 @@ a {
   position: relative;
   text-transform: uppercase;
   padding-left: 3px;
+  word-wrap: break-word;
 }
 .wrapper .right-block .content__index-description h1:after {
   position: absolute;
@@ -1894,6 +1895,7 @@ a {
   text-transform: uppercase;
   margin-top: 26px;
   letter-spacing: -0.4px;
+  word-wrap: break-word;
 }
 .wrapper .right-block .content.index-category .content__breadcrumbs {
   margin-bottom: 25px;
@@ -3762,7 +3764,7 @@ a {
   }
   .wrapper .right-block .content__list-category .four-square {
     width: 49.3%;
-    min-width: 400px;
+    /*min-width: 400px;*/
     margin: 0 .33% 10px;
     display: inline-block;
     vertical-align: top;
@@ -4144,6 +4146,12 @@ a {
     margin: 0 .7% 10px;
     height: auto !important;
   }
+  .wrapper .right-block .content__list-category .six-square.afiche-theme-2 .description,
+  .wrapper .right-block .content__list-category .six-square.afiche-theme-2-orange .description,
+  .wrapper .right-block .content__list-category .six-square.afiche-theme-2-blue .description,
+  .wrapper .right-block .content__list-category .six-square.afiche-theme-2-gray .description {
+    height: auto;
+  }
   .wrapper .right-block .content__list-category .six-square.afiche-thema-blue,
   .wrapper .right-block .content__list-category .six-square.afiche-thema {
     min-width: auto;
@@ -4416,12 +4424,18 @@ a {
   .wrapper .right-block .content__list-category .six-square {
     width: 100%;
     min-width: 100%;
-    min-height: 400px;
+    height: auto !important;
   }
   .wrapper .right-block .content__list-category .six-square.afiche-theme-orange img {
     height: 100%;
     width: auto;
     max-width: none;
+  }
+  .wrapper .right-block .content__list-category .six-square.afiche-theme-2 .description,
+  .wrapper .right-block .content__list-category .six-square.afiche-theme-2-orange .description,
+  .wrapper .right-block .content__list-category .six-square.afiche-theme-2-blue .description,
+  .wrapper .right-block .content__list-category .six-square.afiche-theme-2-gray .description {
+    height: auto;
   }
   .wrapper .right-block .content__list-category .six-square.afiche-thema-blue,
   .wrapper .right-block .content__list-category .six-square.afiche-thema {

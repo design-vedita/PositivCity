@@ -136,7 +136,7 @@
           .six-square {
             width: 100%;
             min-width: 100%;
-            min-height: 400px;
+            height: auto !important;
 
             &.afiche-theme-orange {
 
@@ -146,6 +146,18 @@
                   max-width: none;
                 }
             }
+
+
+            &.afiche-theme-2,
+            &.afiche-theme-2-orange,
+            &.afiche-theme-2-blue,
+            &.afiche-theme-2-gray {
+
+                .description {
+                  height: auto;
+                }
+            }
+
 
             &.afiche-thema-blue,
             &.afiche-thema {
