@@ -902,6 +902,7 @@ a {
                           &:hover {
                             color: @cityLink;
                             transition: color .5s ease;
+
                           }
 
                           .crumb {
@@ -1178,6 +1179,115 @@ a {
                 display: inline-block;
                 vertical-align: middle;
                 position: relative;
+
+                .jq-selectbox {
+
+                    &__dropdown {
+
+                       li {
+                         padding-left: 36px;
+                         color: @footerInputColor;
+                         font: 1em/1.625em @narrow;
+                         text-transform: uppercase;
+
+                          &:hover {
+                            background-color: @footerInputColor;
+                            color: #fff;
+                          }
+
+                          &.asc {
+                            background-image: url(../img/sort.svg);
+                            background-size: 33px 26px;
+                            background-position: left;
+                            background-repeat: no-repeat;
+
+                              &:hover {
+                                background-image: url(../img/sort-white.svg);
+                              }
+
+                              &.selected {
+                                background-image: url(../img/sort-white.svg);
+                              }
+                          }
+
+                         &.desc {
+                           background-image: url(../img/sort-desc.svg);
+                           background-size: 33px 26px;
+                           background-position: left;
+                           background-repeat: no-repeat;
+
+                             &:hover {
+                               background-image: url(../img/sort-desc-white.svg);
+                             }
+
+                             &.selected {
+                               background-image: url(../img/sort-desc-white.svg);
+                             }
+                         }
+
+                         &.selected {
+                           color: #fff;
+                         }
+                       }
+                    }
+
+                    &__select {
+                      padding: 9px 40px;
+                    }
+
+                    &__select-text {
+                      color: @footerInputColor;
+                      font: 1em/1.625em @narrow;
+                      text-transform: uppercase;
+                    }
+
+                    &__trigger {
+                      right: auto;
+                      left: 0;
+
+                        &:after {
+                          display: none;
+                        }
+                    }
+
+                    &.asc {
+
+                      .jq-selectbox__trigger-arrow {
+                        background-image: url(../img/sort.svg);
+                        transform: rotate(0);
+                        background-size: 33px 26px;
+                        width: 29px;
+                        height: 26px;
+                        right: auto;
+                      }
+                    }
+
+                    &.asc {
+
+                      .jq-selectbox__trigger-arrow {
+                        background-image: url(../img/sort.svg);
+                        transform: rotate(0);
+                        background-size: 33px 26px;
+                        width: 29px;
+                        height: 26px;
+                        right: auto;
+                      }
+                    }
+
+
+                    &.desc {
+
+                      .jq-selectbox__trigger-arrow {
+                        background-image: url(../img/sort.svg);
+                        transform: rotate(180deg);
+                        background-size: 33px 26px;
+                        width: 29px;
+                        height: 26px;
+                        right: auto;
+                      }
+                    }
+
+                }
 
                 a {
                   text-decoration: none;
@@ -2102,6 +2212,7 @@ a {
                   width: calc(~'100% - 284px');
 
                     .search-page {
+                      font: 1.125em/1.625em @narrow;
 
                         .search-query {
                           border: 1px solid @leftMenuLink;
@@ -2111,6 +2222,9 @@ a {
                           color: @cityLink;
                           padding-left: 10px;
                           width: 100%;
+                          border-radius: 0;
+                          -webkit-appearance: none;
+                          box-shadow: none;
                         }
 
                         .search-button {
@@ -2122,6 +2236,9 @@ a {
                           transition: background 0.5s ease 0s;
                           text-indent: -999999px;
                           width: 52px;
+                          border-radius: 0;
+                          -webkit-appearance: none;
+                          box-shadow: none;
                         }
 
                         .search-advanced-result {
@@ -2203,6 +2320,11 @@ a {
                      a {
                        color: @footerInputColor;
                        text-decoration: none;
+                       transition: color .5s ease;
+
+                        &:hover {
+                          color: @sloganColor;
+                        }
                      }
                   }
 
@@ -2226,6 +2348,7 @@ a {
                   ul:not(.ya-share2__list) {
                     list-style-type: none;
                     margin-bottom: 19px;
+                    color: @colorText;
 
                      li {
                        line-height: 1.75em;
@@ -2994,7 +3117,7 @@ a {
       max-width: 560px;
       min-width: 320px;
       width: 100%;
-      height: 218px;
+      min-height: 218px;
       background-color: @white;
       position: absolute;
       opacity: 0;
@@ -3126,6 +3249,25 @@ a {
               &:hover {
                 background-color: @sloganColor;
                 transition: background .5s ease;
+              }
+          }
+
+          input[type=text] {
+            width: 100%;
+            height: 47px;
+            margin-bottom: 7px;
+            box-sizing: border-box;
+            font: 1.0625rem/1.625rem @narrow;
+            border: 1px @grayBorder solid;
+            text-transform: uppercase;
+            color: @cityLink;
+            transition: all .5s ease;
+            padding-left: 10px;
+
+              &:hover,
+              &:focus {
+                border-color: @sloganColor;
+                transition: all .5s ease
               }
           }
       }

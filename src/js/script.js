@@ -147,90 +147,29 @@
 
 
         /**
-         * Показываем сортировку в каталоге
-         */
-
-        function openSort() {
-            var link = document.getElementsByClassName('js-open-sort')[0],
-                sorts = document.getElementsByClassName('js-type-sort')[0],
-                p = document.getElementsByClassName('js-inner')[0],
-                svg = '<svg class="sort"><use xlink:href="#sort" /></svg>';
-
-                if(!!sorts) {
-                    var sortsLi = sorts.getElementsByClassName('js-sort-li'),
-                        child = sorts.getElementsByClassName('child');
-                }
-
-                if(!!link) {
-                    link.onclick = function() {
-                        sorts.parentNode.classList.toggle('view--sort');
-                        var html = p.getAttribute('data-html');
-
-
-                        if(child.length == 0) {
-                            if (html != p.textContent) {
-                                var li = document.createElement('li');
-                                li.classList.add('child','js-sort-li');
-                                li.setAttribute('data-sort', html);
-                                li.setAttribute('data-svg', 'asc');
-                                li.innerHTML = svg + html;
-                                li.addEventListener('click',function(){
-                                    var typeSort = this.getAttribute('data-sort'),
-                                        desc = this.getAttribute('data-svg');
-
-                                    if(desc == 'desc')
-                                        link.querySelector('svg').classList.add('sort-down');
-                                    else
-                                        link.querySelector('svg').classList.remove('sort-down');
-
-                                    p.innerHTML = typeSort;
-                                    sorts.parentNode.classList.toggle('view--sort');
-                                });
-                                sorts.appendChild(li);
-                            }
-                        }
-
-                    }
-                }
-
-
-
-                if(!!sortsLi) {
-                    for (var i = 0; i < sortsLi.length; i++) {
-                        sortsLi[i].onclick = function() {
-                            var typeSort = this.getAttribute('data-sort'),
-                                desc = this.getAttribute('data-svg');
-
-                            if(desc)
-                                link.querySelector('svg').classList.add('sort-down');
-                            else
-                                link.querySelector('svg').classList.remove('sort-down');
-
-                            p.innerHTML = typeSort;
-                            sorts.parentNode.classList.toggle('view--sort');
-                        }
-                    }
-                }
-
-        }
-
-        openSort();
-
-        /**
          * Всплывающее окно по центру
          */
 
         function popupCenter() {
             var cityLink = document.getElementsByClassName('js-city-link')[0],
+                orderLink = document.getElementsByClassName('js-order-link')[0],
                 popup = document.getElementsByClassName('js-popup'),
                 back = document.getElementsByClassName('js-back')[0],
+                orderPopup = document.getElementsByClassName('js-order')[0],
                 cityPopup = document.getElementsByClassName('js-city')[0],
-                closePopup = document.getElementsByClassName('js-close-popup')[0],
+                closePopup = document.getElementsByClassName('js-close-popup'),
                 body = document.body,
                 docElem = document.documentElement,
                 scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop,
                 scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
 
+
+                if(!!orderLink) {
+                    orderLink.onclick = function() {
+                        orderPopup.classList.add('view--popup');
+                        back.classList.add('view--back');
+                    }
+                }
 
                 cityLink.onclick = function() {
                     cityPopup.classList.add('view--popup');
@@ -242,9 +181,16 @@
                     back.classList.remove('view--back');
                 }
 
-                closePopup.onclick = function() {
-                    cityPopup.classList.remove('view--popup');
-                    back.classList.remove('view--back');
+                for (var i = 0; i < closePopup.length; i++ ) {
+
+                    closePopup[i].onclick = function() {
+
+                        cityPopup.classList.remove('view--popup');
+                        if (!!orderPopup)
+                            orderPopup.classList.remove('view--popup');
+                        back.classList.remove('view--back');
+                    }
+
                 }
 
                 for (var i = 0; i < popup.length; i++) {
@@ -840,32 +786,26 @@
                     return { top: Math.round(top), left: Math.round(left) }
                 }
 
-                function isVisible(elem) {
-
-                    var coords = elem.getBoundingClientRect();
-
-                    var windowHeight = document.documentElement.clientHeight;
-
-                    var topVisible =  coords.top > 0 && coords.top < windowHeight;
-                    var bottomVisible = coords.bottom < windowHeight && coords.bottom >= -15;
-
-                    return topVisible || bottomVisible;
-                }
-
                 function showVisible() {
                     var footer = document.getElementsByTagName('footer')[0],
-                        content = document.getElementsByClassName('js-content')[0];
+                        content = document.getElementsByClassName('js-catalog-text')[0];
 
                     if(!!content) {
-                        if (isVisible(content)) {
+                        /**
+                         * Для страниц с этим классом при прокрутке до этого блока - высота баннера
+                         * баннер перестаёт с нами крутиться, чтобы не наезжать на текст.
+                         */
+                        if(scrollTop >= (getOffsetRect(content).top - 400)){
                             if(!!banner)
                                 banner.classList.remove('scroll--banner');
 
-                            if(!!map)
-                                map.classList.remove('scroll--map');
+                           /* if(!!map)
+                                map.classList.remove('scroll--map');*/
                         }
-                    } else {
-                        if (isVisible(footer)) {
+                    }
+
+                    if(!!footer) {
+                        if (scrollTop >= (getOffsetRect(footer).top - 400)) {
                             if(!!banner)
                                 banner.classList.remove('scroll--banner');
 
@@ -907,8 +847,10 @@
                             if(!!map)
                                 map.classList.remove('scroll--map');
                         }
-                        showVisible();
+
+
                     }
+                    showVisible();
 
                 }
             }
