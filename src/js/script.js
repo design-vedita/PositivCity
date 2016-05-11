@@ -151,55 +151,71 @@
          */
 
         function popupCenter() {
-            var cityLink = document.getElementsByClassName('js-city-link')[0],
-                orderLink = document.getElementsByClassName('js-order-link')[0],
+            var links = document.getElementsByClassName('js-popup-link'),
                 popup = document.getElementsByClassName('js-popup'),
                 back = document.getElementsByClassName('js-back')[0],
-                orderPopup = document.getElementsByClassName('js-order')[0],
-                cityPopup = document.getElementsByClassName('js-city')[0],
                 closePopup = document.getElementsByClassName('js-close-popup'),
                 body = document.body,
                 docElem = document.documentElement,
                 scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop,
                 scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
 
+                for (var m = 0; m < popup.length; m++) {
+                    var width = popup[m].offsetWidth,
+                        height = popup[m].offsetHeight;
 
-                if(!!orderLink) {
-                    orderLink.onclick = function() {
-                        orderPopup.classList.add('view--popup');
-                        back.classList.add('view--back');
+                    popup[m].style.left = scrollLeft + (docElem.clientWidth - width) / 2 + 'px';
+                    popup[m].style.top = scrollTop + (docElem.clientHeight - height) / 2 + 'px';
+                }
+
+
+                for(var i = 0; i < links.length; i++) {
+
+                    links[i].onclick = function() {
+
+                        var typePopup = this.getAttribute('data-link');
+
+                        for (var j = 0; j < popup.length; j++) {
+
+
+
+                            if(popup[j].getAttribute('data-link') == typePopup) {
+
+                                popup[j].classList.add('view--popup');
+                                back.classList.add('view--back');
+                            }
+
+
+                        }
                     }
+
                 }
 
-                cityLink.onclick = function() {
-                    cityPopup.classList.add('view--popup');
-                    back.classList.add('view--back');
+                for (var k = 0; k < closePopup.length; k++) {
+
+                    closePopup[k].onclick = function() {
+
+                        for (var n = 0; n < popup.length; n++) {
+                            popup[n].classList.remove('view--popup');
+                            back.classList.remove('view--back');
+                        }
+
+                    }
+
                 }
+
 
                 back.onclick = function() {
-                    cityPopup.classList.remove('view--popup');
-                    back.classList.remove('view--back');
+
+                     i = null;
+                     for (i = 0; i < popup.length; i++) {
+                         popup[i].classList.remove('view--popup');
+                         back.classList.remove('view--back');
+                     }
                 }
 
-                for (var i = 0; i < closePopup.length; i++ ) {
 
-                    closePopup[i].onclick = function() {
 
-                        cityPopup.classList.remove('view--popup');
-                        if (!!orderPopup)
-                            orderPopup.classList.remove('view--popup');
-                        back.classList.remove('view--back');
-                    }
-
-                }
-
-                for (var i = 0; i < popup.length; i++) {
-                    var width = popup[i].offsetWidth,
-                        height = popup[i].offsetHeight;
-
-                        popup[i].style.left = scrollLeft + (docElem.clientWidth - width) / 2 + 'px';
-                        popup[i].style.top = scrollTop + (docElem.clientHeight - height) / 2 + 'px';
-                }
         }
         popupCenter();
 
@@ -239,7 +255,12 @@
 
                 if (clientWidth >= 1000 && clientWidth <= 1400) {
 
-                    $('.one-square:nth-of-type(6),.one-square:nth-of-type(5)').wrapAll('<div class="two-square js-wrap"></div>');
+                        var count = $('.one-square').length;
+
+                        if (count == 6) {
+                            $('.one-square:nth-of-type(6),.one-square:nth-of-type(5)').wrapAll('<div class="two-square js-wrap"></div>');
+                        }
+
 
                 } else if( clientWidth >= 460 && clientWidth <= 767 ) {
 
@@ -694,6 +715,7 @@
             popupCenter();
             heightBlocks();
             mapSlider();
+
 
 
 

@@ -525,7 +525,7 @@ a {
                     box-sizing: border-box;
 
                       .title-slide {
-                        font: bold 2.625em/1.625em @narrow;
+                        font: bold 2.625em/1.3em @narrow;
                         text-transform: uppercase;
                         color: @sloganColor;
                         margin-bottom: 11px;
@@ -812,7 +812,8 @@ a {
             padding-left: 43px;
             margin-bottom: 70px;
 
-              h1 {
+              h1,
+              h2.title-h1 {
                 font: bold 2.4375em/1em @narrow;
                 color: @sloganColor;
                 position: relative;
@@ -1583,7 +1584,7 @@ a {
                                   }
                               }
 
-                              h1 {
+                              h2 {
                                 color: @orange;
                                 font: bold 1.75em/1.625em @narrow;
                                 text-transform: uppercase;
@@ -2504,6 +2505,14 @@ a {
 
           .subscribe {
 
+              font {
+
+                  &.notetext {
+                    font: 1.875em "PT Sans",sans-serif;
+                    text-transform: uppercase;
+                  }
+              }
+
               .errortext {
                 font: 1.125em/1.875em "PT Sans",sans-serif;
                 color: @orange;
@@ -2635,6 +2644,13 @@ a {
                         border-radius: 0;
                         -webkit-appearance: none;
                         box-shadow: none;
+
+                          &[placeholder],
+                          &::-moz-placeholder,
+                          &:-moz-placeholder,
+                          &:-ms-input-placeholder {
+                            text-overflow:ellipsis;
+                          }
                       }
 
                       input[type=submit] {
@@ -3104,7 +3120,7 @@ a {
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, .7);
-      z-index: 19;
+      z-index: 100;
       left: 0;
       top: 0;
       display: none;
@@ -3122,7 +3138,7 @@ a {
       position: absolute;
       opacity: 0;
       visibility: hidden;
-      z-index: 20;
+      z-index: 101;
       transition: all .5s ease;
       box-sizing: border-box;
       padding: 32px 21px 21px 28px;
