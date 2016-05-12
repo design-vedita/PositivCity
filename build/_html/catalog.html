@@ -326,23 +326,11 @@
                     </div>
                 </form>
             </div>
-            <div class="catalog-content__sort">
-                <a href="javascript:undefined" class="js-open-sort">
-                    <svg class="sort">
-                        <use xlink:href="#sort" />
-                    </svg>
-                    <p data-html=" Сортировка по алфавиту от А-Я" class="js-inner"> Сортировка по алфавиту от А-Я</p>
-                </a>
-                <div class="catalog-content__sort__type-sort">
-                    <ul class="js-type-sort">
-                        <li class="js-sort-li" data-svg="desc" data-sort="Сортировка по алфавиту от Я-А">
-                            <svg class="sort sort-down">
-                                <use xlink:href="#sort" />
-                            </svg>
-                            Сортировка по алфавиту от Я-А
-                        </li>
-                    </ul>
-                </div>
+            <div class="catalog-content__sort js-sort">
+                <select class="js-custom select-sort">
+                    <option class="asc" value="Сортировка по алфавиту от А-Я">Сортировка по алфавиту от А-Я</option>
+                    <option class="desc" value="Сортировка по алфавиту от Я-А">Сортировка по алфавиту от Я-А</option>
+                </select>
             </div>
             <div class="catalog-content__wrap-catalog js-wrap-banOrMap">
                 <div class="catalog-content__wrap-catalog__list js-catalog-list">

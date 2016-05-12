@@ -3149,6 +3149,24 @@ a {
         transition: all .5s ease;
       }
 
+      .error_msg,
+      .popup-fail {
+        font: 1.0625rem @narrow;
+        padding-bottom: 5px;
+        color: @orange;
+      }
+
+      .popup-fail {
+        padding-top: 5px;
+      }
+
+      .popup-success {
+        font: 1.0625rem @narrow;
+        margin-top: 20px;
+        color: @sloganColor;
+        text-transform: uppercase;
+      }
+
       p {
 
           &.title-popup {
@@ -3288,4 +3306,81 @@ a {
           }
       }
     }
+}
+div.title-search-result {
+
+
+      table.title-search-result {
+        background-color: @white;
+        border: 1px @grayBorder solid;
+
+          th {
+            color: @orange;
+            font: bold 1.4375em/1.4375em @narrow;
+            text-transform: uppercase;
+          }
+
+          td {
+            padding: 0 30px;
+            display: block;
+          }
+
+          .title-search-more {
+
+              a {
+                font: 1.125em/1.4375em @narrow;
+                text-decoration: none;
+                color: @footerInputColor;
+                transition: color .5s ease;
+
+                  &:hover {
+                    color: @sloganColor;
+                  }
+              }
+          }
+
+          .title-search-item {
+            padding: 10px;
+
+              span,
+              img  {
+                display: inline-block;
+                vertical-align: middle;
+              }
+
+              span {
+                margin-left: 15px;
+              }
+
+              a {
+                font: 1.125em/1.4375em @narrow;
+                text-decoration: none;
+                color: @sloganColor;
+                transition: color .5s ease;
+              }
+
+              &:hover {
+                a {
+                  color: @orange;
+                }
+              }
+          }
+
+          .title-search-all {
+            padding-bottom: 10px;
+
+             a {
+               font: 1.125em/1.4375em @narrow;
+               text-decoration: none;
+               color: @orange;
+               transition: color .5s ease;
+
+                &:hover {
+                  color: @sloganColor;
+                }
+             }
+          }
+      }
+
+
 }
