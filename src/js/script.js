@@ -26,28 +26,28 @@
 
         var emptyElem = document.getElementsByClassName('js-item');
 
-            if(!!emptyElem) {
+        if(!!emptyElem) {
 
-                for (var i = 0; i < emptyElem.length; i++) {
+            for (var i = 0; i < emptyElem.length; i++) {
 
-                    var title = emptyElem[i].getElementsByClassName('element-title'),
-                        preview = emptyElem[i].getElementsByClassName('preview');
+                var title = emptyElem[i].getElementsByClassName('element-title'),
+                    preview = emptyElem[i].getElementsByClassName('preview');
 
-                        for(var j = 0; j < title.length; j++) {
+                for(var j = 0; j < title.length; j++) {
 
-                            if(title[j].innerHTML == '&nbsp;') {
-                                title[j].style.padding = 0;
-                                title[j].style.height = 0;
-                                emptyElem[i].querySelector('a').removeAttribute('href');
+                    if(title[j].innerHTML == '&nbsp;') {
+                        title[j].style.padding = 0;
+                        title[j].style.height = 0;
+                        emptyElem[i].querySelector('a').removeAttribute('href');
 
-                                for(var k = 0; k < preview.length; k++) {
-                                    preview[k].style.display = 'none';
-                                }
-                            }
+                        for(var k = 0; k < preview.length; k++) {
+                            preview[k].style.display = 'none';
                         }
-
+                    }
                 }
+
             }
+        }
 
         /**
          * Стилизованный инпут в галерее, его обработка
@@ -110,19 +110,19 @@
         function mapSlider() {
             var slider = document.getElementsByClassName('js-map-slider')[0];
 
-                if(!!slider) {
-                    var slide = slider.getElementsByClassName('swiper-slide'),
-                        sliderWidth = slider.offsetWidth,
-                        sliderHeight = sliderWidth * .33;
+            if(!!slider) {
+                var slide = slider.getElementsByClassName('swiper-slide'),
+                    sliderWidth = slider.offsetWidth,
+                    sliderHeight = sliderWidth * .33;
 
-                        slider.style.height = sliderHeight + 'px';
-                        slider.style.minHeight = '400px';
+                slider.style.height = sliderHeight + 'px';
+                slider.style.minHeight = '400px';
 
-                    for(var i = 0; i < slide.length; i++) {
-                        slide[i].style.height = sliderHeight + 'px';
-                        slide[i].style.minHeight = '400px';
-                    }
+                for(var i = 0; i < slide.length; i++) {
+                    slide[i].style.height = sliderHeight + 'px';
+                    slide[i].style.minHeight = '400px';
                 }
+            }
         }
 
         mapSlider();
@@ -131,16 +131,16 @@
         function heightBlocks() {
             var clientWidth = document.documentElement.clientWidth;
 
-                if(clientWidth >= 460) {
-                    var max_height = $(".anchor").width();
-                    $(".two-square").css("height", max_height);
-                    $(".four-square").css("height", max_height);
-                    $(".six-square").css("height", max_height);
-                } else {
-                    $(".two-square").css("height", '');
-                    $(".four-square").css("height", '');
-                    $(".six-square").css("height", '');
-                }
+            if(clientWidth >= 460) {
+                var max_height = $(".anchor").width();
+                $(".two-square").css("height", max_height);
+                $(".four-square").css("height", max_height);
+                $(".six-square").css("height", max_height);
+            } else {
+                $(".two-square").css("height", '');
+                $(".four-square").css("height", '');
+                $(".six-square").css("height", '');
+            }
         }
 
         heightBlocks();
@@ -160,59 +160,59 @@
                 scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop,
                 scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
 
-                for (var m = 0; m < popup.length; m++) {
-                    var width = popup[m].offsetWidth,
-                        height = popup[m].offsetHeight;
+            for (var m = 0; m < popup.length; m++) {
+                var width = popup[m].offsetWidth,
+                    height = popup[m].offsetHeight;
 
-                    popup[m].style.left = scrollLeft + (docElem.clientWidth - width) / 2 + 'px';
-                    popup[m].style.top = scrollTop + (docElem.clientHeight - height) / 2 + 'px';
+                popup[m].style.left = scrollLeft + (docElem.clientWidth - width) / 2 + 'px';
+                popup[m].style.top = scrollTop + (docElem.clientHeight - height) / 2 + 'px';
+            }
+
+
+            for(var i = 0; i < links.length; i++) {
+
+                links[i].onclick = function(event) {
+                    event.preventDefault();
+                    var typePopup = this.getAttribute('data-link');
+
+                    for (var j = 0; j < popup.length; j++) {
+
+
+
+                        if(popup[j].getAttribute('data-link') == typePopup) {
+
+                            popup[j].classList.add('view--popup');
+                            back.classList.add('view--back');
+                        }
+
+
+                    }
                 }
 
+            }
 
-                for(var i = 0; i < links.length; i++) {
+            for (var k = 0; k < closePopup.length; k++) {
 
-                    links[i].onclick = function() {
+                closePopup[k].onclick = function() {
 
-                        var typePopup = this.getAttribute('data-link');
-
-                        for (var j = 0; j < popup.length; j++) {
-
-
-
-                            if(popup[j].getAttribute('data-link') == typePopup) {
-
-                                popup[j].classList.add('view--popup');
-                                back.classList.add('view--back');
-                            }
-
-
-                        }
+                    for (var n = 0; n < popup.length; n++) {
+                        popup[n].classList.remove('view--popup');
+                        back.classList.remove('view--back');
                     }
 
                 }
 
-                for (var k = 0; k < closePopup.length; k++) {
+            }
 
-                    closePopup[k].onclick = function() {
 
-                        for (var n = 0; n < popup.length; n++) {
-                            popup[n].classList.remove('view--popup');
-                            back.classList.remove('view--back');
-                        }
+            back.onclick = function() {
 
-                    }
-
+                i = null;
+                for (i = 0; i < popup.length; i++) {
+                    popup[i].classList.remove('view--popup');
+                    back.classList.remove('view--back');
                 }
-
-
-                back.onclick = function() {
-
-                     i = null;
-                     for (i = 0; i < popup.length; i++) {
-                         popup[i].classList.remove('view--popup');
-                         back.classList.remove('view--back');
-                     }
-                }
+            }
 
 
 
@@ -251,79 +251,79 @@
         function adaptive() {
             var clientWidth = document.documentElement.clientWidth;
 
-                var $item = $('.item');
+            var $item = $('.item');
 
-                if (clientWidth >= 1000 && clientWidth <= 1400) {
+            if (clientWidth >= 1000 && clientWidth <= 1400) {
 
-                        var count = $('.one-square').length;
+                var count = $('.one-square').length;
 
-                        if (count == 6) {
-                            $('.one-square:nth-of-type(6),.one-square:nth-of-type(5)').wrapAll('<div class="two-square js-wrap"></div>');
-                        }
-
-
-                } else if( clientWidth >= 460 && clientWidth <= 767 ) {
-
-                    if ( !$("#category-list .row").hasClass("re-layout"))
-                    {
-                        $("#category-list .row").addClass("re-layout");
-                        $("#category-list .row").find(".content__list-category__element").each(function(index, element){ $(element).attr('data-order',index) });
-                        $("#category-list .row").find(".one-square").appendTo("#category-list .row");
-                        $("#category-list .row").find(".two-square").appendTo("#category-list .row");
-                        $("#category-list .row").find(".four-square").appendTo("#category-list .row");
-                        $("#category-list .row").find(".six-square").appendTo("#category-list .row");
-                    }
-
-                } else if( clientWidth >= 768 && clientWidth <= 999) {
-                    $item.each(function() {
-                        if($(this).parent().is('.js-wrap')) {
-                            $(this).unwrap();
-                        }
-                    });
-                    if ($(".row").hasClass("re-layout"))
-                    {
-                        $(".row").removeClass("re-layout");
-                        var num_el = $(".row").find(".content__list-category__element").length;
-                        for ( var i = 0; i < num_el; i++) {
-                            $("#category-list").find(".content__list-category__element[data-order='"+i+"']").appendTo("#category-list .row");
-                        }
-                    }
-                } else if( clientWidth >= 1401) {
-                    $item.each(function() {
-                        if($(this).parent().is('.js-wrap')) {
-                            $(this).unwrap();
-                        }
-                    })
+                if (count == 6) {
+                    $('.one-square:nth-of-type(6),.one-square:nth-of-type(5)').wrapAll('<div class="two-square js-wrap"></div>');
                 }
+
+
+            } else if( clientWidth >= 460 && clientWidth <= 767 ) {
+
+                if ( !$("#category-list .row").hasClass("re-layout"))
+                {
+                    $("#category-list .row").addClass("re-layout");
+                    $("#category-list .row").find(".content__list-category__element").each(function(index, element){ $(element).attr('data-order',index) });
+                    $("#category-list .row").find(".one-square").appendTo("#category-list .row");
+                    $("#category-list .row").find(".two-square").appendTo("#category-list .row");
+                    $("#category-list .row").find(".four-square").appendTo("#category-list .row");
+                    $("#category-list .row").find(".six-square").appendTo("#category-list .row");
+                }
+
+            } else if( clientWidth >= 768 && clientWidth <= 999) {
+                $item.each(function() {
+                    if($(this).parent().is('.js-wrap')) {
+                        $(this).unwrap();
+                    }
+                });
+                if ($(".row").hasClass("re-layout"))
+                {
+                    $(".row").removeClass("re-layout");
+                    var num_el = $(".row").find(".content__list-category__element").length;
+                    for ( var i = 0; i < num_el; i++) {
+                        $("#category-list").find(".content__list-category__element[data-order='"+i+"']").appendTo("#category-list .row");
+                    }
+                }
+            } else if( clientWidth >= 1401) {
+                $item.each(function() {
+                    if($(this).parent().is('.js-wrap')) {
+                        $(this).unwrap();
+                    }
+                })
+            }
         }
 
         adaptive();
 
         /*
-        * Активные табы в карточке
-        * */
+         * Активные табы в карточке
+         * */
 
         function openTab() {
 
-                $('.js-tabs-link a').click(function(){
-                    var attr = $(this).attr('data-tab');
+            $('.js-tabs-link a').click(function(){
+                var attr = $(this).attr('data-tab');
 
-                    var link = $('.js-tabs-link li');
-                        link.each(function() {
-                            $(this).removeClass('active');
-                        });
-
-                    $(this).parent().addClass('active');
-
-                    var block =  $('.js-tabs-text').find('div[data-link]');
-                        block.each(function(){
-                            if($(this).attr('data-link') == attr) {
-                                $(this).addClass('view-block');
-                            } else {
-                                $(this).removeClass('view-block');
-                            }
-                        });
+                var link = $('.js-tabs-link li');
+                link.each(function() {
+                    $(this).removeClass('active');
                 });
+
+                $(this).parent().addClass('active');
+
+                var block =  $('.js-tabs-text').find('div[data-link]');
+                block.each(function(){
+                    if($(this).attr('data-link') == attr) {
+                        $(this).addClass('view-block');
+                    } else {
+                        $(this).removeClass('view-block');
+                    }
+                });
+            });
         }
 
         openTab();
@@ -416,11 +416,22 @@
         /**
          * Стилизация чекбоксов и селектов
          */
+
+        function stylerClosed() {
+            /*console.log($(this));
+             if (!$(this).hasClass('select-sort'))
+             return;
+             console.log('sort!')*/
+
+        }
+
         var selects = document.getElementsByClassName('js-custom');
 
-            if(!!selects) {
-                $(selects).styler();
-            }
+        if(!!selects) {
+            $(selects).styler({
+                onSelectClosed: stylerClosed
+            });
+        }
 
 
         /**
@@ -481,23 +492,23 @@
         searchButton.onclick = function() {
             var clientWidth = document.documentElement.clientWidth;
 
-                this.classList.toggle('open');
-                searchInput.classList.toggle('visible-search');
+            this.classList.toggle('open');
+            searchInput.classList.toggle('visible-search');
 
 
+            if(this.classList.contains('open')) {
+                this.querySelector('use').setAttribute('xlink:href','#close');
+            } else {
+                this.querySelector('use').setAttribute('xlink:href','#search');
+            }
+
+            if(clientWidth >=320 && clientWidth <= 459) {
                 if(this.classList.contains('open')) {
-                    this.querySelector('use').setAttribute('xlink:href','#close');
+                    burgerOrange.classList.add('no--visible');
                 } else {
-                    this.querySelector('use').setAttribute('xlink:href','#search');
+                    burgerOrange.classList.remove('no--visible');
                 }
-
-                if(clientWidth >=320 && clientWidth <= 459) {
-                    if(this.classList.contains('open')) {
-                        burgerOrange.classList.add('no--visible');
-                    } else {
-                        burgerOrange.classList.remove('no--visible');
-                    }
-                }
+            }
         }
 
 
@@ -509,19 +520,19 @@
         $('.js-left-submenu li').mouseenter(function(){
             var $div = $(this).find('div');
 
-                $div.addClass('color--orange');
-                $(this).addClass('color--blue');
+            $div.addClass('color--orange');
+            $(this).addClass('color--blue');
         });
 
         $('.js-left-submenu li').mouseleave(function(){
             var $div = $(this).find('div');
 
-                if($(this).hasClass('active-menu')) {
+            if($(this).hasClass('active-menu')) {
 
-                } else {
-                    $div.removeClass('color--orange');
-                    $(this).removeClass('color--blue');
-                }
+            } else {
+                $div.removeClass('color--orange');
+                $(this).removeClass('color--blue');
+            }
 
         });
 
@@ -569,7 +580,7 @@
 
                     var footerSoc = document.getElementsByClassName('js-seti')[0];
 
-                        footerSoc.classList.toggle('open--menu');
+                    footerSoc.classList.toggle('open--menu');
 
                     /**
                      * Если после маленького экрана ресайз на большой,
@@ -586,9 +597,9 @@
                     leftMenu.classList.toggle('hover');
 
                     /*
-                    * Пересчёт длины левого и правого блоков,
-                    * при открытом меню
-                    * */
+                     * Пересчёт длины левого и правого блоков,
+                     * при открытом меню
+                     * */
 
                     if (leftMenu.classList.contains('hover')) {
                         rightBlock.style.width = 'calc(100% - ' + (max + 20) + 'px)';
@@ -618,7 +629,7 @@
                         }
                     } else if(clientWidth >= 1000 && clientWidth < 1400) {
                         var  heightLinks = footerLinks.offsetHeight,
-                             div = footerLinks.querySelectorAll('div:not(.js-contacts)');
+                            div = footerLinks.querySelectorAll('div:not(.js-contacts)');
 
                         /**
                          * добавляем в футер высоты, чтобы блоки поместились и задаём при открытом меню
@@ -645,7 +656,7 @@
 
                     } else if(clientWidth >= 768 && clientWidth < 1000) {
                         var  heightLinks = footerLinks.offsetHeight,
-                             div = footerLinks.querySelectorAll('div:not(.js-contacts)');
+                            div = footerLinks.querySelectorAll('div:not(.js-contacts)');
 
                         /**
                          * добавляем в футер высоты, чтобы блоки поместились и задаём при открытом меню
@@ -721,26 +732,26 @@
 
             var clientWidth = document.documentElement.clientWidth;
 
-                /**
-                 * очищаем классы при ресайзе, чтобы ничего не ломалось.
-                 * */
-                if(clientWidth >= 767 ) {
-                    burger.classList.remove('view-menu');
-                    burger.classList.remove('view-menu');
-                    burger.classList.remove('open--translate');
-                    leftMenu.classList.remove('translate');
-                    header.classList.remove('scroll--fixed');
-                    header.style.width = '';
+            /**
+             * очищаем классы при ресайзе, чтобы ничего не ломалось.
+             * */
+            if(clientWidth >= 767 ) {
+                burger.classList.remove('view-menu');
+                burger.classList.remove('view-menu');
+                burger.classList.remove('open--translate');
+                leftMenu.classList.remove('translate');
+                header.classList.remove('scroll--fixed');
+                header.style.width = '';
 
-                    if(!!banner)
-                        banner.classList.remove('scroll--banner');
+                if(!!banner)
+                    banner.classList.remove('scroll--banner');
 
-                    if(!isIos) {
-                        leftMenu.style.width = '';
-                        leftMenu.classList.remove('hover');
-                        burger.classList.remove('open--burger');
-                    }
+                if(!isIos) {
+                    leftMenu.style.width = '';
+                    leftMenu.classList.remove('hover');
+                    burger.classList.remove('open--burger');
                 }
+            }
         }
 
 
@@ -790,53 +801,55 @@
                 map = document.getElementsByClassName('js-yMap')[0],
                 clientWidth = document.documentElement.clientWidth;
 
-                function getOffsetRect(elem) {
-                    var box = elem.getBoundingClientRect();
+            function getOffsetRect(elem) {
+                var box = elem.getBoundingClientRect();
 
-                    var body = document.body;
-                    var docElem = document.documentElement;
+                var body = document.body;
+                var docElem = document.documentElement;
 
-                    var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
-                    var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
+                var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
+                var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
 
-                    var clientTop = docElem.clientTop || body.clientTop || 0;
-                    var clientLeft = docElem.clientLeft || body.clientLeft || 0;
+                var clientTop = docElem.clientTop || body.clientTop || 0;
+                var clientLeft = docElem.clientLeft || body.clientLeft || 0;
 
-                    var top  = box.top +  scrollTop - clientTop;
-                    var left = box.left + scrollLeft - clientLeft;
+                var top  = box.top +  scrollTop - clientTop;
+                var left = box.left + scrollLeft - clientLeft;
 
-                    return { top: Math.round(top), left: Math.round(left) }
-                }
+                return { top: Math.round(top), left: Math.round(left) }
+            }
 
-                function showVisible() {
-                    var footer = document.getElementsByTagName('footer')[0],
-                        content = document.getElementsByClassName('js-catalog-text')[0];
+            function showVisible() {
+                var footer = document.getElementsByTagName('footer')[0],
+                    content = document.getElementsByClassName('js-catalog-text')[0];
 
-                    if(!!content) {
-                        /**
-                         * Для страниц с этим классом при прокрутке до этого блока - высота баннера
-                         * баннер перестаёт с нами крутиться, чтобы не наезжать на текст.
-                         */
-                        if(scrollTop >= (getOffsetRect(content).top - 400)){
-                            if(!!banner)
-                                banner.classList.remove('scroll--banner');
+                if(!!content) {
+                    /**
+                     * Для страниц с этим классом при прокрутке до этого блока - высота баннера
+                     * баннер перестаёт с нами крутиться, чтобы не наезжать на текст.
+                     */
+                    if(scrollTop >= (getOffsetRect(content).top - 400)){
+                        if(!!banner)
+                            banner.classList.remove('scroll--banner');
 
-                           /* if(!!map)
-                                map.classList.remove('scroll--map');*/
-                        }
-                    }
-
-                    if(!!footer) {
-                        if (scrollTop >= (getOffsetRect(footer).top - 400)) {
-                            if(!!banner)
-                                banner.classList.remove('scroll--banner');
-
-                            if(!!map)
-                                map.classList.remove('scroll--map');
-
-                        }
+                        /* if(!!map)
+                         map.classList.remove('scroll--map');*/
                     }
                 }
+
+                if(!!footer) {
+                    if (scrollTop >= (getOffsetRect(footer).top - 400)) {
+                        if(!!banner)
+                            banner.classList.remove('scroll--banner');
+
+                    }
+
+                    if(scrollTop >= (getOffsetRect(footer).top - 715)) {
+                        if(!!map)
+                            map.classList.remove('scroll--map');
+                    }
+                }
+            }
             if(!!!isIos) {
                 if(clientWidth > 768) {
 
@@ -847,10 +860,10 @@
 
                                 var flagArticle = banner.classList.contains('js-article');
 
-                                    banner.classList.add('scroll--banner');
+                                banner.classList.add('scroll--banner');
 
-                                    if(flagArticle && clientWidth < 1308)
-                                        banner.classList.remove('scroll--banner');
+                                if(flagArticle && clientWidth < 1308)
+                                    banner.classList.remove('scroll--banner');
 
                             }
 
@@ -891,6 +904,16 @@
             popupCenter();
         }
 
+        $("select.select-sort").change(function(e){
+            if (location.href.indexOf("?")==-1)
+                location.href = location.href+'?sort='+$(this).val();
+            else
+            if (location.href.indexOf("sort")==-1)
+                location.href = location.href+'&sort='+$(this).val();
+            else
+                location.href = location.origin + location.pathname + '?sort='+$(this).val();
+
+        });
 
     });
 
