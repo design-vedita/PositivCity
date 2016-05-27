@@ -40,21 +40,24 @@
   &:after {
     content: '';
     width: 0;
+    height: 0;
     position: absolute;
     right: 19px;
     top: -24px;
-    border: 12px solid transparent;
+    border: solid transparent;
   }
 
   &:before {
     border-bottom-color: @grayBorder;
-    border-width: 12px;
     top: -25px;
+    border-width: 12px;
+    height: 12px;
   }
 
   &:after {
     border-bottom-color: @white;
     border-width: 12px;
+    height: 12px;
   }
 
   .ui-widget-content {

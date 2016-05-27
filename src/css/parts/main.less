@@ -812,25 +812,24 @@ a {
             padding-left: 43px;
             margin-bottom: 70px;
 
-              h1,
-              h2.title-h1 {
-                font: bold 2.4375em/1em @narrow;
+              & > h2 {
+                font: bold 2em/1em @narrow;
                 color: @sloganColor;
                 position: relative;
                 text-transform: uppercase;
                 padding-left: 3px;
                 word-wrap: break-word;
 
-                  &:after {
-                    position: absolute;
-                    display: block;
-                    content: '';
-                    width: 89px;
-                    height: 4px;
-                    left: 0;
-                    bottom: -20px;
-                    background-color: @h1lineColor;
-                  }
+                &:after {
+                  position: absolute;
+                  display: block;
+                  content: '';
+                  width: 89px;
+                  height: 4px;
+                  left: 0;
+                  bottom: -20px;
+                  background-color: @h1lineColor;
+                }
               }
 
               &__text {
@@ -930,6 +929,15 @@ a {
             height: 4px;
             background-color: @h1lineColor;
             width: 100%;
+          }
+
+          & > h1 {
+            font: bold 2.4375em/1em @narrow;
+            color: @sloganColor;
+            position: relative;
+            text-transform: uppercase;
+            padding-left: 3px;
+            word-wrap: break-word;
           }
 
           &.catalog-content,
@@ -1991,6 +1999,16 @@ a {
                       height: 1px;
                       background-color: @white;
                       margin-top: 22px;
+                    }
+
+                    img {
+                      margin-top: 16px;
+                    }
+
+                    .error_msg {
+                      font: 1em/1em @narrow;
+                      color: @orange;
+                      padding: 5px 0 0;
                     }
 
                     input {
@@ -3093,7 +3111,7 @@ a {
 
           &__copyright {
             background-color: @footerInputColor;
-            height: 56px;
+            min-height: 56px;
             padding-left: 40px;
             padding-right: 40px;
             position: relative;
@@ -3107,9 +3125,7 @@ a {
 
               .logo {
                 float: right;
-                width: 134px;
                 height: auto;
-                padding-top: 9px;
               }
           }
       }
