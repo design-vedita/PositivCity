@@ -13,7 +13,8 @@ var gulp = require('gulp'),
     svgstore = require('gulp-svgstore'),
     svgmin = require('gulp-svgmin'),
     inject = require('gulp-inject'),
-    spritesmith = require('gulp.spritesmith');
+    spritesmith = require('gulp.spritesmith'),
+    zip = require('gulp-zip');
 
 var path = {
     build: {
@@ -64,6 +65,11 @@ var config = {
     logPrefix: "nikalun"
 };
 
+gulp.task('zip', function() {
+    return gulp.src('build/**/**/*')
+        .pipe(zip('archive.zip'))
+        .pipe(gulp.dest('build'));
+});
 
 gulp.task('sprite', function() {
     var spriteData =

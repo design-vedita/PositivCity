@@ -4,6 +4,8 @@
 
     $(function(){
 
+        var b = document.get
+
         var isIos = navigator.userAgent.match(/iPhone|iPad|iPod/i);
 
         var burger = document.getElementsByClassName('js-burger')[0],
