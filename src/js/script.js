@@ -4,7 +4,6 @@
 
     $(function(){
 
-        var b = document.get
 
         var isIos = navigator.userAgent.match(/iPhone|iPad|iPod/i);
 
