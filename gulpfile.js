@@ -122,13 +122,17 @@ gulp.task('js:build', function () {
     gulp.src(path.src.js)
         .pipe(plumber())
         .pipe(rigger())
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest(path.build.js));
 });
 
 gulp.task('css:build', function () {
     gulp.src(path.src.style)
         .pipe(plumber())
+        .pipe(autoprefixer({
+            browsers: ['last 16 versions'],
+            cascade: false
+        }))
         .pipe(less({
             paths: ['src/css/'],
             compress: true

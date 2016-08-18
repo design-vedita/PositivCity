@@ -129,6 +129,10 @@ a {
                 & li {
                   position: relative;
 
+                  &:hover .wrap-link {
+                    min-width: 250px;
+                  }
+
                   &:after {
                     display: block;
                     content: '';
@@ -500,6 +504,7 @@ a {
           width: 100%;
           clear: both;
         }
+
       .content {
         background-color: @white;
         padding: 19px 40px 30px;
@@ -529,7 +534,7 @@ a {
                         text-transform: uppercase;
                         color: @sloganColor;
                         margin-bottom: 11px;
-                        word-wrap: break-word;
+                        /*word-wrap: break-word;*/
                       }
 
                       .text-slide {
